@@ -438,15 +438,17 @@ export default function RotatedPaperDemo({
             <div className='text-center w-[264px] md:w-[85%] font-medium text-[17px] md:text-[clamp(17px,1.5vw,38.5px)]'>
               <p className='leading-[160%] break-keep'>안녕하세요.</p>
               <p className='break-keep'>
-                2025 MEP 〈New Formative〉에 {displayName}
+                2026 MEP 〈every else〉에 {displayName}
                 {displayName !== '여러분' && '님'}을 초대합니다.
               </p>
 
               <p>
-                전시는 8월 22일부터 27일까지, 삼성전자 서울 R&D 캠퍼스 A타워 2층
+                전시는 8월 11일부터 15일까지, 
+                <br/>
+                삼성전자 서울 R&D 캠퍼스 A타워 2층
                 <br />
                 갤러리 1, 2에서 진행됩니다.
-                <br className='block md:hidden' /> 소중한 발걸음으로 함께해 주세요.
+                <br className='block' /> 소중한 발걸음으로 함께해 주세요.
               </p>
             </div>
             <div className='inline-flex flex-col justify-center text-[clamp(17px,1.23vw,31.5px)] items-center gap-2 md:gap-3'>

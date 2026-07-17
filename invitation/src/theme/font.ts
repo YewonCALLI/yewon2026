@@ -14,3 +14,16 @@ export const pretendard = localFont({
   variable: "--font-pretendard",
   display: "swap",
 });
+
+// af Another Sans (영문용; 가변 폰트) – weight 범위: 100 ~ 900
+export const fontEnglish = localFont({
+  src: [
+    {
+      path: "../../public/fonts/af Another Sans - Variable.woff2",
+      weight: "100 900",
+      style: "normal",
+    },
+  ],
+  variable: "--font-english",
+  display: "swap",
+});

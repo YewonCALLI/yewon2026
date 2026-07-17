@@ -40,6 +40,8 @@ export default {
       fontFamily: {
         // 한글용 폰트
         korean: ['var(--font-pretendard)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        // 영문용 폰트
+        english: ['var(--font-english)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       aspectRatio: {},
     },

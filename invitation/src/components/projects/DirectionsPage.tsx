@@ -41,24 +41,24 @@ export default function DirectionsPage({ onBackClick }) {
   }
 
   return (
-    <div className='absolute top-0 h-[100dvh] w-[100vw] flex items-center justify-center bg-gradient-to-br from-pink-400 to-pink-500 z-10'>
+    <div className='absolute top-0 h-[100dvh] w-[100vw] flex items-center justify-center bg-[#00D0FA] z-10'>
       <div className='w-full max-w-5xl px-8 py-16 flex flex-col items-center text-black gap-[clamp(70px,8.36dvh,83px)]'>
-        <h1 className='justify-center text-neutral-800 text-[clamp(22px,1.5vw,38.5px)] font-medium leading-loose'>
+        <h1 className='justify-center text-[#060204] text-[clamp(22px,1.5vw,38.5px)] font-semibold leading-[150%] font-english tracking-[-4.6%] text-center'>
           Directions
         </h1>
 
-        <div className='flex flex-col gap-[clamp(40px,4.52dvh,115.75px)]'>
+        <div className='flex flex-col gap-[clamp(40px,8.31dvh,70.21px)]'>
           <img src='/images/map.svg' className='block md:hidden' />
-          <img src='/images/map-md.svg' className='hidden md:block lg:hidden' />
-          <img src='/images/map-landscape.svg' className='hidden md-landscape:block lg:hidden' />
-          <img src='/images/map-lg.svg' className='hidden lg:block w-[25.8vw]' />
+          <img src='/images/map.svg' className='hidden md:block lg:hidden' />
+          <img src='/images/map.svg' className='hidden md-landscape:block lg:hidden' />
+          <img src='/images/map.svg' className='hidden lg:block lg:w-[25.8vw]' />
 
-          <div className='flex flex-col justify-start items-center gap-[0.145dvh]'>
+          <div className='flex flex-col justify-start items-center gap-[4px]'>
             <button
               onClick={handleCopyAddress}
-              className='flex items-center gap-1 w-fit justify-center p-2 transition-colors duration-200'
+              className='flex items-center gap-1 w-fit justify-center transition-colors duration-200'
             >
-              <span className="text-center justify-center text-neutral-800 text-[clamp(17px, 1.23vw, 31.5px)] font-normal md:font-medium font-['Pretendard'] underline leading-7">
+              <span className="text-center justify-center text-neutral-800 text-[clamp(17px, 1.23vw, 31.5px)] font-medium font-['Pretendard'] leading-[150%] tracking-[-4.6%]">
                 {address}
               </span>
               <div className='w-4 h-4 mb-1 relative'>
@@ -74,7 +74,7 @@ export default function DirectionsPage({ onBackClick }) {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.3 }}
-                  className='absolute bottom-72 md:bottom-64 lg:bottom-56 text-sm text-white font-regular bg-black px-3 py-1 flex items-center gap-3 rounded-md'
+                  className='absolute bottom-72 md:bottom-64 lg:bottom-56 text-sm text-white font-medium bg-black px-3 py-1 flex items-center gap-3 rounded-md'
                 >
                   <svg width='16' height='16' viewBox='0 0 24 24' fill='none' className='text-white'>
                     <circle cx='12' cy='12' r='10' stroke='currentColor' strokeWidth='2' fill='currentColor' />
@@ -96,37 +96,22 @@ export default function DirectionsPage({ onBackClick }) {
                 href={mapLink}
                 target='_blank'
                 rel='noopener noreferrer'
-                className="text-center justify-start text-neutral-800 text-[clamp(17px, 1.23vw, 31.5px)] font-normal md:font-medium font-['Pretendard'] underline leading-7"
+                className="text-center justify-start text-neutral-800 text-[clamp(17px, 1.23vw, 31.5px)] font-medium md:font-medium font-['Pretendard'] leading-[150%] tracking-[-4.6%]"
               >
                 길 찾기
               </a>
               <button
                 onClick={onBackClick}
-                className='absolute top-4 right-4 md:top-9 md:right-9 text-center justify-start text-neutral-800 text-base lg:text-lg font-normal md:font-medium leading-7'
+                className='absolute top-[30px] left-[20px] md:top-9 md:right-9 text-center justify-start text-neutral-800 text-medium lg:text-lg font-normal md:font-medium leading-7'
               >
-                <svg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36' fill='none'>
-                  <g clipPath='url(#clip0_2149_10465)'>
-                    <path
-                      d='M28.4961 9.6067L26.3811 7.4917L17.9961 15.8767L9.61109 7.4917L7.49609 9.6067L15.8811 17.9917L7.49609 26.3767L9.61109 28.4917L17.9961 20.1067L26.3811 28.4917L28.4961 26.3767L20.1111 17.9917L28.4961 9.6067Z'
-                      fill='#222222'
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id='clip0_2149_10465'>
-                      <rect width='36' height='36' fill='white' />
-                    </clipPath>
-                  </defs>
+                <svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18' fill='none'>
+                  <path
+                    d='M15.411 0.366117C15.8992 -0.122039 16.6914 -0.122039 17.1796 0.366117C17.6675 0.854207 17.6674 1.64559 17.1796 2.13369L10.5399 8.77237L17.1786 15.411C17.6668 15.8992 17.6668 16.6914 17.1786 17.1796C16.6904 17.6673 15.8991 17.6675 15.411 17.1796L8.77237 10.5399L2.13369 17.1796C1.64558 17.6674 0.85419 17.6674 0.366117 17.1796C-0.122039 16.6914 -0.122039 15.8992 0.366117 15.411L7.00381 8.77237L0.366117 2.13369C-0.122039 1.64554 -0.122039 0.854272 0.366117 0.366117C0.854276 -0.121992 1.64556 -0.122023 2.13369 0.366117L8.77237 7.00479L15.411 0.366117Z'
+                    fill='black'
+                  />
                 </svg>
               </button>
-              <div className="flex justify-center text-center items-center text-[#00000080] text-[15px] xl:text-[20px] leading-snug">
-                *주차가 불가하니,
-                <br className='block md:block md-landscape:hidden lg:hidden'/>
-                {" "}
-                대중교통 이용을 권장드립니다.
-
-              </div>
             </div>
-            
           </div>
         </div>
       </div>
