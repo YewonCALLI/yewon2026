@@ -10,6 +10,7 @@ import SceneCanvas from '@/components/SceneCanvas'
 
 import { useIsLandscape } from '@/hooks/useIsLandscape'
 import { useIsPhone } from '@/hooks/useIsPhone'
+import { Box } from '@react-three/drei'
 
 export default function Page() {
   const [showIntro, setShowIntro] = useState(true)
@@ -21,6 +22,16 @@ export default function Page() {
   const [useLottie, setUseLottie] = useState(false)
   const isLandscape = useIsLandscape()
   const isPhone = useIsPhone({ cutoff: 768 })
+
+  const [showTiltPrompt, setShowTiltPrompt] = useState(false)
+  const [tiltPermissionDenied, setTiltPermissionDenied] = useState(false)
+  const [requestTiltPermission, setRequestTiltPermission] = useState<(() => Promise<boolean>) | null>(null)
+
+  const handleActivateTilt = async () => {
+    if (!requestTiltPermission) return
+    const granted = await requestTiltPermission()
+    if (granted) setShowTiltPrompt(false)
+  }
 
   // console.log(navigator.userAgent)
   // console.log(isMobile)
@@ -91,7 +102,16 @@ export default function Page() {
           playsInline
         /> */}
 
-        <SceneCanvas />
+        <SceneCanvas
+          onTiltNeedsPermission={(requestPermission) => {
+            setRequestTiltPermission(() => requestPermission)
+            setShowTiltPrompt(true)
+          }}
+          onTiltPermissionDenied={() => {
+            setTiltPermissionDenied(true)
+            setShowTiltPrompt(false)
+          }}
+        />
 
         <div className='absolute top-0 left-0 w-full h-[15vh] bg-gradient-to-b from-white to-transparent z-10 pointer-events-none md:hidden' />
         <div className='absolute bottom-0 left-0 w-full h-[15vh] bg-gradient-to-t from-white to-transparent z-10 pointer-events-none md:hidden' />
@@ -280,6 +300,36 @@ export default function Page() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {showTiltPrompt && (
+        <div className='fixed inset-0 flex items-center justify-center z-[1000] bg-[#000000DD] pointer-events-none'>
+          <div className='pointer-events-auto'>
+            <div className='bg-white/95 backdrop-blur-sm rounded-[10px] p-6 shadow-2xl text-center max-w-xs'>
+              <div className='mb-4'>
+                <div className='mx-auto mb-3 rounded-full flex items-center justify-center'>
+                  <img src='/images/icon.svg' alt='Icon' className='text-black w-12 h-12' />
+                </div>
+                <h3 className='text-lg font-semibold text-gray-800 mb-2'>움직임 효과 활성화</h3>
+                <p className='text-sm text-gray-600'>기기를 기울여 배경을 움직여보세요</p>
+              </div>
+              <button
+                onClick={handleActivateTilt}
+                className='w-full bg-[#222222] text-white py-3 px-6 rounded-[500px] font-medium transition-all duration-200 transform hover:scale-105 active:scale-95'
+              >
+                활성화하기
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {tiltPermissionDenied && (
+        <div className='fixed top-4 left-4 z-[1000] pointer-events-auto'>
+          <div className='bg-red-100 border border-red-300 text-red-700 px-4 py-3 rounded-lg text-sm'>
+            자이로스코프 권한이 필요합니다
+          </div>
+        </div>
+      )}
 
       {isPhone && isLandscape && (
         <div className='fixed inset-0 z-[100000] bg-black text-white flex flex-col items-center justify-center p-8 text-center'>

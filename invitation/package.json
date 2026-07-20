@@ -5,6 +5,9 @@
     "Yewon Jang <yewoncalli.com>"
   ],
   "private": true,
+  "resolutions": {
+    "camera-controls": "3.0.1"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -16,6 +19,7 @@
     "@ducanh2912/next-pwa": "^10.0.0",
     "@lottiefiles/react-lottie-player": "^3.6.0",
     "@next/third-parties": "^15.1.2",
+    "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.6.1",
     "@svgr/webpack": "^8.1.0",
     "@types/three": "^0.185.1",
