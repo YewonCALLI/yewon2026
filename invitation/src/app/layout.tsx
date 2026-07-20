@@ -2,8 +2,9 @@ import type { Metadata } from 'next'
 import { METADATA } from './metadata'
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 import { pretendard, fontEnglish } from '@/theme/font'
-import '@/styles/globals.css'
 import { Layout } from '@/components/projects/Layout'
+
+import '@/styles/globals.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL(METADATA.url),
