@@ -3,37 +3,23 @@
 import { useEffect, useRef } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
 import { useIsPhone } from '@/hooks/useIsPhone'
-import { useDeviceTilt } from '@/hooks/useDeviceTilt'
+import type { DeviceTiltOrientation } from '@/hooks/useDeviceTilt'
 
 interface CameraTiltRigProps {
   maxTilt?: number // radians
   ease?: number
-  /** Fired once gyro tilt needs an explicit permission grant (iOS/others). Wire this to a popup button that calls requestPermission(). */
-  onNeedsPermission?: (requestPermission: () => Promise<boolean>) => void
-  /** Fired when the user denies (or the device rejects) the gyro permission request. */
-  onPermissionDenied?: () => void
+  orientation: DeviceTiltOrientation
 }
 
-export default function CameraTiltRig({ maxTilt = 0.2, ease = 0.06, onNeedsPermission, onPermissionDenied }: CameraTiltRigProps) {
+export default function CameraTiltRig({ maxTilt = 0.2, ease = 0.06, orientation }: CameraTiltRigProps) {
   const { camera } = useThree()
   const isPhone = useIsPhone()
-  const { needsPermission, isGyroActive, permissionDenied, orientation, requestPermission } = useDeviceTilt()
   const target = useRef({ x: 0, y: 0 })
   const baseRotation = useRef({ x: camera.rotation.x, y: camera.rotation.y })
 
   useEffect(() => {
     baseRotation.current = { x: camera.rotation.x, y: camera.rotation.y }
   }, [camera])
-
-  useEffect(() => {
-    if (isPhone && needsPermission && !isGyroActive) {
-      onNeedsPermission?.(requestPermission)
-    }
-  }, [isPhone, needsPermission, isGyroActive, requestPermission, onNeedsPermission])
-
-  useEffect(() => {
-    if (permissionDenied) onPermissionDenied?.()
-  }, [permissionDenied, onPermissionDenied])
 
   useEffect(() => {
     if (isPhone) {
