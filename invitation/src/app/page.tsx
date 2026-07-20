@@ -10,8 +10,8 @@ import SceneCanvas from '@/components/SceneCanvas'
 
 import { useIsLandscape } from '@/hooks/useIsLandscape'
 import { useIsPhone } from '@/hooks/useIsPhone'
-import { useDeviceTilt } from '@/hooks/useDeviceTilt'
-import { Box } from '@react-three/drei'
+import type { TiltState } from '@/components/CameraTiltRig'
+import TuningPanel from '@/components/TuningPanel'
 
 export default function Page() {
   const [showIntro, setShowIntro] = useState(true)
@@ -24,7 +24,14 @@ export default function Page() {
   const isLandscape = useIsLandscape()
   const isPhone = useIsPhone({ cutoff: 768 })
 
-  const { needsPermission, isGyroActive, permissionDenied, orientation, requestPermission } = useDeviceTilt()
+  const [tiltState, setTiltState] = useState<TiltState>({
+    needsPermission: false,
+    isGyroActive: false,
+    permissionDenied: false,
+    orientation: { beta: 0, gamma: 0 },
+    requestPermission: async () => false,
+  })
+  const { needsPermission, isGyroActive, permissionDenied, orientation, requestPermission } = tiltState
   const [showTiltPrompt, setShowTiltPrompt] = useState(false)
 
   useEffect(() => {
@@ -114,7 +121,7 @@ export default function Page() {
           playsInline
         /> */}
 
-        <SceneCanvas orientation={orientation} />
+        <SceneCanvas onTiltStateChange={setTiltState} />
 
         <div className='absolute top-0 left-0 w-full h-[15vh] bg-gradient-to-b from-white to-transparent z-10 pointer-events-none md:hidden' />
         <div className='absolute bottom-0 left-0 w-full h-[15vh] bg-gradient-to-t from-white to-transparent z-10 pointer-events-none md:hidden' />
@@ -269,6 +276,8 @@ export default function Page() {
           <p className='text-[17px] text-[#CFCFCF]'>가로 모드에서는 일부 콘텐츠가 보이지 않을 수 있어요</p>
         </div>
       )}
+
+      <TuningPanel />
     </>
   )
 }
