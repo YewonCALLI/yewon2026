@@ -16,7 +16,7 @@ import { Box } from '@react-three/drei'
 export default function Page() {
   const [showIntro, setShowIntro] = useState(true)
   const [showDirections, setShowDirections] = useState(false)
-  const [displayName, setDisplayName] = useState('여러분')
+  const [displayName, setDisplayName] = useState('김삼성')
   const [isMobile, setIsMobile] = useState(false)
   const [isMotionPanelOpen, setIsMotionPanelOpen] = useState(false)
   const [isGyroPopupVisible, setIsGyroPopupVisible] = useState(false)
@@ -80,7 +80,7 @@ export default function Page() {
         const decodedName = decodeURIComponent(nameFromUrl)
         setDisplayName(decodedName)
       } else {
-        setDisplayName('여러분') // 파라미터가 없으면 기본값
+        setDisplayName('김삼성') // 파라미터가 없으면 기본값
       }
     }
 
@@ -131,9 +131,9 @@ export default function Page() {
               >
                 {/* PC (md 이상) - 기존 디자인 유지 */}
                 <div className='hidden md:flex w-full h-full flex-col justify-center items-center gap-[32px]'>
-                  <div className="w-[832px] text-center justify-start text-[#222222] text-[1.94vw] font-medium font-['Pretendard'] leading-[160%]">
+                  <div className="text-center justify-start text-[#222222] text-[clamp(28px,1.94vw,33px)] font-medium font-['Pretendard'] leading-[160%]">
                     안녕하세요. <br />
-                    2026 MEP 〈every else〉에 김삼성님을 초대합니다. <br />
+                    2026 MEP 〈every else〉에 {displayName}님을 초대합니다. <br />
                     전시는 8월 11일부터 15일까지, <br />
                     삼성전자 서울 R&amp;D 캠퍼스 A타워 2층, <br />
                     갤러리 1,2에서 진행됩니다. <br />
@@ -142,14 +142,14 @@ export default function Page() {
                   <div className='flex flex-col justify-start items-center gap-[9.23px]'>
                     <button
                       onClick={() => setShowDirections(true)}
-                      className='px-[21.1px] py-[2.64px] bg-white rounded-full outline outline-2 outline-offset-[-2px] outline-black inline-flex justify-center items-center gap-3'
+                      className='px-[21.1px] py-[4.64px] bg-white rounded-full outline outline-2 outline-offset-[-2px] outline-black inline-flex justify-center items-center gap-3'
                     >
-                      <div className='justify-center text-black text-[1.80vw] font-semibold font-english leading-[150%] tracking-[-4.6%]'>
+                      <div className='justify-center text-black text-[clamp(26px,1.80vw,33px)] font-semibold font-english leading-[150%] tracking-[-4.6%]'>
                         Directions
                       </div>
                     </button>
-                    <div className='px-[21.1px] py-[2.64px] bg-white rounded-full outline outline-2 outline-offset-[-2px] outline-black inline-flex justify-center items-center gap-3'>
-                      <div className='justify-center text-black text-[1.80vw] font-semibold font-english leading-[150%] tracking-[-4.6%]'>
+                    <div className='px-[21.1px] py-[4.64px] bg-white rounded-full outline outline-2 outline-offset-[-2px] outline-black inline-flex justify-center items-center gap-3'>
+                      <div className='justify-center text-black text-[clamp(26px,1.80vw,33px)] font-semibold font-english leading-[150%] tracking-[-4.6%]'>
                         Visit Website
                       </div>
                     </div>
@@ -163,7 +163,7 @@ export default function Page() {
                       안녕하세요. <br />
                       2026 MEP 〈every else〉에
                       <br />
-                      김삼성님을 초대합니다.
+                      {displayName}님을 초대합니다.
                     </p>
                     <p className="text-[#222222] text-base font-medium font-['Pretendard'] leading-[160%] pl-[30.48px]">
                       전시는 8월 11일부터 15일까지, <br />
@@ -172,17 +172,17 @@ export default function Page() {
                       서로 다른 시선을 함께해 주세요.
                     </p>
                   </div>
-                  <div className='flex flex-col items-end self-end gap-[7px]'>
+                  <div className='flex flex-col items-end self-end gap-[6.24px]'>
                     <button
                       onClick={() => setShowDirections(true)}
-                      className='h-[45px] px-[17.8px] py-[2.23px] bg-white rounded-full outline outline-2 outline-offset-[-2px] outline-black inline-flex justify-center items-center gap-3'
+                      className='h-[40px] px-[16px] py-[2px] bg-white rounded-full outline outline-2 outline-offset-[-2px] outline-black inline-flex justify-center items-center gap-3'
                     >
-                      <div className='text-black text-[22.27px] font-semibold font-english leading-[150%] tracking-[-4.6%]'>
+                      <div className='text-black text-[19.84px] font-semibold font-english leading-[150%] tracking-[-4.6%]'>
                         Directions
                       </div>
                     </button>
-                    <div className='h-[45px] px-[17.8px] py-[2.23px] bg-white rounded-full outline outline-2 outline-offset-[-2px] outline-black inline-flex justify-center items-center gap-3'>
-                      <div className='text-black text-[22.27px] font-semibold font-english leading-[150%] tracking-[-4.6%]'>
+                    <div className='h-[40px] px-[16px] py-[2px] bg-white rounded-full outline outline-2 outline-offset-[-2px] outline-black inline-flex justify-center items-center gap-3'>
+                      <div className='text-black text-[19.84px] font-semibold font-english leading-[150%] tracking-[-4.6%]'>
                         Visit Website
                       </div>
                     </div>
@@ -213,7 +213,7 @@ export default function Page() {
         {showTiltPrompt && (
           <motion.div
             key='tilt-prompt'
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4, ease: 'easeInOut' }}
@@ -233,7 +233,7 @@ export default function Page() {
               />
             </div>
 
-            <p className="text-center w-60 text-white text-[clamp(14px, 4.1vw, 20px)] font-medium font-korean leading-6">
+            <p className="text-center w-60 text-white text-[clamp(14px,4.1vw,20px)] font-medium font-korean leading-6">
               기기를 기울여, every else의
               <br />
               시선을 경험해보세요.
@@ -246,7 +246,7 @@ export default function Page() {
               }}
               className='w-52 h-12 rounded-[500px] border-[1.50px] border-white flex justify-center items-center'
             >
-              <span className="text-center text-white text-[clamp(14px, 4.1vw, 20px)] font-medium font-korean leading-6">
+              <span className="text-center text-white text-[clamp(14px,4.1vw,20px)] font-medium font-korean leading-6">
                 활성화하기
               </span>
             </button>
