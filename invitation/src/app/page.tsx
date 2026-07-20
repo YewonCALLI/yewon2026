@@ -212,7 +212,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div className='footer-container hidden md:block fixed bottom-0 w-screen z-[9999]'>
+      <div className='footer-container hidden md:block fixed bottom-0 w-screen z-[10]'>
         <Footer />
       </div>
 
@@ -240,7 +240,7 @@ export default function Page() {
               />
             </div>
 
-            <p className="text-center w-60 text-white text-[clamp(14px,4.1vw,20px)] font-medium font-korean leading-6">
+            <p className='text-center w-60 text-white text-[clamp(14px,4.1vw,20px)] font-medium font-korean leading-6'>
               기기를 기울여, every else의
               <br />
               시선을 경험해보세요.
@@ -253,7 +253,7 @@ export default function Page() {
               }}
               className='w-52 h-12 rounded-[500px] border-[1.50px] border-white flex justify-center items-center'
             >
-              <span className="text-center text-white text-[clamp(14px,4.1vw,20px)] font-medium font-korean leading-6">
+              <span className='text-center text-white text-[clamp(14px,4.1vw,20px)] font-medium font-korean leading-6'>
                 활성화하기
               </span>
             </button>
