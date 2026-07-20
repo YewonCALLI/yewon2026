@@ -59,7 +59,7 @@ const FRAGMENT_SHADER = /* glsl */ `
 
 interface Particle {
   home: THREE.Vector3
-  dir: THREE.Vector3 // unit vector from origin to home — home is fixed, so this needle orientation never changes
+  dir: THREE.Vector3 // needle orientation — always the +Z tube axis, shared across all particles
   vel: THREE.Vector3 // no longer drives position; decays as a "flick energy" signal that gates the color flicker
   scale: number
   lenScale: number
@@ -115,15 +115,19 @@ export default function CylinderParticles({ tiltRef }: CylinderParticlesProps) {
     const list: Particle[] = []
     const lenScaleArray = new Float32Array(particleCount)
     const maxRadius = radiusMin + radiusSpread
+    // how far a stick's tip can poke forward/back along the tube axis — kept shallow (relative
+    // to the disc radius) so the arrangement reads as a filled circular cross-section facing the
+    // camera, not a full sphere, while still giving fog/tilt-parallax some depth to work with
+    const depthRange = maxRadius * 0.3
+    // every stick stands perfectly parallel to the tube axis (camera-facing Z) — shared, never
+    // mutated, so all particles can safely reference the same Vector3
+    const axisDir = new THREE.Vector3(0, 0, 1)
     for (let i = 0; i < particleCount; i++) {
-      // radial distribution around a hollow center, uniform over the sphere (not just the XY disc)
-      const r = radiusMin + Math.pow(Math.random(), 0.6) * radiusSpread
-      const u = Math.random()
-      const v = Math.random()
-      const theta = 2 * Math.PI * u
-      const phi = Math.acos(2 * v - 1) // acos(2v-1), not a plain lerp, so points don't bunch up at the poles
-      const dir = new THREE.Vector3(Math.sin(phi) * Math.cos(theta), Math.sin(phi) * Math.sin(theta), Math.cos(phi))
-      const home = dir.clone().multiplyScalar(r)
+      // uniform position inside the disc/annulus (XY) that forms the tube's circular cross-section
+      const rr = Math.sqrt(radiusMin * radiusMin + Math.random() * (maxRadius * maxRadius - radiusMin * radiusMin))
+      const theta = 2 * Math.PI * Math.random()
+      const home = new THREE.Vector3(rr * Math.cos(theta), rr * Math.sin(theta), (Math.random() * 2 - 1) * depthRange)
+      const dir = axisDir
       const lenScale = (1 + Math.random() * 1.2) * 0.2 // torso length ÷ pillLength, ×0.2 length scale — cap radius unaffected
       list.push({
         home,
@@ -131,7 +135,7 @@ export default function CylinderParticles({ tiltRef }: CylinderParticlesProps) {
         vel: new THREE.Vector3(),
         scale: scaleMin + Math.random() * scaleSpread,
         lenScale,
-        depth: maxRadius > 0 ? THREE.MathUtils.clamp((home.z + maxRadius) / (2 * maxRadius), 0, 1) : 0.5, // 0 far -> 1 near
+        depth: depthRange > 0 ? THREE.MathUtils.clamp((home.z + depthRange) / (2 * depthRange), 0, 1) : 0.5, // 0 far -> 1 near
         flickerT: 0,
       })
       lenScaleArray[i] = lenScale
