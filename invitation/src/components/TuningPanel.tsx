@@ -174,5 +174,5 @@ export default function TuningPanel() {
 
   if (!visible) return null
 
-  return <LevaPanel store={levaStore} titleBar={{ title: 'Scene Tuning' }} collapsed={false} />
+  return <LevaPanel store={levaStore} titleBar={{ title: 'Scene Tuning' }} collapsed={true} />
 }
