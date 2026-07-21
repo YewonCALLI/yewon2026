@@ -123,7 +123,7 @@ export default function Page() {
         className='overflow-hidden relative'
         style={{
           width: '100vw',
-          height: '100vh',
+          height: '100dvh',
           margin: 0,
           padding: 0,
           position: 'fixed',
