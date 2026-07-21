@@ -201,13 +201,13 @@ export default function Page() {
                   <div className='flex flex-col items-end self-end gap-[6.24px]'>
                     <button
                       onClick={() => setShowDirections(true)}
-                      className='h-[40px] px-[16px] py-[2px] bg-white rounded-full outline outline-2 outline-offset-[-2px] outline-black inline-flex justify-center items-center gap-3'
+                      className='h-[40px] px-[16px] py-[2px] bg-white rounded-full outline outline-[1.49px] outline-offset-[-1.49px] outline-black inline-flex justify-center items-center gap-3'
                     >
                       <div className='text-black text-[clamp(0px,4.8vw,19.84px)] font-semibold font-english leading-[150%] tracking-[-4.6%]'>
                         Directions
                       </div>
                     </button>
-                    <div className='h-[40px] px-[16px] py-[2px] bg-white rounded-full outline outline-2 outline-offset-[-2px] outline-black inline-flex justify-center items-center gap-3'>
+                    <div className='h-[40px] px-[16px] py-[2px] bg-white rounded-full outline outline-[1.49px] outline-offset-[-1.49px] outline-black inline-flex justify-center items-center gap-3'>
                       <div className='text-black text-[clamp(0px,4.8vw,19.84px)] font-semibold font-english leading-[150%] tracking-[-4.6%]'>
                         Visit Website
                       </div>
