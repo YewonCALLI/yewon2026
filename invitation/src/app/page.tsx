@@ -31,14 +31,14 @@ export default function Page() {
     orientation: { beta: 0, gamma: 0 },
     requestPermission: async () => false,
   })
-  const { needsPermission, isGyroActive, permissionDenied, orientation, requestPermission } = tiltState
+  const { isGyroActive, permissionDenied, orientation, requestPermission } = tiltState
   const [showTiltPrompt, setShowTiltPrompt] = useState(false)
 
   useEffect(() => {
-    if (isPhone && needsPermission && !isGyroActive) {
+    if (isPhone && !isGyroActive) {
       setShowTiltPrompt(true)
     }
-  }, [isPhone, needsPermission, isGyroActive])
+  }, [isPhone, isGyroActive])
 
   useEffect(() => {
     if (permissionDenied) setShowTiltPrompt(false)
