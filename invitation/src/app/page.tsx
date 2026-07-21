@@ -188,7 +188,7 @@ export default function Page() {
                 </div>
 
                 {/* Mobile (md 이하) - 새로운 디자인 */}
-                <div className='flex md:hidden h-full flex-col justify-center gap-[clamp(0px,9.59dvh,81px)] mx-auto px-[clamp(0px,4.8vw,38.4px)]'>
+                <div className='flex md:hidden h-full flex-col justify-center gap-[24px] mx-auto px-[clamp(0px,4.8vw,38.4px)]'>
                   <div className='flex flex-col gap-[10px] pl-[30.48px]'>
                     <p className="text-[#222222] text-[clamp(0px,4.8vw,19.02px)] font-medium font-['Pretendard'] leading-[160%]">
                       안녕하세요. <br />
