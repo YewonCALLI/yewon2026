@@ -5,6 +5,10 @@ import { create } from 'zustand'
  * (camera orbit, flick physics, particle field shape/visuals). TuningPanel.tsx is a live
  * designer-facing UI on top of this store; CameraTiltRig and CylinderParticles read from
  * it directly via useSceneTuning() instead of hardcoded constants.
+ *
+ * Mobile vs desktop: DEFAULT_SCENE_TUNING is the desktop baseline; MOBILE_SCENE_TUNING_OVERRIDES
+ * holds only the fields that should differ on phones. SceneCanvas calls applyDevicePreset(isPhone)
+ * (via useIsPhone) once on mount to resolve the store to the right branch.
  */
 export interface SceneTuning {
   // camera orbit (CameraTiltRig) + lens (SceneCanvas)
@@ -38,40 +42,79 @@ export interface SceneTuning {
 }
 
 export const DEFAULT_SCENE_TUNING: SceneTuning = {
-  cameraMaxTilt: 0.7,
+  cameraMaxTilt: 0.3,
   cameraEase: 1,
-  cameraFov: 60,
+  cameraFov: 39,
 
-  particleCount: 190,
-  pillRadius: 0.28,
-  pillLength: 1,
-  radiusMin: 0.3877,
-  radiusSpread: 3.2308,
-  cylinderHeight: 5.95,
-  scaleMin: 0.3508,
-  scaleSpread: 0,
+  particleCount: 310,
+  pillRadius: 0.25,
+  pillLength: 3,
+  radiusMin: 0.48,
+  radiusSpread: 3.7108,
+  cylinderHeight: 4.62,
+  scaleMin: 0.1908,
+  scaleSpread: 0.68,
 
-  fresnelPower: 0.85,
+  fresnelPower: 1.15,
 
-  fogNear: 8.9462,
-  fogFar: 30.5385,
+  fogNear: 13.9462,
+  fogFar: 40,
 
   flickImpulseScale: 9.2,
-  flickDamping: 6.9,
-  flickSpeedThreshold: 5,
+  flickDamping: 3,
+  flickSpeedThreshold: 2.9,
   flickCooldownMin: 0.52,
   flickCooldownMax: 0.73,
+}
+
+/**
+ * Mobile-only overrides layered on top of DEFAULT_SCENE_TUNING (see resolveSceneTuning).
+ * Empty until a designer tunes the mobile branch in TuningPanel (open `?tuning` on a phone,
+ * adjust, "Copy values", paste the fields that should differ from desktop in here.
+ */
+export const MOBILE_SCENE_TUNING_OVERRIDES: Partial<SceneTuning> = {
+  cameraMaxTilt: 0.4,
+  cameraEase: 1,
+  cameraFov: 39,
+
+  particleCount: 380,
+  pillRadius: 0.2,
+  pillLength: 3,
+  radiusMin: 0.48,
+  radiusSpread: 2.53,
+  cylinderHeight: 4.62,
+  scaleMin: 0.19,
+  scaleSpread: 0.68,
+
+  fresnelPower: 1.15,
+
+  fogNear: 13.9,
+  fogFar: 40,
+
+  flickImpulseScale: 9.2,
+  flickDamping: 3.2,
+  flickSpeedThreshold: 2.9,
+  flickCooldownMin: 0.52,
+  flickCooldownMax: 0.73,
+}
+
+/** Desktop defaults, with MOBILE_SCENE_TUNING_OVERRIDES layered on top when isMobile is true. */
+export function resolveSceneTuning(isMobile: boolean): SceneTuning {
+  return isMobile ? { ...DEFAULT_SCENE_TUNING, ...MOBILE_SCENE_TUNING_OVERRIDES } : DEFAULT_SCENE_TUNING
 }
 
 interface SceneTuningStore extends SceneTuning {
   set: (partial: Partial<SceneTuning>) => void
   reset: () => void
+  /** Re-resolves the whole store to the given device's defaults (desktop or desktop+mobile overrides). */
+  applyDevicePreset: (isMobile: boolean) => void
 }
 
 export const useSceneTuning = create<SceneTuningStore>((set) => ({
   ...DEFAULT_SCENE_TUNING,
   set: (partial) => set(partial),
   reset: () => set(DEFAULT_SCENE_TUNING),
+  applyDevicePreset: (isMobile) => set(resolveSceneTuning(isMobile)),
 }))
 
 /** Non-hook accessor for reading current values from inside R3F callbacks (useFrame, effects). */

@@ -2,21 +2,42 @@
 
 import { useEffect, useState } from 'react'
 import { useControls, folder, button, LevaPanel, useCreateStore } from 'leva'
-import { DEFAULT_SCENE_TUNING, useSceneTuning } from '@/config/sceneTuning'
+import { resolveSceneTuning, useSceneTuning } from '@/config/sceneTuning'
+import { useIsPhone } from '@/hooks/useIsPhone'
 
 /**
  * Designer-facing live tuning panel for the CylinderParticles scene. Hidden by default —
  * visit the page with `?tuning` in the URL to show it. Every control writes straight into
  * the shared sceneTuning store, so CameraTiltRig/CylinderParticles react immediately.
- * The "Copy values" button serializes the current store as JSON to the clipboard so a
- * designer can hand their tuned numbers back to the developer, who pastes them into
- * DEFAULT_SCENE_TUNING in src/config/sceneTuning.ts to make them the new baseline.
+ * The panel seeds/resets from the resolved defaults for whichever device it's opened on
+ * (see resolveSceneTuning), so tuning on a phone edits the mobile branch and tuning on
+ * desktop edits the desktop branch. The "Copy values" button serializes the current store
+ * as JSON to the clipboard so a designer can hand their tuned numbers back to the developer,
+ * who pastes them into DEFAULT_SCENE_TUNING or MOBILE_SCENE_TUNING_OVERRIDES in
+ * src/config/sceneTuning.ts to make them the new baseline.
+ *
+ * isPhone starts false and flips to true after mount (see useIsPhone) — useControls only
+ * treats a schema's `value` as the control's *initial* value, so a plain re-render with a
+ * different value doesn't update an already-created control. TuningPanel is keyed by isPhone
+ * below so the whole inner panel (and its leva store) is freshly created once the device
+ * resolves, instead of trying to patch an already-initialized desktop panel over to mobile.
  */
 export default function TuningPanel() {
-  const [visible, setVisible] = useState(true)
+  const isPhone = useIsPhone()
+  return <TuningPanelInner key={isPhone ? 'mobile' : 'desktop'} isPhone={isPhone} />
+}
+
+function TuningPanelInner({ isPhone }: { isPhone: boolean }) {
+  // hidden unless the URL has `?tuning` — the doc comment above has always promised this,
+  // but visible previously defaulted to true with nothing ever flipping it off
+  const [visible, setVisible] = useState(false)
+  useEffect(() => {
+    setVisible(new URLSearchParams(window.location.search).has('tuning'))
+  }, [])
   const levaStore = useCreateStore()
   const set = useSceneTuning((s) => s.set)
-  const reset = useSceneTuning((s) => s.reset)
+  const applyDevicePreset = useSceneTuning((s) => s.applyDevicePreset)
+  const DEFAULT_SCENE_TUNING = resolveSceneTuning(isPhone)
 
   useControls(
     {
@@ -170,7 +191,7 @@ export default function TuningPanel() {
           .catch(() => console.log('[TuningPanel] Clipboard write failed — values:\n' + text))
       }),
       Reset: button(() => {
-        reset()
+        applyDevicePreset(isPhone)
         // leva keeps its own displayed values separately from the zustand store — push the
         // defaults back into the panel too, or the sliders would look stale after a reset
         levaStore.set(DEFAULT_SCENE_TUNING, false)
@@ -181,5 +202,11 @@ export default function TuningPanel() {
 
   if (!visible) return null
 
-  return <LevaPanel store={levaStore} titleBar={{ title: 'Scene Tuning' }} collapsed={true} />
+  return (
+    <LevaPanel
+      store={levaStore}
+      titleBar={{ title: `Scene Tuning (${isPhone ? 'Mobile' : 'Desktop'})` }}
+      collapsed={true}
+    />
+  )
 }

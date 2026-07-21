@@ -1,12 +1,13 @@
 'use client'
 
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { Canvas, type CanvasProps } from '@react-three/fiber'
 import CameraTiltRig, { type TiltState } from './CameraTiltRig'
 import CylinderParticles from './CylinderParticles'
 import TuningPanel from './TuningPanel'
 import { PerspectiveCamera } from '@react-three/drei'
 import { useSceneTuning } from '@/config/sceneTuning'
+import { useIsPhone } from '@/hooks/useIsPhone'
 
 interface SceneCanvasProps extends Omit<CanvasProps, 'children'> {
   // children?: React.ReactNode
@@ -28,6 +29,13 @@ export default function SceneCanvas({
   const internalTiltRef = useRef({ x: 0, y: 0 })
   const tiltRef = externalTiltRef ?? internalTiltRef
   const cameraFov = useSceneTuning((s) => s.cameraFov)
+
+  // resolves the whole tuning store to the mobile or desktop branch — useIsPhone starts false
+  // and updates after mount, same pattern CameraTiltRig already relies on for gyro vs mouse
+  const isPhone = useIsPhone()
+  useEffect(() => {
+    useSceneTuning.getState().applyDevicePreset(isPhone)
+  }, [isPhone])
 
   return (
     <div className={`absolute inset-0 z-0 ${className}`}>
