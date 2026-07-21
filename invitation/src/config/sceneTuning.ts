@@ -16,8 +16,9 @@ export interface SceneTuning {
   particleCount: number
   pillRadius: number // capsule cap/tube radius
   pillLength: number // capsule torso length
-  radiusMin: number // distance from origin to the nearest particles (hollow center)
+  radiusMin: number // distance from the tube axis to the nearest particles (hollow center)
   radiusSpread: number // extra radius added on top of radiusMin, out to the farthest particles
+  cylinderHeight: number // full depth along the tube axis (Z) that particles are scattered across
   scaleMin: number // smallest overall per-particle scale
   scaleSpread: number // extra scale on top of scaleMin, up to the largest particles
 
@@ -46,6 +47,7 @@ export const DEFAULT_SCENE_TUNING: SceneTuning = {
   pillLength: 1,
   radiusMin: 0.3877,
   radiusSpread: 3.2308,
+  cylinderHeight: 5.95,
   scaleMin: 0.3508,
   scaleSpread: 0,
 

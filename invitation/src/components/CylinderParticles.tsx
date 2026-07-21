@@ -88,6 +88,7 @@ export default function CylinderParticles({ tiltRef }: CylinderParticlesProps) {
   const pillLength = useSceneTuning((s) => s.pillLength)
   const radiusMin = useSceneTuning((s) => s.radiusMin)
   const radiusSpread = useSceneTuning((s) => s.radiusSpread)
+  const cylinderHeight = useSceneTuning((s) => s.cylinderHeight)
   const scaleMin = useSceneTuning((s) => s.scaleMin)
   const scaleSpread = useSceneTuning((s) => s.scaleSpread)
   const fogNear = useSceneTuning((s) => s.fogNear)
@@ -115,10 +116,8 @@ export default function CylinderParticles({ tiltRef }: CylinderParticlesProps) {
     const list: Particle[] = []
     const lenScaleArray = new Float32Array(particleCount)
     const maxRadius = radiusMin + radiusSpread
-    // how far a stick's tip can poke forward/back along the tube axis — kept shallow (relative
-    // to the disc radius) so the arrangement reads as a filled circular cross-section facing the
-    // camera, not a full sphere, while still giving fog/tilt-parallax some depth to work with
-    const depthRange = maxRadius * 0.3
+    // half of cylinderHeight — how far a stick's tip can poke forward/back along the tube axis
+    const depthRange = cylinderHeight / 2
     // every stick stands perfectly parallel to the tube axis (camera-facing Z) — shared, never
     // mutated, so all particles can safely reference the same Vector3
     const axisDir = new THREE.Vector3(0, 0, 1)
@@ -143,7 +142,7 @@ export default function CylinderParticles({ tiltRef }: CylinderParticlesProps) {
     const geo = new THREE.CapsuleGeometry(pillRadius, pillLength, 6, 14)
     geo.setAttribute('aLenScale', new THREE.InstancedBufferAttribute(lenScaleArray, 1))
     return { geometry: geo, particles: list }
-  }, [particleCount, pillRadius, pillLength, radiusMin, radiusSpread, scaleMin, scaleSpread])
+  }, [particleCount, pillRadius, pillLength, radiusMin, radiusSpread, cylinderHeight, scaleMin, scaleSpread])
 
   useEffect(() => () => geometry.dispose(), [geometry])
   useEffect(() => () => material.dispose(), [material])

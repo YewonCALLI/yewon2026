@@ -79,6 +79,13 @@ export default function TuningPanel() {
           step: 0.01,
           onChange: (v: number) => set({ radiusSpread: v }),
         },
+        cylinderHeight: {
+          value: DEFAULT_SCENE_TUNING.cylinderHeight,
+          min: 0,
+          max: 10,
+          step: 0.01,
+          onChange: (v: number) => set({ cylinderHeight: v }),
+        },
         scaleMin: {
           value: DEFAULT_SCENE_TUNING.scaleMin,
           min: 0.01,
