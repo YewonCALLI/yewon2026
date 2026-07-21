@@ -183,15 +183,15 @@ export default function Page() {
                 </div>
 
                 {/* Mobile (md 이하) - 새로운 디자인 */}
-                <div className='flex md:hidden w-full h-full flex-col justify-center gap-[clamp(0px,9.59dvh,81px)] px-[5.1%]'>
+                <div className='flex md:hidden h-full flex-col justify-center gap-[clamp(0px,9.59dvh,81px)] mx-auto px-[clamp(0px,4.8vw,38.4px)]'>
                   <div className='flex flex-col gap-[10px] pl-[30.48px]'>
-                    <p className="text-[#222222] text-base font-medium font-['Pretendard'] leading-[160%]">
+                    <p className="text-[#222222] text-[clamp(0px,4.8vw,19.02px)] font-medium font-['Pretendard'] leading-[160%]">
                       안녕하세요. <br />
                       2026 MEP 〈every else〉에
                       <br />
                       {displayName}님을 초대합니다.
                     </p>
-                    <p className="text-[#222222] text-base font-medium font-['Pretendard'] leading-[160%] pl-[30.48px]">
+                    <p className="text-[#222222] text-[clamp(0px,4.8vw,19.02px)] font-medium font-['Pretendard'] leading-[160%] pl-[30.48px] whitespace-nowrap">
                       전시는 8월 11일부터 15일까지, <br />
                       삼성전자 서울 R&amp;D 캠퍼스 A타워 2층, <br />
                       이노베이션 스튜디오에서 진행됩니다. <br />
@@ -203,12 +203,12 @@ export default function Page() {
                       onClick={() => setShowDirections(true)}
                       className='h-[40px] px-[16px] py-[2px] bg-white rounded-full outline outline-2 outline-offset-[-2px] outline-black inline-flex justify-center items-center gap-3'
                     >
-                      <div className='text-black text-[19.84px] font-semibold font-english leading-[150%] tracking-[-4.6%]'>
+                      <div className='text-black text-[clamp(0px,4.8vw,19.84px)] font-semibold font-english leading-[150%] tracking-[-4.6%]'>
                         Directions
                       </div>
                     </button>
                     <div className='h-[40px] px-[16px] py-[2px] bg-white rounded-full outline outline-2 outline-offset-[-2px] outline-black inline-flex justify-center items-center gap-3'>
-                      <div className='text-black text-[19.84px] font-semibold font-english leading-[150%] tracking-[-4.6%]'>
+                      <div className='text-black text-[clamp(0px,4.8vw,19.84px)] font-semibold font-english leading-[150%] tracking-[-4.6%]'>
                         Visit Website
                       </div>
                     </div>
@@ -278,7 +278,7 @@ export default function Page() {
 
       {permissionDenied && (
         <div className='fixed top-4 left-4 z-[1000] pointer-events-auto'>
-          <div className='bg-red-100 border border-red-300 text-red-700 px-4 py-3 rounded-lg text-sm'>
+          <div className='bg-red-100 border border-red-300 text-red-700 px-4 py-3 rounded-lg text-sm text-korean'>
             자이로스코프 권한이 필요합니다
           </div>
         </div>
