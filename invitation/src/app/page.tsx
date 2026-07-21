@@ -174,11 +174,16 @@ export default function Page() {
                         Directions
                       </div>
                     </button>
-                    <div className='px-[21.1px] py-[4.64px] bg-white rounded-full outline outline-2 outline-offset-[-2px] outline-black inline-flex justify-center items-center gap-3'>
+                    <a
+                      href='https://www.everyelse.com'
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className='px-[21.1px] py-[4.64px] bg-white rounded-full outline outline-2 outline-offset-[-2px] outline-black inline-flex justify-center items-center gap-3'
+                    >
                       <div className='justify-center text-black text-[clamp(26px,1.80vw,33px)] font-semibold font-english leading-[150%] tracking-[-4.6%]'>
                         Visit Website
                       </div>
-                    </div>
+                    </a>
                   </div>
                 </div>
 
@@ -207,11 +212,16 @@ export default function Page() {
                         Directions
                       </div>
                     </button>
-                    <div className='h-[40px] px-[16px] py-[2px] bg-white rounded-full outline outline-[1.49px] outline-offset-[-1.49px] outline-black inline-flex justify-center items-center gap-3'>
+                    <a
+                      href='https://www.everyelse.com'
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className='h-[40px] px-[16px] py-[2px] bg-white rounded-full outline outline-[1.49px] outline-offset-[-1.49px] outline-black inline-flex justify-center items-center gap-3'
+                    >
                       <div className='text-black text-[clamp(0px,4.8vw,19.84px)] font-semibold font-english leading-[150%] tracking-[-4.6%]'>
                         Visit Website
                       </div>
-                    </div>
+                    </a>
                   </div>
                 </div>
               </motion.div>
