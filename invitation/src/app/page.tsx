@@ -3,8 +3,8 @@ import { Footer } from '@/components/projects'
 import RotatedPaperDemo from '@/components/projects/RotatedPaperDemo'
 import DirectionsPage from '@/components/projects/DirectionsPage'
 import { useScrollAtBottom } from '@/hooks'
-import { AnimatePresence, motion } from 'framer-motion'
-import { useState, useEffect } from 'react'
+import { AnimatePresence, motion, useAnimationFrame, useMotionValue, useSpring } from 'framer-motion'
+import { useState, useEffect, useRef } from 'react'
 import LottieBackground from '@/components/LottieBackground'
 import SceneCanvas from '@/components/SceneCanvas'
 
@@ -31,7 +31,7 @@ export default function Page() {
     orientation: { beta: 0, gamma: 0 },
     requestPermission: async () => false,
   })
-  const { isGyroActive, permissionDenied, orientation, requestPermission } = tiltState
+  const { isGyroActive, permissionDenied, requestPermission } = tiltState
   const [showTiltPrompt, setShowTiltPrompt] = useState(false)
 
   useEffect(() => {
@@ -51,6 +51,25 @@ export default function Page() {
     }
     await requestPermission()
   }
+
+  // raw (-1..1) tilt target read straight from CameraTiltRig's ref every frame, so the
+  // tilt-prompt phone icon stays responsive even when a full React re-render (driven by
+  // isGyroActive/orientation state) would be too slow on lower-power Android devices.
+  const tiltRef = useRef({ x: 0, y: 0 })
+  const rawIconRotateX = useMotionValue(0)
+  const rawIconRotateY = useMotionValue(0)
+  const iconRotateX = useSpring(rawIconRotateX, { stiffness: 150, damping: 15, mass: 0.5 })
+  const iconRotateY = useSpring(rawIconRotateY, { stiffness: 150, damping: 15, mass: 0.5 })
+
+  useAnimationFrame(() => {
+    if (!isGyroActive) {
+      rawIconRotateX.set(0)
+      rawIconRotateY.set(0)
+      return
+    }
+    rawIconRotateX.set(-tiltRef.current.y * 27)
+    rawIconRotateY.set(tiltRef.current.x * 27)
+  })
 
   // console.log(navigator.userAgent)
   // console.log(isMobile)
@@ -121,7 +140,7 @@ export default function Page() {
           playsInline
         /> */}
 
-        <SceneCanvas onTiltStateChange={setTiltState} />
+        <SceneCanvas onTiltStateChange={setTiltState} tiltRef={tiltRef} />
 
         <div className='absolute top-0 left-0 w-full h-[15vh] bg-gradient-to-b from-white to-transparent z-10 pointer-events-none md:hidden' />
         <div className='absolute bottom-0 left-0 w-full h-[15vh] bg-gradient-to-t from-white to-transparent z-10 pointer-events-none md:hidden' />
@@ -232,11 +251,7 @@ export default function Page() {
                 src='/icons/phone.svg'
                 alt=''
                 className='w-full h-full object-contain'
-                animate={{
-                  rotateX: isGyroActive ? -orientation.beta * 0.6 : 0,
-                  rotateY: isGyroActive ? orientation.gamma * 0.6 : 0,
-                }}
-                transition={{ type: 'spring', stiffness: 150, damping: 15, mass: 0.5 }}
+                style={{ rotateX: iconRotateX, rotateY: iconRotateY }}
               />
             </div>
 

@@ -12,17 +12,21 @@ interface SceneCanvasProps extends Omit<CanvasProps, 'children'> {
   // children?: React.ReactNode
   className?: string
   onTiltStateChange?: (state: TiltState) => void
+  /** Optional external ref for the raw (-1..1, unsmoothed) tilt target, so callers outside the Canvas (e.g. a DOM overlay) can read live tilt without subscribing to React state. */
+  tiltRef?: React.MutableRefObject<{ x: number; y: number }>
 }
 
 export default function SceneCanvas({
   // children,
   className = '',
   onTiltStateChange,
+  tiltRef: externalTiltRef,
   ...canvasProps
 }: SceneCanvasProps) {
   // raw (-1..1, unsmoothed) tilt target shared between CameraTiltRig and CylinderParticles,
   // so the particle flick reacts to the same input driving the camera orbit
-  const tiltRef = useRef({ x: 0, y: 0 })
+  const internalTiltRef = useRef({ x: 0, y: 0 })
+  const tiltRef = externalTiltRef ?? internalTiltRef
   const cameraFov = useSceneTuning((s) => s.cameraFov)
 
   return (
