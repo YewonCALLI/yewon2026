@@ -41,7 +41,7 @@ export function Footer({ slides, activeIndex, onSelect, accentColor = '#FF2D8C' 
               aria-label={slide.title}
               aria-current={isActive}
               style={{ borderColor: isActive ? accentColor : 'transparent' }}
-              className={`relative h-[56px] w-[80px] shrink-0 overflow-hidden rounded-[2px] border-2 transition-all ${
+              className={`relative h-[56px] w-[80px] shrink-0 overflow-hidden border-4 transition-all ${
                 isActive ? 'grayscale-0' : 'grayscale'
               }`}
             >

@@ -25,7 +25,10 @@ const CONTACT = {
   address: 'Based in Pittsburgh and Seoul',
 }
 
-const SOCIALS = ['Instagram', 'X']
+const SOCIALS = [
+  { label: 'Instagram', href: 'https://www.instagram.com/yewon.calli/' },
+  { label: 'X' },
+]
 
 export function Header({ title, accentColor = '#FF2D8C' }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false)
@@ -80,7 +83,7 @@ export function Header({ title, accentColor = '#FF2D8C' }: HeaderProps) {
                 >
                   {item.identity && (
                     <span
-                      className='mr-[6px] text-[11px] font-normal transition-colors'
+                      className='mr-[6px] text-[13px] font-normal transition-colors'
                       style={{ color: accentColor }}
                     >
                       {item.identity}
@@ -97,9 +100,21 @@ export function Header({ title, accentColor = '#FF2D8C' }: HeaderProps) {
           <span>{CONTACT.inquiries}</span>
           <span>{CONTACT.address}</span>
           <div className='flex items-center gap-3'>
-            {SOCIALS.map((social) => (
-              <span key={social}>{social}</span>
-            ))}
+            {SOCIALS.map((social) =>
+              social.href ? (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='transition-colors hover:text-white'
+                >
+                  {social.label}
+                </a>
+              ) : (
+                <span key={social.label}>{social.label}</span>
+              ),
+            )}
           </div>
           <span className='text-white/60'>EDT {time}</span>
         </div>
@@ -171,9 +186,21 @@ export function Header({ title, accentColor = '#FF2D8C' }: HeaderProps) {
             </div>
 
             <div className='flex flex-col gap-[2px] border-t border-white/10 pt-[10px] text-[11px] text-white/80'>
-              {SOCIALS.map((social) => (
-                <span key={social}>{social}</span>
-              ))}
+              {SOCIALS.map((social) =>
+                social.href ? (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='transition-colors hover:text-white'
+                  >
+                    {social.label}
+                  </a>
+                ) : (
+                  <span key={social.label}>{social.label}</span>
+                ),
+              )}
             </div>
 
             <div className='flex items-center justify-between border-t border-white/10 pt-[10px] text-[10px] text-white/60'>
