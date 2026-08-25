@@ -66,6 +66,7 @@
     /* 16px */
     background: #fff;
     font-size: 100%;
+    overscroll-behavior-y: none;
   }
 
   /* ( 크롬, 사파리, 오페라, 엣지 ) 동작 */

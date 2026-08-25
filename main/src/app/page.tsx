@@ -6,26 +6,34 @@ import Link from 'next/link'
 import { Footer, Header } from '@/components/projects'
 
 // projectSlug should match a `slug` in src/app/works/projectlist.ts — clicking the
-// centered title (md and up) sends you to that project on the Works page.
+// centered title (md and up) sends you to that project's dedicated page at /works/[slug].
 // color drives the Identity 01-04 text in the header and the active footer thumbnail border.
 const slides = [
-  { id: 'intro-1', title: 'TypoFold', src: '/images/intro/intro2.jpg', projectSlug: 'typofold', color: '#FF2D8C' },
   {
-    id: 'intro-4',
-    title: 'Weaving Letters',
-    src: '/images/intro/intro4.jpg',
-    projectSlug: 'new-formative',
-    color: '#B02DFF',
+    id: 'intro-1',
+    title: 'TypoFold',
+    src: '/images/intro/intro18.jpg',
+    projectSlug: 'typofold',
+    color: '#FF2D8C',
+    vimeoUrl:
+      'https://player.vimeo.com/video/1220276808?h=b5132f6bf0&autoplay=1&loop=1&muted=1&playsinline=1&autopause=1&byline=0&title=0&portrait=0&controls=0&dnt=1&background=1',
   },
   {
-    id: 'intro-5',
+    id: 'intro-2',
     title: 'Daily Folding Practice',
     src: '/images/intro/intro7.jpg',
     projectSlug: 'ganpan',
     color: '#2DFFA0',
   },
   {
-    id: 'intro-2',
+    id: 'intro-3',
+    title: 'Weaving Letters',
+    src: '/images/intro/intro4.jpg',
+    projectSlug: 'new-formative',
+    color: '#B02DFF',
+  },
+  {
+    id: 'intro-4',
     title: '2026 Samsung Design Membership',
     src: '/images/intro/intro8.jpg',
     projectSlug: 'franklin',
@@ -34,11 +42,11 @@ const slides = [
       'https://player.vimeo.com/video/1216876134?h=b5132f6bf0&autoplay=1&loop=1&muted=1&playsinline=1&autopause=1&byline=0&title=0&portrait=0&controls=0&dnt=1&background=1',
   },
   {
-    id: 'intro-3',
+    id: 'intro-5',
     title: 'XR Science Museum',
     src: '/images/intro/intro11.jpg',
     projectSlug: 'franklin',
-    color: '#FF7A2D',
+    color: '#FF2D8C',
   },
   {
     id: 'intro-6',
@@ -54,21 +62,21 @@ const slides = [
     title: 'Ganpan (간판)',
     src: '/images/intro/intro10.jpg',
     projectSlug: 'ganpan',
-    color: '#2DFFA0',
+    color: '#B02DFF',
   },
   {
     id: 'intro-8',
     title: 'Franklin',
     src: '/images/intro/intro12.jpg',
     projectSlug: 'ganpan',
-    color: '#2DFFA0',
+    color: '#FF7A2D',
   },
   {
     id: 'intro-9',
     title: 'Naver Software Education Festival 2023',
     src: '/images/intro/intro17.jpg',
     projectSlug: 'ganpan',
-    color: '#2DFFA0',
+    color: '#FF2D8C',
   },
   {
     id: 'intro-10',
@@ -82,14 +90,14 @@ const slides = [
     title: 'Singlet & Multiplet',
     src: '/images/intro/intro14.jpg',
     projectSlug: 'ganpan',
-    color: '#2DFFA0',
+    color: '#B02DFF',
   },
   {
     id: 'intro-12',
     title: 'The Silver Bell Challenge',
     src: '/images/intro/intro15.jpg',
     projectSlug: 'ganpan',
-    color: '#2DFFA0',
+    color: '#FF7A2D',
     vimeoUrl:
       'https://player.vimeo.com/video/1219658843?autoplay=1&loop=1&muted=1&playsinline=1&autopause=1&byline=0&title=0&portrait=0&controls=0&dnt=1&background=1',
   },
@@ -98,7 +106,7 @@ const slides = [
     title: 'delta-individualism',
     src: '/images/intro/intro16.jpg',
     projectSlug: 'ganpan',
-    color: '#2DFFA0',
+    color: '#FF2D8C',
     vimeoUrl:
       'https://player.vimeo.com/video/1151380515?autoplay=1&loop=1&muted=1&playsinline=1&autopause=1&byline=0&title=0&portrait=0&controls=0&dnt=1&background=1',
   },
@@ -228,9 +236,10 @@ export default function Page() {
 
         <div className='pointer-events-none absolute left-1/2 -translate-x-1/2 bottom-[100px] md:flex text-center'>
           <Link
-            href={`/works#${activeSlide.projectSlug}`}
+            href={`/works/${activeSlide.projectSlug}`}
             style={{ backgroundColor: activeSlide.color }}
             className='pointer-events-auto text-[18px] font-semibold transition-opacity duration-300 hover:opacity-70 px-2'
+            onPointerDown={(event) => event.stopPropagation()}
           >
             {activeSlide.title}
           </Link>

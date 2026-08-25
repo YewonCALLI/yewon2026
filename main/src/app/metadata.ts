@@ -1,14 +1,14 @@
 export const METADATA = {
-  name: 'typofold',
-  title: 'typofold',
-  titleTemplate: '%s - typofold',
-  description: 'typofold brand shop',
+  name: 'Yewon Jang',
+  title: 'Yewon Jang',
+  titleTemplate: '%s',
+  description: 'Yewon Jang-Portfolio Website',
   keywords: ['typofold'],
   authors: [
     {
-      name: 'typofold',
-      url: 'https://typofold.com/',
+      name: 'Yewon Jang',
+      url: 'https://yewoncalli.com/',
     },
   ],
-  url: 'https://typofold.com/',
+  url: 'https://yewoncalli.com/',
 }

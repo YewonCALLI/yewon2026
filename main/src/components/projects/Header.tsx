@@ -9,6 +9,7 @@ import { usePathname } from 'next/navigation'
 interface HeaderProps {
   title: string
   accentColor?: string
+  light?: boolean
 }
 
 const NAV_ITEMS = [
@@ -30,7 +31,7 @@ const SOCIALS = [
   { label: 'X' },
 ]
 
-export function Header({ title, accentColor = '#FF2D8C' }: HeaderProps) {
+export function Header({ title, accentColor = '#FF2D8C', light = false }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [time, setTime] = useState('')
   const pathname = usePathname()
@@ -63,11 +64,21 @@ export function Header({ title, accentColor = '#FF2D8C' }: HeaderProps) {
   return (
     <>
       {/* md and up: horizontal navbar */}
-      <header className='fixed inset-x-0 top-0 z-50 hidden h-[62px] items-center justify-between gap-4 overflow-x-auto bg-[#111111] md:bg-transparent md:mix-blend-difference px-[30px] text-white md:flex'>
+      <header
+        className={`fixed inset-x-0 top-0 z-[50] hidden h-[62px] items-center justify-between gap-4 overflow-x-auto px-[30px] md:flex transform-gpu will-change-transform ${
+          light
+            ? 'bg-white border-b border-black text-black'
+            : 'bg-[#111111] md:bg-transparent md:mix-blend-difference text-white'
+        }`}
+      >
         <div className='flex shrink-0 items-center gap-6'>
           <Link href='/' className='flex flex-col items-start justify-center leading-[120%]'>
-            <span className='text-[20px] font-semibold text-white'>Yewon Jang</span>
-            <span className='md:hidden max-w-[160px] truncate text-[20px] font-semibold text-white'>{title}</span>
+            <span className={`text-[20px] font-semibold ${light ? 'text-black' : 'text-white'}`}>Yewon Jang</span>
+            <span
+              className={`md:hidden max-w-[160px] truncate text-[20px] font-semibold ${light ? 'text-black' : 'text-white'}`}
+            >
+              {title}
+            </span>
           </Link>
 
           <nav className='flex items-center gap-5'>
@@ -78,7 +89,13 @@ export function Header({ title, accentColor = '#FF2D8C' }: HeaderProps) {
                   key={item.label}
                   href={item.href}
                   className={`whitespace-nowrap text-[20px] font-medium transition-colors ${
-                    isActive ? 'text-white' : 'text-white/70 hover:text-white'
+                    light
+                      ? isActive
+                        ? 'text-black'
+                        : 'text-black/60 hover:text-black'
+                      : isActive
+                        ? 'text-white'
+                        : 'text-white/70 hover:text-white'
                   }`}
                 >
                   {item.identity && (
@@ -96,7 +113,7 @@ export function Header({ title, accentColor = '#FF2D8C' }: HeaderProps) {
           </nav>
         </div>
 
-        <div className='flex shrink-0 items-center gap-5 text-[11px] text-white/70'>
+        <div className={`flex shrink-0 items-center gap-5 text-[11px] ${light ? 'text-black/60' : 'text-white/70'}`}>
           <span>{CONTACT.inquiries}</span>
           <span>{CONTACT.address}</span>
           <div className='flex items-center gap-3'>
@@ -107,7 +124,7 @@ export function Header({ title, accentColor = '#FF2D8C' }: HeaderProps) {
                   href={social.href}
                   target='_blank'
                   rel='noopener noreferrer'
-                  className='transition-colors hover:text-white'
+                  className={`transition-colors ${light ? 'hover:text-black' : 'hover:text-white'}`}
                 >
                   {social.label}
                 </a>
@@ -116,31 +133,37 @@ export function Header({ title, accentColor = '#FF2D8C' }: HeaderProps) {
               ),
             )}
           </div>
-          <span className='text-white/60'>EDT {time}</span>
+          <span className={light ? 'text-black/50' : 'text-white/60'}>EDT {time}</span>
         </div>
       </header>
 
       {/* below md: collapsible menu */}
-      <div className='fixed left-1/2 top-[16px] z-50 -translate-x-1/2 md:hidden'>
+      <div className='fixed left-1/2 top-[16px] z-50 -translate-x-1/2 md:hidden transform-gpu will-change-transform'>
         <button
           type='button'
           onClick={() => setIsOpen((prev) => !prev)}
           aria-expanded={isOpen}
           aria-label={isOpen ? 'Close menu' : 'Open menu'}
-          className='flex h-[44px] w-[359px] max-w-[92vw] items-center justify-between gap-3 rounded-md bg-[#111111] px-[16px]'
+          className={`flex h-[44px] w-[359px] max-w-[92vw] items-center justify-between gap-3 rounded-md px-[16px] ${
+            light ? 'bg-white border border-black shadow-sm' : 'bg-[#111111]'
+          }`}
         >
           <span className='flex flex-col items-start justify-center leading-[120%]'>
-            <span className='text-[10px] font-medium text-white/60'>Yewon Jang</span>
-            <span className='max-w-[240px] truncate text-[12px] font-semibold text-white'>{isOpen ? 'Menu' : title}</span>
+            <span className={`text-[10px] font-medium ${light ? 'text-black/60' : 'text-white/60'}`}>Yewon Jang</span>
+            <span
+              className={`max-w-[240px] truncate text-[12px] font-semibold ${light ? 'text-black' : 'text-white'}`}
+            >
+              {isOpen ? 'Menu' : title}
+            </span>
           </span>
           <span className='relative flex h-[14px] w-[14px] shrink-0 items-center justify-center'>
             <span
-              className={`absolute h-[1.5px] w-[14px] bg-white transition-transform duration-300 ${
+              className={`absolute h-[1.5px] w-[14px] transition-transform duration-300 ${light ? 'bg-black' : 'bg-white'} ${
                 isOpen ? 'rotate-45' : '-translate-y-[3px]'
               }`}
             />
             <span
-              className={`absolute h-[1.5px] w-[14px] bg-white transition-transform duration-300 ${
+              className={`absolute h-[1.5px] w-[14px] transition-transform duration-300 ${light ? 'bg-black' : 'bg-white'} ${
                 isOpen ? '-rotate-45' : 'translate-y-[3px]'
               }`}
             />
@@ -148,9 +171,9 @@ export function Header({ title, accentColor = '#FF2D8C' }: HeaderProps) {
         </button>
 
         <div
-          className={`absolute left-0 top-[52px] flex max-h-[70vh] w-[359px] max-w-[92vw] origin-top flex-col justify-between overflow-y-auto rounded-md bg-[#0A0A0A] px-[16px] pb-[16px] pt-[12px] text-white shadow-xl transition-all duration-300 ease-out ${
-            isOpen ? 'scale-y-100 opacity-100' : 'pointer-events-none scale-y-95 opacity-0'
-          }`}
+          className={`absolute left-0 top-[52px] flex max-h-[70vh] w-[359px] max-w-[92vw] origin-top flex-col justify-between overflow-y-auto rounded-md px-[16px] pb-[16px] pt-[12px] shadow-xl transition-all duration-300 ease-out ${
+            light ? 'bg-white text-black border border-black' : 'bg-[#0A0A0A] text-white'
+          } ${isOpen ? 'scale-y-100 opacity-100' : 'pointer-events-none scale-y-95 opacity-0'}`}
           aria-hidden={!isOpen}
         >
           <div>
@@ -163,7 +186,9 @@ export function Header({ title, accentColor = '#FF2D8C' }: HeaderProps) {
                     if (item.href === '#') event.preventDefault()
                     setIsOpen(false)
                   }}
-                  className='block border-b border-white/10 py-[12px] text-[15px] font-medium'
+                  className={`block border-b py-[12px] text-[15px] font-medium ${
+                    light ? 'border-black/10' : 'border-white/10'
+                  }`}
                 >
                   {item.identity && (
                     <span
@@ -180,12 +205,20 @@ export function Header({ title, accentColor = '#FF2D8C' }: HeaderProps) {
           </div>
 
           <div className='flex flex-col gap-[10px] pt-[10px]'>
-            <div className='flex flex-col gap-[2px] border-t border-white/10 pt-[10px] text-[11px] text-white/80'>
+            <div
+              className={`flex flex-col gap-[2px] border-t pt-[10px] text-[11px] ${
+                light ? 'border-black/10 text-black/70' : 'border-white/10 text-white/80'
+              }`}
+            >
               <span>Inquiries: {CONTACT.inquiries}</span>
               <span>Address: {CONTACT.address}</span>
             </div>
 
-            <div className='flex flex-col gap-[2px] border-t border-white/10 pt-[10px] text-[11px] text-white/80'>
+            <div
+              className={`flex flex-col gap-[2px] border-t pt-[10px] text-[11px] ${
+                light ? 'border-black/10 text-black/70' : 'border-white/10 text-white/80'
+              }`}
+            >
               {SOCIALS.map((social) =>
                 social.href ? (
                   <a
@@ -193,7 +226,7 @@ export function Header({ title, accentColor = '#FF2D8C' }: HeaderProps) {
                     href={social.href}
                     target='_blank'
                     rel='noopener noreferrer'
-                    className='transition-colors hover:text-white'
+                    className={`transition-colors ${light ? 'hover:text-black' : 'hover:text-white'}`}
                   >
                     {social.label}
                   </a>
@@ -203,7 +236,11 @@ export function Header({ title, accentColor = '#FF2D8C' }: HeaderProps) {
               )}
             </div>
 
-            <div className='flex items-center justify-between border-t border-white/10 pt-[10px] text-[10px] text-white/60'>
+            <div
+              className={`flex items-center justify-between border-t pt-[10px] text-[10px] ${
+                light ? 'border-black/10 text-black/60' : 'border-white/10 text-white/60'
+              }`}
+            >
               <span>© 2026 Yewon Jang</span>
               <span>EDT {time}</span>
             </div>

@@ -52,6 +52,7 @@ export const projects: Project[] = [
     created_date: '2025',
     featured: true,
     skills: ['Tool Development', 'Computer Graphics', 'Digital Fabrication'],
+    vimeoId: '1220276808',
   },
   {
     slug: 'franklin',
