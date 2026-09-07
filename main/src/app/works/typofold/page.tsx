@@ -6,10 +6,12 @@ import { notFound } from 'next/navigation'
 import { Header } from '@/components/projects'
 import { ProjectMedia } from '../ProjectMedia'
 import { projects } from '../projectlist'
+import CroppedFigure from '../../../components/projects/CroppedFigure'
+import { Figure } from '../../../components/projects/Figure'
 
 const imagePath = '/images/projects/typofold/'
 
-const sectionIds = ['research', 'design', 'development', 'output', 'workshop'] as const
+const sectionIds = ['research', 'design', 'development', 'final design', 'workshop'] as const
 
 function Kicker({ children }: { children: React.ReactNode }) {
   return <p className='text-[13px] font-medium text-[#FF2D8C]'>{children}</p>
@@ -36,21 +38,6 @@ function Tag({ children }: { children: React.ReactNode }) {
     <span className='inline-flex w-fit items-center rounded-full border border-black px-[10px] py-[3px] text-[11px] font-medium text-black'>
       {children}
     </span>
-  )
-}
-
-function Figure({ src, alt = '', className = '' }: { src: string; alt?: string; className?: string }) {
-  const hasWidthOverride = /\bw-\S/.test(className)
-  return (
-    <img src={src} alt={alt} loading='lazy' className={`h-auto ${hasWidthOverride ? '' : 'w-full'} ${className}`} />
-  )
-}
-
-function CroppedFigure({ src, alt = '' }: { src: string; alt?: string }) {
-  return (
-    <div className='aspect-[4/3] w-full overflow-hidden'>
-      <img src={src} alt={alt} loading='lazy' className='h-full w-full object-cover' />
-    </div>
   )
 }
 
@@ -84,6 +71,7 @@ export default function TypofoldPage() {
   if (!project) notFound()
 
   const [activeSection, setActiveSection] = useState<string>(sectionIds[0])
+  const [isNavStuck, setIsNavStuck] = useState(false)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -103,6 +91,20 @@ export default function TypofoldPage() {
     return () => observer.disconnect()
   }, [])
 
+  useEffect(() => {
+    const sentinel = document.getElementById('nav-sentinel')
+    if (!sentinel) return
+
+    const observer = new IntersectionObserver(([entry]) => setIsNavStuck(entry.boundingClientRect.top < 61), {
+      root: null,
+      rootMargin: '-61px 0px 0px 0px',
+      threshold: 0,
+    })
+
+    observer.observe(sentinel)
+    return () => observer.disconnect()
+  }, [])
+
   const metaRows = [
     project.part && { label: 'Role', value: project.part },
     project.award && { label: 'Award', value: project.award },
@@ -112,11 +114,11 @@ export default function TypofoldPage() {
 
   return (
     <>
-      <Header title={project.name} accentColor='#FF2D8C' light />
+      <Header title={project.name} accentColor='#FF2D8C' light mobileLight={isNavStuck} />
       <main className='min-h-dvh w-full pt-[60px] text-black'>
         <div className='flex w-full flex-col md:flex-row md:items-start'>
           {/* Left: full project list */}
-          <aside className='w-full shrink-0 border-b border-black px-[30px] py-[24px] md:sticky md:top-[60px] md:h-[calc(100dvh-60px)] md:w-[240px] md:overflow-y-auto md:border-b-0 md:border-r md:px-[40px] md:py-[40px]'>
+          <aside className='hidden md:block w-full shrink-0 border-b border-black px-[30px] py-[24px] md:sticky md:top-[60px] md:h-[calc(100dvh-60px)] md:w-[240px] md:overflow-y-auto md:border-b-0 md:border-r md:px-[40px] md:py-[40px]'>
             <p className='text-[11px] text-neutral-400'>All Works</p>
             <nav className='mt-[16px] flex flex-col gap-[10px]'>
               {projects.map((p) => {
@@ -137,10 +139,10 @@ export default function TypofoldPage() {
           </aside>
 
           {/* Right: project content */}
-          <div className='min-w-0 flex-1 px-[30px] py-[24px] md:px-[40px] md:py-[40px]'>
+          <div className='min-w-0 flex-1 px-[22px] py-[24px] md:px-[40px] md:py-[40px]'>
             <div className='flex flex-col justify-between gap-[16px] md:flex-row'>
               <h1 className='text-[24px] font-semibold'>{project.name}</h1>
-              <div className='flex flex-col gap-[4px] md:w-[60%]'>
+              <div className='flex flex-col gap-[4px] lg:w-[60%]'>
                 <p className='text-[#FF2D8C]'>A design tool that converts 3D models into paper crafts</p>
                 <p className='text-black'>
                   08.2024 - Present / Computational Origami, Tool Development / Creative Awards, HCI Korea 2025 /
@@ -154,7 +156,8 @@ export default function TypofoldPage() {
             </div>
 
             {/* In-page section nav */}
-            <nav className='sticky top-[60px] z-10 -mx-[30px] mt-[24px] flex gap-x-[16px] overflow-x-auto border-b border-black bg-white px-[30px] py-[10px] no-scroll-bar md:-mx-[40px] md:px-[40px]'>
+            <div id='nav-sentinel' className='h-0' />
+            <nav className='sticky top-[60px] z-10 -mx-[22px] mt-[24px] flex gap-x-[16px] overflow-x-auto border-b border-black bg-white px-[22px] py-[10px] no-scroll-bar md:-mx-[40px] md:px-[40px]'>
               {sectionIds.map((id) => (
                 <a
                   key={id}
@@ -170,7 +173,7 @@ export default function TypofoldPage() {
 
             <div className='mt-[32px] flex flex-col gap-[64px] text-[15px] leading-relaxed'>
               {/* Research Question / Key Findings from project data */}
-              <section className='flex flex-col gap-[16px] md:w-[60%]'>
+              <section className='flex flex-col gap-[16px] lg:w-[60%]'>
                 <div>
                   <p className='text-[#FF2D8C] text-[13px] font-medium'>Research Question</p>
                   <p className='mt-[4px]'>{project.researchQuestion}</p>
@@ -178,7 +181,7 @@ export default function TypofoldPage() {
               </section>
 
               {/* RESEARCH */}
-              <section id='research' className='flex scroll-mt-[110px] flex-col gap-[56px] md:w-[60%]'>
+              <section id='research' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-[60%]'>
                 <Chapter kicker='Background' title="Why don't digital creations feel like my own?">
                   <p>
                     As digital creation tools become faster and more automated, creative efficiency increases, but we
@@ -274,7 +277,7 @@ export default function TypofoldPage() {
               </section>
 
               {/* DESIGN */}
-              <section id='design' className='flex scroll-mt-[110px] flex-col gap-[56px] md:w-[60%]'>
+              <section id='design' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-[60%]'>
                 <Chapter kicker='Design Motivation' title='Where does the sense of ownership over creations come from?'>
                   <Figure src={imagePath + '05.png'} className='bg-[#0058AB] p-4' />
                   <Figure src={imagePath + '06.png'} className='-mt-1 bg-[#0058AB] px-8' />
@@ -400,7 +403,7 @@ export default function TypofoldPage() {
               </section>
 
               {/* DEVELOPMENT */}
-              <section id='development' className='flex scroll-mt-[110px] flex-col gap-[56px] md:w-[60%]'>
+              <section id='development' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-[60%]'>
                 <Chapter kicker='System Pipeline' title='From Mesh to Net: The 3D to 2D Pipeline'>
                   <p className='text-neutral-600'>
                     To support the iterative making flow shown in the previous scenario, TypoFold translates
@@ -504,34 +507,30 @@ export default function TypofoldPage() {
               </section>
 
               {/* OUTPUT */}
-              <section id='output' className='flex scroll-mt-[110px] flex-col gap-[56px]'>
+              <section id='final design' className='flex scroll-mt-[110px] flex-col gap-[56px]'>
                 <Chapter kicker='Final Design' title=''>
-                  <div className='grid grid-cols-2 gap-[16px]'>
-                    <CroppedFigure src={imagePath + '20.jpg'} />
-                    <CroppedFigure src={imagePath + '22.jpg'} />
-                    <CroppedFigure src={imagePath + '23.jpg'} />
-                    <CroppedFigure src={imagePath + 'Untitled-118.jpeg'} />
-                    <CroppedFigure src={imagePath + 'cover.jpg'} />
-                    <CroppedFigure src={imagePath + '24.jpg'} />
-                  </div>
-
                   <a
                     href='https://typofold.vercel.app/'
                     target='_blank'
                     rel='noopener noreferrer'
-                    className='inline-flex w-fit items-center gap-[6px] text-[13px] font-medium text-black underline underline-offset-4 hover:text-neutral-500'
+                    className='inline-flex w-fit items-center gap-[6px] text-[16px] font-medium text-black underline underline-offset-4 hover:text-neutral-500'
                   >
-                    Visit TypoFold Website →
+                    TypoFold Website →
                   </a>
+                  <div className='grid grid-cols-2 gap-[16px]'>
+                    <CroppedFigure src={imagePath + '29.jpg'} />
+                    <CroppedFigure src={imagePath + '30.jpg'} />
+                    <CroppedFigure src={imagePath + '31.jpg'} />
+                    <CroppedFigure src={imagePath + '32.jpg'} />
+                  </div>
                 </Chapter>
               </section>
 
               {/* WORKSHOP */}
               <section id='workshop' className='flex scroll-mt-[110px] flex-col gap-[56px]'>
-                <Chapter kicker='Workshop' title='Cutting and folding by hand creates attachment to the result'>
+                <Chapter kicker='Workshop' title=''>
                   <p className='text-neutral-600'>
-                    TypoFold met users through the HCI Korea 2025 workshop. Participants learned simple p5.js syntax to
-                    create their own patterns, selected their desired alphabet, and made keychains.
+                    TypoFold met users through the HCI Korea 2025 workshop and Pado-Space Wave.
                   </p>
                   <div className='grid grid-cols-1 gap-[12px] md:grid-cols-3'>
                     <Figure src={imagePath + '25.jpg'} />
@@ -563,10 +562,6 @@ export default function TypofoldPage() {
                       digital 3D models into foldable physical structures. At the same time, it revealed new challenges
                       around face segmentation, overlap handling, and maintaining consistency at scale.
                     </p>
-                  </div>
-                  <div className='grid grid-cols-1 gap-[12px] md:grid-cols-2'>
-                    <Figure src={imagePath + '33.jpg'} />
-                    <Figure src={imagePath + '34.jpg'} />
                   </div>
                 </Chapter>
               </section>

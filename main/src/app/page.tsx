@@ -22,7 +22,7 @@ const slides = [
     id: 'intro-2',
     title: 'Daily Folding Practice',
     src: '/images/intro/intro7.jpg',
-    projectSlug: 'ganpan',
+    projectSlug: 'daily-folding-practice',
     color: '#2DFFA0',
   },
   {

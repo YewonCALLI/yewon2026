@@ -10,6 +10,7 @@ interface HeaderProps {
   title: string
   accentColor?: string
   light?: boolean
+  mobileLight?: boolean
 }
 
 const NAV_ITEMS = [
@@ -31,7 +32,7 @@ const SOCIALS = [
   { label: 'X' },
 ]
 
-export function Header({ title, accentColor = '#FF2D8C', light = false }: HeaderProps) {
+export function Header({ title, accentColor = '#FF2D8C', light = false, mobileLight = light }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [time, setTime] = useState('')
   const pathname = usePathname()
@@ -65,9 +66,9 @@ export function Header({ title, accentColor = '#FF2D8C', light = false }: Header
     <>
       {/* md and up: horizontal navbar */}
       <header
-        className={`fixed inset-x-0 top-0 z-[50] hidden h-[62px] items-center justify-between gap-4 overflow-x-auto px-[30px] md:flex transform-gpu will-change-transform ${
+        className={`fixed inset-x-0 top-0 z-[50] hidden h-[62px] w-full items-center justify-between gap-4 overflow-x-auto px-[30px] md:flex transform-gpu will-change-transform ${
           light
-            ? 'bg-white border-b border-black text-black'
+            ? 'bg-white backdrop-blur-md border-b border-black text-black'
             : 'bg-[#111111] md:bg-transparent md:mix-blend-difference text-white'
         }`}
       >
@@ -138,32 +139,36 @@ export function Header({ title, accentColor = '#FF2D8C', light = false }: Header
       </header>
 
       {/* below md: collapsible menu */}
-      <div className='fixed left-1/2 top-[16px] z-50 -translate-x-1/2 md:hidden transform-gpu will-change-transform'>
+      <div
+        className={`fixed top-[0px] w-full py-[10px] flex justify-center left-1/2 z-50 -translate-x-1/2 md:hidden transform-gpu will-change-transform ${
+          mobileLight ? 'bg-white' : 'bg-transparent'
+        }`}
+      >
         <button
           type='button'
           onClick={() => setIsOpen((prev) => !prev)}
           aria-expanded={isOpen}
           aria-label={isOpen ? 'Close menu' : 'Open menu'}
           className={`flex h-[44px] w-[359px] max-w-[92vw] items-center justify-between gap-3 rounded-md px-[16px] ${
-            light ? 'bg-white border border-black shadow-sm' : 'bg-[#111111]'
+            mobileLight ? 'bg-white border border-black shadow-sm' : 'bg-[#111111]'
           }`}
         >
           <span className='flex flex-col items-start justify-center leading-[120%]'>
-            <span className={`text-[10px] font-medium ${light ? 'text-black/60' : 'text-white/60'}`}>Yewon Jang</span>
+            <span className={`text-[10px] font-medium ${mobileLight ? 'text-black/60' : 'text-white/60'}`}>Yewon Jang</span>
             <span
-              className={`max-w-[240px] truncate text-[12px] font-semibold ${light ? 'text-black' : 'text-white'}`}
+              className={`max-w-[240px] truncate text-[12px] font-semibold ${mobileLight ? 'text-black' : 'text-white'}`}
             >
               {isOpen ? 'Menu' : title}
             </span>
           </span>
           <span className='relative flex h-[14px] w-[14px] shrink-0 items-center justify-center'>
             <span
-              className={`absolute h-[1.5px] w-[14px] transition-transform duration-300 ${light ? 'bg-black' : 'bg-white'} ${
+              className={`absolute h-[1.5px] w-[14px] transition-transform duration-300 ${mobileLight ? 'bg-black' : 'bg-white'} ${
                 isOpen ? 'rotate-45' : '-translate-y-[3px]'
               }`}
             />
             <span
-              className={`absolute h-[1.5px] w-[14px] transition-transform duration-300 ${light ? 'bg-black' : 'bg-white'} ${
+              className={`absolute h-[1.5px] w-[14px] transition-transform duration-300 ${mobileLight ? 'bg-black' : 'bg-white'} ${
                 isOpen ? '-rotate-45' : 'translate-y-[3px]'
               }`}
             />
@@ -171,8 +176,8 @@ export function Header({ title, accentColor = '#FF2D8C', light = false }: Header
         </button>
 
         <div
-          className={`absolute left-0 top-[52px] flex max-h-[70vh] w-[359px] max-w-[92vw] origin-top flex-col justify-between overflow-y-auto rounded-md px-[16px] pb-[16px] pt-[12px] shadow-xl transition-all duration-300 ease-out ${
-            light ? 'bg-white text-black border border-black' : 'bg-[#0A0A0A] text-white'
+          className={`absolute left-1/2 -translate-x-1/2 top-[62px] flex max-h-[70vh] w-[359px] max-w-[92vw] origin-top flex-col justify-between overflow-y-auto rounded-md px-[16px] pb-[16px] pt-[12px] shadow-xl transition-all duration-300 ease-out ${
+            mobileLight ? 'bg-white text-black border border-black' : 'bg-[#0A0A0A] text-white'
           } ${isOpen ? 'scale-y-100 opacity-100' : 'pointer-events-none scale-y-95 opacity-0'}`}
           aria-hidden={!isOpen}
         >
@@ -187,7 +192,7 @@ export function Header({ title, accentColor = '#FF2D8C', light = false }: Header
                     setIsOpen(false)
                   }}
                   className={`block border-b py-[12px] text-[15px] font-medium ${
-                    light ? 'border-black/10' : 'border-white/10'
+                    mobileLight ? 'border-black/10' : 'border-white/10'
                   }`}
                 >
                   {item.identity && (
@@ -207,7 +212,7 @@ export function Header({ title, accentColor = '#FF2D8C', light = false }: Header
           <div className='flex flex-col gap-[10px] pt-[10px]'>
             <div
               className={`flex flex-col gap-[2px] border-t pt-[10px] text-[11px] ${
-                light ? 'border-black/10 text-black/70' : 'border-white/10 text-white/80'
+                mobileLight ? 'border-black/10 text-black/70' : 'border-white/10 text-white/80'
               }`}
             >
               <span>Inquiries: {CONTACT.inquiries}</span>
@@ -216,7 +221,7 @@ export function Header({ title, accentColor = '#FF2D8C', light = false }: Header
 
             <div
               className={`flex flex-col gap-[2px] border-t pt-[10px] text-[11px] ${
-                light ? 'border-black/10 text-black/70' : 'border-white/10 text-white/80'
+                mobileLight ? 'border-black/10 text-black/70' : 'border-white/10 text-white/80'
               }`}
             >
               {SOCIALS.map((social) =>
@@ -226,7 +231,7 @@ export function Header({ title, accentColor = '#FF2D8C', light = false }: Header
                     href={social.href}
                     target='_blank'
                     rel='noopener noreferrer'
-                    className={`transition-colors ${light ? 'hover:text-black' : 'hover:text-white'}`}
+                    className={`transition-colors ${mobileLight ? 'hover:text-black' : 'hover:text-white'}`}
                   >
                     {social.label}
                   </a>
@@ -238,7 +243,7 @@ export function Header({ title, accentColor = '#FF2D8C', light = false }: Header
 
             <div
               className={`flex items-center justify-between border-t pt-[10px] text-[10px] ${
-                light ? 'border-black/10 text-black/60' : 'border-white/10 text-white/60'
+                mobileLight ? 'border-black/10 text-black/60' : 'border-white/10 text-white/60'
               }`}
             >
               <span>© 2026 Yewon Jang</span>

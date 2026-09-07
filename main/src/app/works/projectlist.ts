@@ -37,6 +37,17 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: 'daily-folding-practice',
+    name: 'Daily Folding Practice',
+    cover: '/images/projects/daily-folding-practice/cover.jpg',
+    part: '',
+    description: '',
+    researchQuestion: '',
+    keyFindings: '',
+    created_date: '2026',
+    skills: [],
+  },
+  {
     slug: 'typofold',
     name: 'Typofold',
     cover: '/images/projects/typofold/cover.jpg',
