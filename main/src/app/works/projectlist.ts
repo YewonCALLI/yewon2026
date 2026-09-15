@@ -37,6 +37,18 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: 'samsung-design-membership-2026',
+    name: '2026 Samsung Design Membership',
+    cover: '/images/projects/samsung-design-membership-2026/cover.jpg',
+    part: '',
+    description: '',
+    researchQuestion: '',
+    keyFindings: '',
+    created_date: '2026',
+    skills: [],
+    vimeoId: '1216876134',
+  },
+  {
     slug: 'daily-folding-practice',
     name: 'Daily Folding Practice',
     cover: '/images/projects/daily-folding-practice/cover.jpg',

@@ -36,7 +36,7 @@ const slides = [
     id: 'intro-4',
     title: '2026 Samsung Design Membership',
     src: '/images/intro/intro8.jpg',
-    projectSlug: 'franklin',
+    projectSlug: 'samsung-design-membership-2026',
     color: '#FF7A2D',
     vimeoUrl:
       'https://player.vimeo.com/video/1216876134?h=b5132f6bf0&autoplay=1&loop=1&muted=1&playsinline=1&autopause=1&byline=0&title=0&portrait=0&controls=0&dnt=1&background=1',
@@ -45,14 +45,14 @@ const slides = [
     id: 'intro-5',
     title: 'XR Science Museum',
     src: '/images/intro/intro11.jpg',
-    projectSlug: 'franklin',
+    projectSlug: 'xr-science-museum',
     color: '#FF2D8C',
   },
   {
     id: 'intro-6',
     title: '2025 Samsung Design Membership',
     src: '/images/intro/intro9.jpg',
-    projectSlug: 'ganpan',
+    projectSlug: 'samsung-design-membership',
     color: '#2DFFA0',
     vimeoUrl:
       'https://player.vimeo.com/video/1151368571?autoplay=1&loop=1&muted=1&playsinline=1&autopause=1&byline=0&title=0&portrait=0&controls=0&dnt=1&background=1',
