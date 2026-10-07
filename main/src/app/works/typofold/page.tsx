@@ -118,7 +118,7 @@ export default function TypofoldPage() {
       <main className='min-h-dvh w-full pt-[60px] text-black'>
         <div className='flex w-full flex-col md:flex-row md:items-start'>
           {/* Left: full project list */}
-          <aside className='hidden md:block w-full shrink-0 border-b border-black px-[30px] py-[24px] md:sticky md:top-[60px] md:h-[calc(100dvh-60px)] md:w-[240px] md:overflow-y-auto md:border-b-0 md:border-r md:px-[40px] md:py-[40px]'>
+          <aside className='hidden md:block w-full shrink-0 border-b border-black px-[30px] py-[24px] md:sticky md:top-[60px] md:h-[calc(100dvh-60px)] md:w-[240px] md:overflow-y-auto md:border-b-0 md:border-r md:px-[30px] md:py-[20px]'>
             <p className='text-[11px] text-neutral-400'>All Works</p>
             <nav className='mt-[16px] flex flex-col gap-[10px]'>
               {projects.map((p) => {

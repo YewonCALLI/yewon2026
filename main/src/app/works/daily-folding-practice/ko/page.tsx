@@ -4,10 +4,10 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Header } from '@/components/projects'
-import { ProjectMedia } from '../ProjectMedia'
-import { projects } from '../projectlist'
-import CroppedFigure from '../../../components/projects/CroppedFigure'
-import { Figure } from '../../../components/projects/Figure'
+import { ProjectMedia } from '../../ProjectMedia'
+import { projects } from '../../projectlist'
+import CroppedFigure from '../../../../components/projects/CroppedFigure'
+import { Figure } from '../../../../components/projects/Figure'
 import Head from 'next/head'
 
 const imagePath = '/images/projects/daily-folding-practice/'
@@ -175,20 +175,17 @@ export default function DailyFoldingPracticePage() {
 
                     {/* <Figure className='w-[35.65%]' src={imagePath + '16.jpg'} /> */}
                     <p>
-                      I collaborated with type designer Namju Ok (@nevi_books). Together, we applied fonts that real
-                      designers make and use to TypoFold. This helped me understand how fonts are built and structured,
-                      and I used that understanding to improve TypoFold. We worked together for about two months. As an
-                      outcome of this collaboration, we ran a free workshop for designers at Space PADO.
+                      저는 타입 디자이너 옥남주님(@nevi_books)과 함께 콜라보레이션을 진행하며, 실제 디자이너들이
+                      제작하고 사용하는 폰트들을 TypoFold에 적용하며 폰트 제작 과정과 폰트의 구조를 이해하고, 이를
+                      바탕으로 TypoFold를 개선하는 작업을 진행했습니다. 저희는 약 2달간 협력했고 그에 대한 결과물로 공간
+                      파도에서 디자이너 대상의 무료 워크샵을 진행했습니다.
                     </p>
                   </div>
                 </Chapter>
 
                 <Chapter kicker='Fonts' title='Four Font Families by Namju Ok'>
-                  {/* TODO: if Koshmar Italic was used, change this to "7 styles" and Koshmar below to "Regular, Italic" */}
-                  <p>
-                    Through this collaboration, I was fortunate to apply four of Namju's font families, 6 styles in
-                    total, to TypoFold.
-                  </p>
+                  {/* TODO: Koshmar Italic을 썼다면 '7개 스타일'로, 아래 Koshmar를 'Regular, Italic'으로 */}
+                  <p>이번 협업을 통해 감사하게도 남주님의 폰트 4종(6개 스타일)을 TypoFold에 적용할 수 있었습니다.</p>
                   <dl className='grid grid-cols-[max-content_1fr] gap-x-[24px] gap-y-[4px] text-[14px]'>
                     {[
                       ['limnlimn', 'Leaves, Fresh'],
@@ -204,19 +201,19 @@ export default function DailyFoldingPracticePage() {
                   </dl>
                   <Figure src={imagePath + 'fontlists.png'} />
                   <p>
-                    The four fonts all look very different, so each one needed its own kind of unfolding. I worked with
-                    Namju to go through the glyphs for letters and special characters, font by font. For each glyph, we
-                    recorded what type of polyhedron it would become once converted to 3D.
+                    네 가지 폰트는 생김새가 모두 달라서 폰트마다 서로 다른 형태의 전개도가 필요했습니다. 그래서 남주
+                    디자이너님과 함께 폰트별로 알파벳과 특수기호의 글리프를 살펴보고, 각 글리프가 3D 형태로 변환되었을
+                    때 나올 수 있는 다면체의 유형을 정리했습니다.
                   </p>
                 </Chapter>
 
                 <Chapter kicker='Terms' title='A Shared Vocabulary'>
                   <p>
-                    Before describing the types of polyhedra, I want to introduce the terms used in this piece. TypoFold
-                    converts 2D glyphs into 3D solids, and then unfolds them back into a flat net. Because of this, no
-                    single field's vocabulary was enough to describe the whole process. With Namju's help, I learned the
-                    terms used in typography design. In this piece, I describe a glyph's shape using typographic terms,
-                    and I describe a polyhedron's structure using terms from GIS and computer graphics. [8]
+                    다면체의 유형을 설명하기에 앞서, 이 글에서 사용하는 용어들을 먼저 소개하려고 합니다. TypoFold는 2D
+                    글리프를 3D 입체로 변환한 뒤 다시 전개도로 펼치는 도구이기 때문에, 한 분야의 용어만으로는 전체
+                    과정을 설명하기 어려웠습니다. 그래서 디자이너님의 도움을 받아 타이포그래피 디자인에서 쓰는 용어를
+                    익혔고, 이 글에서는 글리프의 형태는 타이포그래피 용어로, 다면체의 구조는 GIS와 컴퓨터 그래픽스
+                    용어로 설명합니다. [8]
                   </p>
                   <div className='flex flex-col'>
                     {[
@@ -224,11 +221,9 @@ export default function DailyFoldingPracticePage() {
                         term: 'Glyph',
                         body: (
                           <>
-                            A glyph is an individual character that makes up a font. A single letter can be built from
-                            two or more glyphs. Punctuation marks can also count as separate glyphs if they look
-                            different, even when they serve the same function. For example, the vertical comma used in
-                            vertical writing and the regular comma used in horizontal writing are treated as two
-                            different glyphs. [1]
+                            글리프는 폰트를 구성하는 개별 글자로, 하나의 글자가 2가지 이상의 글리프로 만들어질 수
+                            있습니다. 또한 세로쓰기용 쉼표인 모점과 가로쓰기용 쉼표인 반점처럼 동일한 기능을 하더라도
+                            모양이 다른 문장부호는 서로 다른 글리프로 봅니다. [1]
                           </>
                         ),
                       },
@@ -237,10 +232,9 @@ export default function DailyFoldingPracticePage() {
                         image: 'counter.png',
                         body: (
                           <>
-                            In type design, the white space enclosed by a stroke is called a counter. There are two
-                            broad types of counters. A closed counter is fully enclosed by the stroke and is not
-                            connected to the outer margin, as in A, B, D, O, P, Q, and R. An open counter connects to
-                            the outer margin through a gap called an aperture, as in C, S, c, and s. [2]
+                            타입 디자인에서는 획에 둘러싸인 흰 공간을 Counter라고 부릅니다. Counter는 크게 두 가지로
+                            나뉩니다. 획에 완전히 둘러싸여 바깥 여백과 연결되지 않은 공간은 Closed Counter(A, B, D, O,
+                            P, Q, R), Aperture를 통해 바깥 여백과 이어진 공간은 Open Counter(C, S, c, s)입니다. [2]
                           </>
                         ),
                       },
@@ -248,9 +242,9 @@ export default function DailyFoldingPracticePage() {
                         term: 'Contour',
                         body: (
                           <>
-                            A contour is an unbroken line made of straight and curved segments. It can be either open or
-                            closed. [4] Font files store the contour data that makes up each glyph, and I used
-                            opentype.js to convert this data into SVG path strings.
+                            Contour는 직선과 곡선 조각이 끊김 없이 이어진 선으로, 열려 있을 수도 닫혀 있을 수도
+                            있습니다. [4] 폰트 파일에는 글리프를 이루는 contour 정보가 들어 있고, 저는 opentype.js로 이
+                            정보를 SVG 문자열로 바꾸는 과정을 거쳤습니다.
                           </>
                         ),
                       },
@@ -259,17 +253,15 @@ export default function DailyFoldingPracticePage() {
                         image: 'ring.png',
                         body: (
                           <>
-                            Depending on the font format, contours are stored in one of two ways: TrueType (ttf) or
-                            PostScript/CFF (otf). [3] Both formats store contours in drawing order, and both use winding
-                            direction to decide which region to fill. TrueType draws the outer contour clockwise, while
-                            CFF draws it counterclockwise. However, neither format stores which contour sits inside
-                            which one. Font renderers use the nonzero rule to fill shapes based on this direction, but
-                            since the two formats wind in opposite directions, I decided to determine containment by
-                            position instead. To do this, I sample points evenly along each contour and use ray casting
-                            to check whether each point falls inside another contour. Then I count how many layers deep
-                            each contour sits. An even count means the contour is exterior, and an odd count means it is
-                            interior. This follows the same logic as the even-odd fill rule. [7] Note that for fonts
-                            whose contours were drawn overlapping each other, the two rules can give different results.
+                            폰트 형식에 따라 contour를 저장하는 방식은 TrueType(ttf)과 PostScript/CFF(otf) 두
+                            가지입니다. [3] 두 방식 모두 contour를 그린 순서대로 저장하고, 윤곽선의 방향(바깥 윤곽을
+                            TrueType은 시계 방향, CFF는 반시계 방향으로 그림)으로 채울 영역을 구분할 뿐, 어느 선이 어느
+                            선 안에 있는지는 저장하지 않습니다. 폰트 렌더러는 이 방향을 이용하는 nonzero 규칙으로 면을
+                            칠하지만, 형식마다 방향이 반대이기 때문에 저는 방향 대신 위치 관계로 판정하기로 했습니다.
+                            contour 위에서 고르게 뽑은 점들로 ray casting을 해서 다른 contour 안에 들어 있는지 확인하고,
+                            각 contour가 몇 겹 안에 들어 있는지 셉니다. 짝수면 exterior, 홀수면 interior입니다. 이는
+                            even-odd fill rule과 같은 원리입니다. [7] 다만 윤곽선끼리 겹치게 그려진 폰트에서는 두 규칙의
+                            결과가 달라질 수 있습니다.
                           </>
                         ),
                       },
@@ -277,10 +269,9 @@ export default function DailyFoldingPracticePage() {
                         term: 'Polyhedron / Polyhedra',
                         body: (
                           <>
-                            Converting a glyph's data to SVG and extruding it with a height value produces a 3D solid. I
-                            call this solid a polyhedron. Some glyphs, such as 'i', are made of several separate solids.
-                            In these cases, I use the plural form, polyhedra, and treat all the solids from a single
-                            glyph as one group.
+                            폰트 안에 글리프 정보를 SVG로 변환하고 높이값을 주어 extrude하면 3D 입체가 되는데 이 입체를
+                            Polyhedron이라고 하려고 합니다. i처럼 서로 떨어진 입체 여러 개로 이뤄진 글리프는 복수형인
+                            Polyhedra로 부르고, 하나의 글리프에서 나온 입체들은 한 묶음으로 다룹니다.
                           </>
                         ),
                       },
@@ -301,81 +292,76 @@ export default function DailyFoldingPracticePage() {
 
                 <Chapter kicker='Font Tree' title='Types of Polyhedra from a Glyph'>
                   <p>
-                    Using these terms, I mapped out, as a tree, what kind of polyhedron a glyph becomes once it is
-                    converted to 3D. The tree asks two or three questions in sequence. At each leaf, it is decided
-                    whether the glyph becomes one Polyhedron or several Polyhedra, and how many exterior and interior
-                    rings make up its boundary.
+                    위의 용어들을 바탕으로, 글리프 하나가 3D로 변환되며 어떤 다면체가 되는지를 트리로 정리했습니다.
+                    트리는 두세 가지 질문을 차례로 던지며 내려가고, 마지막 가지에서 그 글리프가 하나의 Polyhedron인지
+                    여러 개의 Polyhedra인지, 그리고 그 경계가 몇 개의 exterior ring과 interior ring으로 이루어지는지가
+                    결정됩니다.
                   </p>
                   <Figure src={imagePath + 'Font Tree.png'} />
                   <div className='flex flex-col gap-[24px]'>
                     <div className='flex flex-col gap-[6px]'>
                       <SubHeading>1. How many connected components?</SubHeading>
                       <p className='text-neutral-600'>
-                        The first question is how many separate components make up the glyph. A glyph with a single
-                        component, like 'I' or 'O', becomes one Polyhedron. A glyph like 'i', where the body and the dot
-                        are separate, becomes several Polyhedra. Even the same letter 'i' can become one Polyhedron or
-                        several Polyhedra, depending on how the font draws it. When a glyph has several Polyhedra, the
-                        net splits into that many separate pieces.
+                        첫 번째 질문은 글리프가 서로 떨어진 몇 개의 component로 이루어져 있는지입니다. 'I'나 'O'처럼
+                        component가 하나라면 결과물은 하나의 Polyhedron이 되고, 'i'처럼 몸통과 점이 떨어져 있다면 여러
+                        개의 Polyhedra가 됩니다. 같은 문자 'i'라고 해도 폰트의 생김새에 따라 Polyhedron이 될 수도
+                        polyhedra가 될 수도 있습니다. 한 글리프안에 여러개의 Polyhedra가 있는 경우에는 전개도는
+                        Polyhedra의 개수만큼 나뉘어집니다.
                       </p>
                     </div>
                     <div className='flex flex-col gap-[6px]'>
                       <SubHeading>2. Any Closed Counters?</SubHeading>
                       <p className='text-neutral-600'>
-                        The second question is whether the glyph has any closed counters. A glyph with no closed
-                        counters has its boundary defined by the exterior ring alone. A glyph with closed counters gets
-                        one interior ring for each counter. For example, 'O' is a Polyhedron with one exterior ring and
-                        one interior ring, and 'B' has one exterior ring and two interior rings.
+                        두 번째 질문은 closed counter가 있는지입니다. closed counter가 없는 글리프는 exterior ring만으로
+                        경계가 정의되고, closed counter가 있으면 그 개수만큼 interior ring이 생깁니다. 예를 들어 'O'는
+                        exterior ring 1개와 interior ring 1개, 'B'는 exterior ring 1개와 interior ring 2개로 이루어진
+                        Polyhedron입니다.
                       </p>
                     </div>
                     <div className='flex flex-col gap-[6px]'>
                       <SubHeading>3. Any Nested Exterior Rings?</SubHeading>
                       <p className='text-neutral-600'>
-                        When a glyph has several components and a closed counter, I check whether another component sits
-                        inside the hole. This kind of component is called an exterior ring at depth 2. Even though it
-                        looks like a single shape from the outside, it is not connected to the outer component. Because
-                        of this, it becomes a separate Polyhedron. Arbor's '0' is a good example. It is made of three
-                        Polyhedra: the outer ring, the center dot, and the top bar. Here, the center dot is the nested
-                        exterior ring.
+                        component가 여러 개이면서 closed counter가 있는 경우에는 구멍 안에 또 다른 component(depth 2의
+                        exterior ring)가 들어 있는지 확인합니다. 겉으로는 하나의 형태처럼 보여도 바깥 component와 이어져
+                        있지 않기 때문에 별도의 Polyhedron으로 떨어집니다. 예를 들어 Arbor의 '0'은 바깥 테두리, 가운데
+                        점, 위쪽 막대로 이루어진 3개의 Polyhedra이고, 이 중 가운데 점이 nested exterior ring입니다.
                       </p>
                     </div>
                     <div className='flex flex-col gap-[6px]'>
                       <SubHeading>Edge case: Pinch point</SubHeading>
                       <p className='text-neutral-600'>
-                        Some glyphs have a contour that touches another contour, or touches itself, at a single point. I
-                        first noticed this in the horse-shaped dingbat in Stone Heavy and Classy. However, once I
-                        checked every glyph across all four fonts, I found that this was more common than I expected.
-                        There were three ways this contact could happen.
+                        글리프 중에는 윤곽선이 한 점에서 다른 윤곽선이나 자기 자신과 맞닿아 있는 것들이 있습니다.
+                        처음에는 Stone Heavy와 Classy의 말 모양 딩벳에서 이런 접점을 발견했는데, 네 폰트의 글리프를 전부
+                        조사해 보니 생각보다 흔했습니다. 세 가지의 맞닿는 방식이 있었습니다.
                       </p>
                       <ul className='flex flex-col gap-[2px] pl-[16px] text-neutral-600'>
-                        <li>(a) A contour touching itself: Stone's horse</li>
-                        <li>(b) Two different exterior rings touching: limnlimn i, l, y</li>
-                        <li>(c) An exterior ring touching an interior ring: limnlimn k</li>
+                        <li>(a) 윤곽선 하나가 자기 자신과 닿는 경우: Stone 말</li>
+                        <li>(b) 서로 다른 exterior ring 두 개가 닿는 경우: limnlimn i, l, y</li>
+                        <li>(c) exterior ring이 interior ring과 닿는 경우: limnlimn k</li>
                       </ul>
                       <p className='text-neutral-600'>
-                        Whether this kind of contact is allowed in a 2D polygon depends on the data model. OGC Simple
-                        Features allows two different rings to touch at a point, but it does not allow a ring to touch
-                        itself. [5] Esri's model, on the other hand, allows a ring to touch itself too. [6] Either way,
-                        once the shape is extruded, that point becomes a non-manifold edge shared by four side faces.
-                        [9] I call these points pinch points, and I cut the connection they create. However, cutting the
-                        connection does not always split the net into two pieces. For Stone's horse and limnlimn i, the
-                        letterform is divided into two faces on either side of the contact point, so cutting the
-                        connection produces two Polyhedra. limnlimn k is different. Its counter touches the outer
-                        contour, but the letterform itself stays in one piece, so I treat it as a single Polyhedron. In
-                        this case, cutting the connection only keeps the outer wall and the counter wall from mixing
-                        together.
+                        2D 폴리곤에서 이런 접점을 허용하는지는 데이터 모델마다 다릅니다. OGC Simple Features는 서로 다른
+                        링이 한 점에서 닿는 것은 허용하지만 링이 자기 자신과 닿는 것은 허용하지 않고 [5], Esri의 모델은
+                        자기 자신과 닿는 링도 허용합니다. [6] 어느 쪽이든 이를 압출하면 그 점은 옆면 네 개가 공유하는
+                        non-manifold edge가 됩니다. [9] 저는 이런 지점을 pinch point라고 부르고, 여기서 생긴 연결을
+                        끊습니다. 연결을 끊는다고 해서 전개도가 항상 두 장으로 나뉘는 것은 아닙니다. Stone 말과 limnlimn
+                        i는 접점을 사이에 두고 글자의 면이 둘로 나뉘어 있어서, 연결을 끊으면 2개의 Polyhedra가 됩니다.
+                        반면 limnlimn k는 counter가 바깥 윤곽에 닿아 있을 뿐 글자의 면은 하나로 이어져 있어서 하나의
+                        Polyhedron으로 처리합니다. 이때 연결을 끊는 것은 바깥 벽과 counter 벽이 섞이지 않게 하는 역할만
+                        합니다.
                       </p>
-                      {/* TODO: once the image is ready, remove the ImagePlaceholder below and uncomment the Figure
+                      {/* TODO: 이미지 준비되면 아래 ImagePlaceholder를 지우고 Figure 주석을 풀기
                       <ImagePlaceholder
                         id='IMG-2'
                         file='pinch_types.png'
-                        desc="(a) Stone's horse / (b) limnlimn i / (c) limnlimn k 2D contours, contact point circled in pink"
+                        desc='(a) Stone 말 / (b) limnlimn i / (c) limnlimn k 2D 윤곽선, 접점에 분홍 원'
                       /> */}
                       <Figure src={imagePath + 'pinch_types.jpg'} />
-                      {/* TODO: once the image is ready, remove the ImagePlaceholder below and uncomment the Figure */}
+                      {/* TODO: 이미지 준비되면 아래 ImagePlaceholder를 지우고 Figure 주석을 풀기 */}
                       {/* <ImagePlaceholder
                         id='IMG-3'
                         file='pinch_3d.png'
-                        desc="Stone's horse in 3D, a close-up of the contact point where four side faces share one vertical edge"
+                        desc='Stone 말 3D, 접점 확대 — 옆면 네 개가 한 수직 모서리를 공유'
                       /> */}
                       <Figure src={imagePath + 'pinch_3d.jpg'} />
                     </div>
@@ -384,44 +370,43 @@ export default function DailyFoldingPracticePage() {
 
                 <Chapter kicker='Technical Challenge' title='Choosing a Spanning Tree for Unfolding'>
                   <p>
-                    Earlier I classified glyph types by their number of connected components and their number of
-                    exterior and interior rings. Now I want to explain how I designed the unfolding for each type.
+                    저는 앞서 글리프의 유형을 connected components의 개수와 exterior/interior ring의 개수로
+                    나누었습니다. 이제 유형별로 어떻게 전개도를 디자인하였는지 설명하려고 합니다.
                   </p>
                   <div className='flex flex-col gap-[8px] border border-neutral-300 p-[16px] text-[14px]'>
                     <dl className='flex flex-col gap-[8px] text-neutral-600'>
                       <div>
                         <dt className='inline font-semibold text-black'>
                           <a
-                            href='https://en.wikipedia.org/wiki/Dual_graph'
+                            href='https://ko.wikipedia.org/wiki/듀얼_그래프'
                             target='_blank'
                             rel='noopener noreferrer'
                             className='underline'
                           >
-                            Dual graph
+                            듀얼 그래프
                           </a>{' '}
                         </dt>
                         <dd className='inline'>
-                          A graph with one vertex for each face of a planar graph G. An edge connects two faces that
-                          share an edge. Here, each face of the solid's surface becomes a point, and faces that share an
-                          edge are connected by a line.
+                          평면 그래프 G의 각 면에 하나의 꼭짓점을 갖고, 한 변으로 맞닿은 인접한 면끼리 변으로 이은
+                          그래프입니다. 여기서는 입체 표면의 면 하나가 점 하나가 되고, 모서리를 공유하는 면끼리 선으로
+                          이어집니다.
                         </dd>
                       </div>
                       <div>
                         <dt className='inline font-semibold text-black'>
                           <a
-                            href='https://en.wikipedia.org/wiki/Spanning_tree'
+                            href='https://ko.wikipedia.org/wiki/신장_부분_그래프'
                             target='_blank'
                             rel='noopener noreferrer'
                             className='underline'
                           >
-                            Spanning tree
+                            신장 트리(spanning tree)
                           </a>{' '}
                         </dt>
                         <dd className='inline'>
-                          A spanning subgraph is a subgraph that includes every vertex. A spanning tree is a spanning
-                          subgraph that is also a tree, meaning it has no cycles but still connects every vertex. In the
-                          net, the edges that are kept become fold lines, and the edges that are removed become cut
-                          lines.
+                          모든 꼭짓점을 포함하는 부분 그래프를 신장 부분 그래프라 하고, 그중 트리인 것이 신장
+                          트리입니다. 즉 모든 점을 빠짐없이 연결하면서 고리가 없는 부분 그래프입니다. 전개도에서는 남긴
+                          변이 접는 선, 빠진 변이 자르는 선이 됩니다.
                         </dd>
                       </div>
                       <div>
@@ -432,32 +417,31 @@ export default function DailyFoldingPracticePage() {
                             rel='noopener noreferrer'
                             className='underline'
                           >
-                            Chord
+                            현(chord)
                           </a>{' '}
                         </dt>
                         <dd className='inline'>
-                          An edge that connects two vertices on a cycle without itself being part of that cycle.
+                          고리(사이클)에는 속하지 않으면서 고리 위의 두 꼭짓점을 잇는 변입니다.
                         </dd>
                       </div>
                     </dl>
                   </div>
                   <div className='flex flex-col gap-[32px]'>
                     <div className='flex flex-col gap-[6px]'>
-                      <SubHeading>Step 1. Unfolding the side faces: choosing which edges to cut</SubHeading>
+                      <SubHeading>Step 1. 옆면 펼치기: 자를 모서리를 고릅니다</SubHeading>
                       <p className='text-neutral-600'>
-                        To flatten a solid, you need to decide which edges to cut and which edges to fold. To handle
-                        this with computation, I split the solid's surface into flat faces and build a dual graph G =
-                        (V, E). Here, V is the set of faces, and E is the set of face pairs that share an edge. An
-                        edge's weight w(e) is the length of the shared edge. There are several ways to produce a net,
-                        such as star unfolding, source unfolding, and cut locus unfolding. However, this piece only
-                        covers edge unfolding, which cuts strictly along the edges of the solid.
+                        입체를 평면에 펴려면 어느 모서리를 자르고 어느 모서리를 접을지 정해야 합니다. 이를 계산으로
+                        다루기 위해, 입체의 표면을 평면 면들로 나누고 듀얼 그래프 G = (V, E)를 만듭니다. V는 면, E는
+                        모서리를 공유하는 면 쌍이고, 변의 가중치 w(e)는 공유하는 모서리의 길이입니다. 전개도를 만드는
+                        방법은 여러 가지가 있지만(star unfolding, source unfolding, cut locus unfolding 등) 이 글에서는
+                        모서리를 따라서만 자르는 모서리 전개(edge unfolding)를 다룹니다.
                       </p>
                       <figure className='my-[12px] flex flex-col gap-[20px]'>
                         <svg
                           viewBox='0 0 460 215'
                           className='w-full max-w-[560px] text-black'
                           role='img'
-                          aria-label='The dual graph of an extruded ring-shaped glyph: side faces become points, adjacency becomes lines'
+                          aria-label='압출된 고리 모양 글리프의 옆면을 점으로, 이웃 관계를 선으로 바꾼 듀얼 그래프'
                         >
                           <g fill='none' stroke='currentColor' strokeWidth='1.5'>
                             <circle cx='110' cy='120' r='76' />
@@ -517,53 +501,50 @@ export default function DailyFoldingPracticePage() {
                           </g>
                           <g fill='currentColor' stroke='none' fontSize='11'>
                             <text x='110' y='208' textAnchor='middle'>
-                              Side faces
+                              옆면
                             </text>
                             <text x='350' y='208' textAnchor='middle'>
-                              Dual graph
+                              듀얼 그래프
                             </text>
                             <text x='230' y='116' textAnchor='middle'>
                               ⟶
                             </text>
                             <text x='230' y='136' textAnchor='middle' fontSize='10'>
-                              face = point
+                              면 = 점
                             </text>
                           </g>
                         </svg>
                         <figcaption className='text-[13px] text-neutral-500'>
-                          Each side face becomes a point, and adjacent faces are connected by a line.
+                          옆면 하나가 점 하나가 되고, 붙어 있는 면끼리 선으로 이어집니다.
                         </figcaption>
                       </figure>
                       <p className='text-neutral-600'>
-                        An edge unfolding is the same as choosing one spanning tree T from this dual graph G. Every
-                        face, except the root, rotates flat around the edge it shares with its parent in T. A different
-                        T produces a different layout, and it also changes the chance of overlap. In other words, the
-                        question of how to unfold a solid is the same as the question of which spanning tree to choose.
+                        모서리 전개는 이 듀얼 그래프 G에서 신장 트리 T를 하나 고르는 것과 같습니다. 루트가 아닌 각 면은
+                        T에서 자기 부모와 공유하는 모서리를 축으로 회전해 평면에 눕습니다. T가 달라지면 배치가 달라지고,
+                        겹침 여부도 달라집니다. 즉 '어떻게 펼 것인가'는 '어떤 신장 트리를 고를 것인가'와 같은
+                        질문입니다.
                       </p>
                       <p className='text-neutral-600'>
-                        For glyphs without a pinch point, this choice was never a problem. Each side face only has two
-                        neighbors, the ones directly before and after it. Because of this, the graph made only from side
-                        faces is simply a collection of cycles. With one exterior ring and one interior ring, you get
-                        two side-face strips. A cycle's spanning tree is just the cycle with one edge removed. No matter
-                        which edge is removed, the result is always a single strip. Only the position of the cut
-                        changes, and the strip never overlaps itself.
+                        pinch point가 없는 글리프에서는 이 선택이 문제가 되지 않았습니다. 옆면은 앞뒤로 하나씩만
+                        이웃하므로, 옆면으로만 제한한 그래프는 고리들의 모임이 됩니다. 만약 exterior ring이 하나,
+                        interior ring이 하나라면 2개의 옆면 띠가 나옵니다. 고리의 신장 트리는 변 하나를 지운 것이고,
+                        어느 것을 지우든 결과는 한 줄짜리 띠입니다. 자르는 위치만 다를 뿐 겹치지 않습니다.
                       </p>
                     </div>
                     <div className='flex flex-col gap-[6px]'>
-                      <SubHeading>Where the overlap came from</SubHeading>
+                      <SubHeading>어디서 겹침이 발생했는가</SubHeading>
                       <p className='text-neutral-600'>
-                        The problem appeared in glyphs with a pinch point. At this point, four side faces share a single
-                        vertical edge. As a result, two faces that would normally be reached only by going most of the
-                        way around the contour suddenly become direct neighbors. In graph terms, this creates a chord
-                        across the cycle. The faces meeting at that point each gain one extra neighbor, so their degree
-                        increases to 3.
+                        문제는 pinch point가 있는 글리프에서 발생했습니다. pinch point에서 옆면 네 개가 하나의 수직
+                        모서리를 공유하면서, 원래는 윤곽선을 따라 한참 돌아가야 만나는 두 면이 갑자기 이웃이 됩니다.
+                        그래프로 보면 고리를 가로지르는 현이 하나 생기고, 그 점에 모인 면들은 이웃이 하나씩 늘어 차수가
+                        3이 됩니다.
                       </p>
                       <figure className='my-[12px] flex flex-col gap-[8px]'>
                         <svg
                           viewBox='0 0 460 230'
                           className='w-full max-w-[560px] text-black'
                           role='img'
-                          aria-label='A chord across a cycle graph turning two distant faces into neighbors'
+                          aria-label='고리 모양 그래프를 가로지르는 현이 멀리 떨어진 두 면을 이웃으로 만드는 모습'
                         >
                           <g fill='none' stroke='currentColor' strokeWidth='1.5'>
                             <line x1='150.0' y1='40.0' x2='170.7' y2='42.7' />
@@ -622,89 +603,81 @@ export default function DailyFoldingPracticePage() {
                           <circle cx='93.4' cy='176.6' r='5.5' fill='#FF2D8C' />
                           <g fill='currentColor' stroke='none' fontSize='11'>
                             <text x='150' y='28' textAnchor='middle'>
-                              Face 0 (start)
+                              0번(시작)
                             </text>
                             <text x='239.3' y='103.3'>
-                              Face 5
+                              5번 면
                             </text>
                             <text x='81.4' y='180.6' textAnchor='end'>
-                              Face 15
+                              15번 면
                             </text>
                             <text x='150' y='222' textAnchor='middle'>
-                              The cycle around the contour, plus the chord created by the pinch point
+                              윤곽선을 따라 도는 고리 + pinch point가 만든 현
                             </text>
                           </g>
                           <g fill='#FF2D8C' stroke='none' fontSize='11'>
                             <text x='300' y='96'>
-                              10 steps around the cycle,
+                              고리를 따라가면 10칸,
                             </text>
                             <text x='300' y='114'>
-                              1 step with the chord.
+                              현을 쓰면 1칸.
                             </text>
                             <text x='300' y='132'>
-                              BFS will always
+                              BFS는 이 지름길을
                             </text>
                             <text x='300' y='150'>
-                              take this shortcut.
+                              반드시 고릅니다.
                             </text>
                           </g>
                         </svg>
                         <figcaption className='text-[13px] text-neutral-500'>
-                          A chord connects two faces that are far apart on the contour, giving them a graph distance of
-                          1. At an actual pinch point, all four side faces connect to each other. Here, though, this is
-                          simplified to a single chord.
+                          현은 윤곽선상 멀리 떨어진 두 면을 그래프 거리 1로 연결합니다. 실제 pinch point에서는 옆면 네
+                          개가 서로 모두 이어지지만, 여기서는 현 하나로 단순화했습니다.
                         </figcaption>
                       </figure>
                       <p className='text-neutral-600'>
-                        The key point here is that BFS does not choose this shortcut because it prefers to. It simply
-                        has no other choice. TypoFold builds its spanning tree using BFS, or breadth-first search. This
-                        method attaches the faces closest to the start face first, so every face ends up connected to
-                        the start by the fewest possible steps. Let's look at a case with 24 faces, where face 0 is the
-                        start and a chord links face 5 and face 15.
+                        여기서 중요한 점은, BFS가 이 지름길을 선호해서 고르는 게 아니라 고를 수밖에 없다는 것입니다.
+                        TypoFold는 BFS(너비 우선 탐색)로 신장 트리를 만듭니다. 시작 면에서 가까운 면부터 차례로 붙여
+                        나가기 때문에, 모든 면이 시작 면에서 최소한의 칸 수로 연결됩니다. 면이 24개, 시작이 0번, 현이
+                        5번과 15번을 잇는 경우를 보겠습니다.
                       </p>
                       <table className='w-full max-w-[420px] text-[14px]'>
                         <tbody>
                           <tr className='border-b border-neutral-200'>
-                            <td className='py-[6px] pr-[16px] text-neutral-600'>
-                              Distance to face 15 without the chord
-                            </td>
+                            <td className='py-[6px] pr-[16px] text-neutral-600'>현이 없을 때 15번까지의 거리</td>
                             <td className='py-[6px]'>min(15, 24 − 15) = 9</td>
                           </tr>
                           <tr className='border-b border-neutral-200'>
-                            <td className='py-[6px] pr-[16px] text-neutral-600'>With the chord</td>
+                            <td className='py-[6px] pr-[16px] text-neutral-600'>현이 있을 때</td>
                             <td className='py-[6px]'>d(5) + 1 = 6</td>
                           </tr>
                         </tbody>
                       </table>
                       <p className='text-neutral-600'>
-                        Since 6 is less than 9, the chord lies on the shortest path. By definition, BFS produces a
-                        shortest-path tree, so it cannot avoid using this chord. The moment the chord is used as a fold
-                        axis, though, the layout breaks. When a strip is unfolded in a single line, each face's position
-                        is set by its cumulative width along the contour. This means that face 15 ends up in the slot
-                        that should belong to face 6, which is the face right after face 5 on the contour. Face 15's
-                        subtree then keeps unfolding in that direction. At the same time, the subtree that continues
-                        from face 6 demands the same slot. As a result, the two subtrees overlap.
+                        6이 9보다 작으므로 현은 최단경로 위에 놓입니다. 최단경로 트리의 정의상 BFS는 현을 쓰지 않을 수
+                        없습니다. 그리고 현을 접는 축으로 쓰는 순간 배치가 어긋납니다. 띠를 한 줄로 펼 때 면의 평면상
+                        위치는 윤곽선을 따라 누적한 폭으로 정해지는데, 윤곽선상 5번 다음인 6번이 차지해야 할 자리에
+                        15번이 놓이고 15번의 부분트리가 그 방향으로 계속 펼쳐집니다. 6번부터 이어지는 부분트리도 같은
+                        자리를 요구하기 때문에 둘이 겹칩니다.
                       </p>
                     </div>
                     <div className='flex flex-col gap-[6px]'>
-                      <SubHeading>The fix: removing the chord</SubHeading>
+                      <SubHeading>해결: 현을 지우기</SubHeading>
                       <p className='text-neutral-600'>
-                        I considered weighting the edges by the length of the shared edge. However, in a solid extruded
-                        to a uniform height, every edge shared between side faces has the same thickness, so this
-                        weighting did not help at all. Instead, I left BFS as it was. I simply removed the problem
-                        connection from the graph before the search even began.
+                        변에 공유 모서리 길이를 가중치로 주는 방법도 생각했지만, 균일한 높이로 압출한 입체에서는
+                        옆면끼리 공유하는 모서리가 모두 같은 두께라 소용이 없었습니다. 그래서 BFS는 그대로 두고,
+                        탐색하기 전에 문제가 되는 연결을 그래프에서 끊기로 했습니다.
                       </p>
                       <p className='text-neutral-600'>
-                        When a contour touches itself at a point p, the four side faces that meet there share the same
-                        vertical edge. As a result, they are all treated as neighbors of one another. This false
-                        connection binds together side walls that should actually unfold separately.
+                        윤곽선이 한 점 p에서 맞닿으면, p에 모인 옆면 넷은 같은 수직 모서리를 공유해서 서로 전부 이웃으로
+                        잡힙니다. 이 가짜 연결 때문에 원래는 따로 펼쳐져야 할 옆면 벽들이 하나로 묶여 버립니다.
                       </p>
                       <figure className='my-[12px] flex flex-col gap-[8px]'>
                         <svg
                           viewBox='0 0 460 230'
                           className='w-full max-w-[560px] text-black'
                           role='img'
-                          aria-label='A comparison of how reconnecting at the pinch point leaves the cycle whole or splits it in two'
+                          aria-label='pinch point에서 어떻게 다시 잇느냐에 따라 고리가 하나로 남거나 둘로 갈라지는 비교 그림'
                         >
                           <g>
                             <circle cx='112' cy='66' r='38' fill='none' stroke='currentColor' strokeWidth='2' />
@@ -720,100 +693,92 @@ export default function DailyFoldingPracticePage() {
                           </g>
                           <g fill='currentColor' stroke='none' fontSize='11' textAnchor='middle'>
                             <text x='112' y='205'>
-                              Reconnect in contour order
+                              윤곽선 순서대로 잇기
                             </text>
                             <text x='112' y='221'>
-                              One cycle, one net
+                              고리 하나 — 전개도 한 장
                             </text>
                             <text x='336' y='210'>
-                              Reconnect within the same component
+                              같은 component끼리 잇기
                             </text>
                             <text x='336' y='223'>
-                              Two cycles, two nets
+                              고리 둘 — 전개도 두 장
                             </text>
                           </g>
                           <g fill='#FF2D8C' stroke='none' fontSize='10' textAnchor='middle'>
                             <text x='112' y='134'>
-                              Crosses at the pinch point
+                              pinch point에서 교차
                             </text>
                             <text x='336' y='115'>
-                              Connection cut
+                              연결을 끊음
                             </text>
                           </g>
                         </svg>
                         <figcaption className='text-[13px] text-neutral-500'>
-                          The outcome depends on how the four side faces meeting at the pinch point are reconnected. If
-                          they are reconnected following contour order, they stay as a single component, just as before.
-                          If only the side faces that belong to the same component are reconnected, they split into two
-                          components instead.
+                          pinch point에 모인 네 옆면을 어떻게 다시 잇느냐에 따라 결과가 갈립니다. 윤곽선 순서를 따르면
+                          원래처럼 하나의 component가 되고, 같은 component에 붙은 옆면끼리 이어야 두 component로
+                          나뉩니다.
                         </figcaption>
                       </figure>
                       <p className='text-neutral-600'>
-                        So which of the four side faces at p were originally connected to each other? The clue lies in
-                        the top and bottom faces. At p, the top faces only touch at a single vertex. Since TypoFold only
-                        treats two faces as neighbors when they share an edge, meaning they share at least two vertices,
-                        the top face never uses p as a connection point. Because of this, I can temporarily remove the
-                        four side faces at p from the graph and compute the connected components. This reveals, through
-                        the top face, which component each side face originally belonged to. I then check which
-                        component each of the four side faces is attached to. I reconnect only the pairs that belong to
-                        the same component, and I cut the rest.
+                        그렇다면 p에 모인 넷 중 어느 옆면끼리가 원래 이어져 있던 것일까요? 단서는 윗면과 아랫면에
+                        있습니다. p에서 윗면끼리는 꼭짓점 하나만 맞닿는데, TypoFold는 두 면이 모서리를 공유해야(꼭짓점을
+                        두 개 이상 공유해야) 이웃으로 보기 때문에 윗면은 p를 이음매로 쓰지 않습니다. 그래서 p에 모인
+                        옆면 넷을 그래프에서 잠시 빼고 connected component를 구하면, 윗면을 기준으로 옆면들이 원래 어느
+                        component에 속하는지가 드러납니다. 네 옆면이 각각 어느 component에 붙어 있는지 확인해, 같은
+                        component에 붙은 것끼리만 다시 잇고 나머지 연결은 끊습니다.
                       </p>
                       <p className='text-neutral-600'>
-                        At first, I tried pairing side faces that were simply close to each other, but this approach
-                        failed. Near a pinch point, physical closeness does not tell you which component a face belongs
-                        to. Relying on the top and bottom faces, which were already correctly split, turned out to be
-                        the more stable approach.
+                        처음에는 가까이 있는 옆면끼리 짝지어 보았지만, pinch 근처에서는 거리가 곧 소속을 뜻하지 않아
+                        실패했습니다. 이미 올바르게 나뉘어 있는 윗면과 아랫면에 기대는 방법이 안정적이었습니다.
                       </p>
-                      {/* TODO: once the image is ready, remove the ImagePlaceholder below and uncomment the Figure */}
+                      {/* TODO: 이미지 준비되면 아래 ImagePlaceholder를 지우고 Figure 주석을 풀기 */}
                       {/* <ImagePlaceholder
                         id='IMG-5'
                         file='pinch_cap_split.jpg'
-                        desc="Stone's horse seen from above, the two pieces of the top face in different colors, with p marked"
+                        desc='Stone 말을 위에서 본 모습, 윗면 두 조각을 다른 색으로 + p 표시'
                       /> */}
                       <Figure
                         className='h-[260px] my-4 w-auto object-contain'
                         src={imagePath + 'pinch_cap_split.jpg'}
                       />
                       <p className='text-neutral-600'>
-                        The outcome falls into two cases, depending on the shape of the top face. For glyphs like
-                        Stone's horse or limnlimn i, the top face splits into two pieces at p. In these cases, the graph
-                        also splits into two components, which gives two separate nets. These two nets are folded
-                        individually and then glued together. For glyphs like limnlimn k, the counter touches the outer
-                        contour, but the top face stays in one piece. In this case, the net also stays as a single
-                        piece. However, the outer wall and the counter wall still separate from each other at this
-                        point. So the counter wall is dropped from the net under the same rule used in Step 3, and it
-                        unfolds in the same way 'O' does.
+                        결과는 윗면의 모양에 따라 두 가지로 나뉩니다. Stone 말이나 limnlimn i처럼 윗면이 p에서 두
+                        조각으로 갈라지는 글리프는 그래프도 두 component로 나뉘어 전개도가 두 장이 되고, 두 장은 따로
+                        접은 뒤 접착제로 이어 붙입니다. limnlimn k처럼 counter가 바깥 윤곽에 닿아 윗면이 한 조각으로
+                        남는 글리프는 전개도가 한 장 그대로입니다. 대신 바깥 벽과 counter 벽이 서로 떨어지기 때문에,
+                        counter 벽은 Step 3의 규칙대로 전개도에서 빠지고 'O'와 같은 방식으로 펼쳐집니다.
                       </p>
                       <figure className='my-[12px] flex flex-col gap-[8px]'>
                         <div className='grid grid-cols-1 gap-[12px] sm:grid-cols-2'>
                           <div className='flex flex-col items-center gap-[6px] '>
-                            {/* TODO: once the image is ready, remove the ImagePlaceholder below and uncomment the Figure */}
+                            {/* TODO: 이미지 준비되면 아래 ImagePlaceholder를 지우고 Figure 주석을 풀기 */}
                             {/* <ImagePlaceholder
                               id='IMG-4'
                               file='pinch_overlap_before.png'
-                              desc="Stone's horse net before cutting the chord, the two overlapping subtrees shown in translucent color"
+                              desc='현을 끊기 전 Stone 말 전개도, 겹친 두 부분트리를 반투명 색으로 표시'
                             /> */}
                             <Figure
                               src={imagePath + 'pinch_overlap_before.jpg'}
                               className='h-[260px] w-auto object-contain'
                             />
                             <p className='text-center text-[13px] text-neutral-500'>
-                              Before cutting the chord. Two subtrees claim the same slot and overlap.
+                              현을 끊기 전. 두 부분트리가 같은 자리를 요구해 겹칩니다.
                             </p>
                           </div>
                           <div className='flex flex-col items-center gap-[6px]'>
-                            {/* TODO: once the image is ready, remove the ImagePlaceholder below and uncomment the Figure */}
+                            {/* TODO: 이미지 준비되면 아래 ImagePlaceholder를 지우고 Figure 주석을 풀기 */}
                             {/* <ImagePlaceholder
                               id='IMG-6'
                               file='pinch_overlap_after.png'
-                              desc='Two separated nets for the same glyph as IMG-4'
+                              desc='IMG-4와 같은 글리프의 분리된 전개도 두 장'
                             /> */}
                             <Figure
                               src={imagePath + 'pinch_overlap_after.jpg'}
                               className='h-[260px] w-auto object-contain'
                             />
                             <p className='text-center text-[13px] text-neutral-500'>
-                              After cutting the chord. Split into two components, unfolding without overlap.
+                              현을 끊은 뒤. 두 component로 갈라져 겹침 없이 펼쳐집니다.
                             </p>
                           </div>
                         </div>
@@ -821,149 +786,133 @@ export default function DailyFoldingPracticePage() {
                     </div>
                   </div>
                   <div className='flex flex-col gap-[6px]'>
-                    <SubHeading>Step 2. Where to attach the top and bottom faces</SubHeading>
+                    <SubHeading>Step 2. 위·아래 면을 어디에 붙이는가</SubHeading>
                     <p className='text-neutral-600'>
-                      Once the entire side-face strip is unfolded, the top and bottom faces remain. These two faces
-                      touch the whole perimeter of side faces, so there are as many possible fold edges as there are
-                      side faces in the strip. Unlike the side faces, which only ever had one neighbor in front and one
-                      behind, here there are a lot of options.
+                      옆면 띠를 모두 펼치고 나면 윗면과 아랫면이 남습니다. 이 두 면은 옆면 둘레 전체와 맞닿아 있어서,
+                      접는 선으로 쓸 수 있는 옆면이 띠를 이루는 옆면 수만큼 있습니다. 앞의 옆면들이 앞뒤로 하나씩만
+                      이웃했던 것과 달리, 여기서는 선택지가 아주 많습니다.
                     </p>
                     <p className='text-neutral-600'>
-                      Which side face it is attached to determines where the top and bottom face rotate into place. For
-                      glyphs with a concave outline, an arbitrary choice can swing the face right over the strip that is
-                      already unfolded, causing an overlap.
+                      어느 옆면에 붙이느냐에 따라 윗면과 아랫면이 회전해 놓이는 자리가 달라집니다. 오목한 윤곽을 가진
+                      글리프에서는 아무 옆면이나 고르면 이미 펼쳐 둔 띠 위로 넘어와 겹칩니다.
                     </p>
                     <p className='text-neutral-600'>
-                      So, for this step, I measured the overlap area directly, using bounding boxes. For each candidate
-                      side face, I calculate the smallest rectangle that would enclose the top face if it were unfolded
-                      along that axis. I then compare this rectangle with the rectangle that encloses the whole strip
-                      that has already been unfolded, and I choose whichever candidate produces the smallest overlap
-                      area. With the side faces, the indirect method of using edge length did not work. Here, though, I
-                      am measuring the exact quantity I care about, so this method stays reliable no matter how many
-                      candidates there are.
+                      그래서 여기서는 bounding box로 겹치는 넓이를 직접 쟀습니다. 후보 옆면마다 실제로 그 축으로 펼쳤을
+                      때 윗면이 차지하는 범위를 감싸는 최소 직사각형을 구하고, 이미 펼쳐 둔 띠 전체를 감싸는 직사각형과
+                      겹치는 넓이를 비교해 가장 덜 겹치는 옆면을 고릅니다. 옆면에서 모서리 길이라는 간접적인 기준이
+                      통하지 않았던 것과 달리, 이쪽은 원하는 값을 그대로 재기 때문에 후보가 많아도 안정적으로
+                      동작합니다.
                     </p>
                     <p className='text-neutral-600'>
-                      This comparison is only an approximation, though. It compares bounding rectangles rather than each
-                      face's actual shape. Because of this, a long, winding strip can make the rectangle much larger
-                      than the strip itself. As a result, an empty space can sometimes be misjudged as overlapping. In
-                      addition, the bottom face is chosen without knowing where the top face has already landed, so the
-                      two faces can still end up overlapping each other. When every candidate overlaps, I simply choose
-                      whichever one produces the smallest overlap.
+                      다만 이 비교는 근사입니다. 각 면의 실제 모양이 아니라 감싸는 직사각형끼리 비교하기 때문에, 띠가
+                      길게 꺾여 있으면 직사각형이 실제 띠보다 훨씬 넓어져서 비어 있는 자리도 겹친다고 판단할 수
+                      있습니다. 또 윗면을 놓은 뒤 그 자리를 반영하지 않고 아랫면을 고르기 때문에 둘이 서로 겹칠 가능성도
+                      남아 있습니다. 후보가 모두 겹치는 경우에는 그중 가장 덜 겹치는 쪽을 고릅니다.
                     </p>
                     <figure className='my-[12px] flex flex-col gap-[8px]'>
                       <div className='grid grid-cols-1 gap-[12px] sm:grid-cols-2'>
                         <div className='flex flex-col items-center gap-[6px]'>
-                          {/* TODO: once the image is ready, remove the ImagePlaceholder below and uncomment the Figure */}
+                          {/* TODO: 이미지 준비되면 아래 ImagePlaceholder를 지우고 Figure 주석을 풀기 */}
                           {/* <ImagePlaceholder
                             id='IMG-8'
                             file='cap_hinge_before.png'
-                            desc='A concave glyph, the top face attached at an arbitrary side face swinging over the strip. The whole-strip bounding box dashed'
+                            desc='오목한 글리프, 임의 옆면에 붙인 윗면이 띠 위로 넘어와 겹침. 띠 전체 bbox 점선'
                           /> */}
                           <Figure
                             src={imagePath + 'cap_hinge_before.jpg'}
                             className='h-[260px] w-auto object-contain'
                           />
                           <p className='text-center text-[13px] text-neutral-500'>
-                            Attached to an arbitrary side face. The top face swings over the already-unfolded strip and
-                            overlaps it.
+                            임의의 옆면에 붙이면. 윗면이 이미 펼친 띠 위로 넘어와 겹칩니다.
                           </p>
                         </div>
                         <div className='flex flex-col items-center gap-[6px]'>
-                          {/* TODO: once the image is ready, remove the ImagePlaceholder below and uncomment the Figure */}
+                          {/* TODO: 이미지 준비되면 아래 ImagePlaceholder를 지우고 Figure 주석을 풀기 */}
                           {/* <ImagePlaceholder
                             id='IMG-8b'
                             file='cap_hinge_after.png'
-                            desc='The same glyph, the top face attached at the least-overlapping side face. Compared against the same dashed bounding box'
+                            desc='같은 글리프, 가장 덜 겹치는 옆면에 붙인 윗면. 같은 bbox 점선과 비교'
                           /> */}
                           <Figure src={imagePath + 'cap_hinge_after.jpg'} className='h-[260px] w-auto object-contain' />
                           <p className='text-center text-[13px] text-neutral-500'>
-                            Attached to the least-overlapping side face. It lands in a spot that does not overlap the
-                            strip.
+                            가장 덜 겹치는 옆면에 붙이면. 띠와 겹치지 않는 자리에 놓입니다.
                           </p>
                         </div>
                       </div>
                     </figure>
                   </div>
                   <div className='flex flex-col gap-[6px]'>
-                    <SubHeading>Step 3. Excluding the inner wall of a hole</SubHeading>
+                    <SubHeading>Step 3. 구멍의 안쪽 벽은 제외합니다</SubHeading>
                     <p className='text-neutral-600'>
-                      Glyphs with holes have their side faces split into several cycles. 'O' has one cycle running
-                      around the outer contour and one cycle running around the inside of the hole. 'B' has two holes,
-                      so it has three cycles in total. Only the cycle that forms the outer wall is unfolded into the
-                      net. The inner wall of the hole is removed from the net only, not from the 3D model.
+                      구멍이 있는 글리프는 옆면이 여러 개의 고리로 나뉩니다. 'O'라면 바깥 윤곽을 도는 고리 하나와 구멍
+                      안쪽을 도는 고리 하나, 'B'라면 구멍이 두 개라 고리가 셋입니다. 이 중 바깥 벽에 해당하는 고리만
+                      전개도에 펼치고, 구멍의 안쪽 벽은 전개도에서만 뺍니다.
                     </p>
                     <p className='text-neutral-600'>
-                      The problem is that nothing at the 3D stage records which cycle is the outer wall. At the 2D
-                      stage, I distinguished exterior from interior based on which contour contained which. However,
-                      this information is not carried over when several contours are merged into one 3D solid. Because
-                      of this, I currently treat whichever cycle has the most side faces as the outer wall. This is
-                      based on the assumption that a longer outer contour will also have more faces than the hole.
+                      문제는 어느 고리가 바깥 벽인지를 3D 단계에서 알려주는 정보가 남아 있지 않다는 점입니다. 2D
+                      단계에서는 윤곽선끼리의 포함 관계로 exterior와 interior를 구분했습니다. 하지만 이 정보는 여러
+                      윤곽을 하나의 3D 입체로 합치는 과정에서 따로 저장되지 않습니다. 그래서 지금은 옆면 조각이 가장
+                      많은 고리를 바깥 벽으로 간주합니다. 바깥 윤곽이 구멍보다 길면 면도 더 많을 거라는 가정입니다.
                     </p>
                     <p className='text-neutral-600'>
-                      However, this assumption does not hold. The number of side faces depends more on how finely a
-                      curve is subdivided into segments than on how long the contour actually is. Point density varies a
-                      lot from font to font. Built in the same way, Stone's 'O' has only 16 side faces, while Arbor's
-                      'G' has 517. Even within a single letter, if the hole's curve is subdivided more finely than the
-                      outer contour, the hole wall can be mistakenly chosen as the outer wall. The most reliable fix is
-                      to compare each cycle's footprint on the XZ plane, using its bounding-box area, and then choose
-                      whichever cycle is largest as the outer wall. This measure does not depend on how finely the curve
-                      was subdivided at all.
+                      하지만 이 가정은 맞지 않습니다. 옆면 조각의 수는 윤곽선의 길이보다 곡선이 얼마나 잘게 나뉘었는지에
+                      더 좌우되기 때문입니다. 실제로 폰트에 따라 점 밀도가 크게 달라서, 같은 방식으로 만들어도 Stone
+                      'O'는 옆면이 16개인데 Arbor 'G'는 517개였습니다. 한 글자 안에서도 구멍 쪽 곡선이 바깥 윤곽보다
+                      잘게 쪼개져 있으면 구멍 벽이 바깥 벽으로 잘못 선택될 수 있습니다. 가장 확실한 해결책은 고리마다 XZ
+                      평면에서의 크기(bounding box 면적)를 비교해 가장 큰 고리를 바깥으로 고르는 것입니다. 이 방식은
+                      곡선이 얼마나 잘게 나뉘었는지와 무관하게 판정됩니다.
                     </p>
-                    {/* TODO: once the image is ready, remove the ImagePlaceholder below and uncomment the Figure */}
+                    {/* TODO: 이미지 준비되면 아래 ImagePlaceholder를 지우고 Figure 주석을 풀기 */}
                     {/* <ImagePlaceholder
                       id='IMG-9'
                       file='inner_wall.png'
-                      desc="'O' or 'B' folded, shown as a real object or in 3D, with no inner wall around the counter"
+                      desc="'O'나 'B'를 접은 실물/3D — counter 안쪽 벽이 없는 모습"
                     /> */}
                     <Figure src={imagePath + 'inner_wall.jpg'} />
                   </div>
                   <div className='flex flex-col gap-[6px]'>
-                    <SubHeading>Step 4. Stacking multiple components vertically</SubHeading>
+                    <SubHeading>Step 4. component가 여럿이면 세로로 쌓습니다</SubHeading>
                     <p className='text-neutral-600'>
-                      Each component gets its own reference face and its own net. I then measure each net's fully
-                      unfolded size and stack them vertically so that none of them overlap.
+                      component마다 기준 면을 따로 두고 전개도를 만든 다음, 완전히 펼친 크기를 재서 서로 겹치지 않도록
+                      위아래로 배치합니다.
                     </p>
-                    {/* TODO: once the image is ready, remove the ImagePlaceholder below and uncomment the Figure */}
+                    {/* TODO: 이미지 준비되면 아래 ImagePlaceholder를 지우고 Figure 주석을 풀기 */}
                     {/* <ImagePlaceholder
                       id='IMG-10'
                       file='islands_stack.png'
-                      desc="Arbor's '0', three nets (the ring, the dot, and the bar) stacked vertically"
+                      desc="Arbor '0' 전개도 세 장(테두리, 점, 막대)이 세로로 쌓인 화면"
                     /> */}
                     <Figure src={imagePath + 'islands_stack.jpg'} />
                   </div>
                   <div className='flex flex-col gap-[6px]'>
-                    <SubHeading>Nets by type</SubHeading>
+                    <SubHeading>유형별 전개도</SubHeading>
                     <div className='overflow-x-auto'>
                       <table className='w-full min-w-[520px] text-left text-[14px]'>
                         <thead>
                           <tr className='border-b border-black text-black'>
-                            <th className='py-[6px] pr-[16px] font-semibold'>Type</th>
-                            <th className='py-[6px] pr-[16px] font-semibold'>Examples</th>
-                            <th className='py-[6px] font-semibold'>Net</th>
+                            <th className='py-[6px] pr-[16px] font-semibold'>유형</th>
+                            <th className='py-[6px] pr-[16px] font-semibold'>예시</th>
+                            <th className='py-[6px] font-semibold'>전개도</th>
                           </tr>
                         </thead>
                         <tbody className='align-top text-neutral-600'>
                           {[
+                            ['A. 단순', 'I, L', '옆면이 한 줄의 띠로 펴지고, 위·아래 면이 각각 한 자리에 붙습니다.'],
                             [
-                              'A. Simple',
-                              'I, L',
-                              'The side faces unfold into a single strip, with the top and bottom faces each attached at one spot.',
-                            ],
-                            [
-                              'B. n holes',
+                              'B. 구멍 n개',
                               'O, B',
-                              'The side faces split into 1 + (number of holes) cycles. Only the largest cycle is unfolded, and the hole walls are excluded. The top and bottom faces unfold still showing their holes.',
+                              '옆면 고리가 1 + 구멍 수개로 나뉩니다. 가장 큰 고리만 펼치고 구멍 벽은 제외합니다. 위·아래 면은 구멍이 뚫린 모양 그대로 펼쳐집니다.',
                             ],
                             [
-                              'C. Multiple components',
+                              'C. component 여러 개',
                               'i, ㅃ',
-                              'Each component gets its own independent net, and the nets are stacked vertically.',
+                              'component마다 독립된 전개도가 만들어지고 세로로 쌓입니다.',
                             ],
-                            ['D. An island inside a hole', 'Arbor “0”', 'Same as C. Each component gets its own net.'],
+                            ['D. 구멍 안의 섬', 'Arbor “0”', 'C와 같습니다. component별로 각각 전개도를 갖습니다.'],
                             [
-                              'E. Pinch',
-                              'Stone’s horse, limnlimn k',
-                              "The false connection created at the contact point is cut first. If the top face also splits, as with Stone's horse, the glyph is treated as two components, the same as type C. If the top face stays whole, as with limnlimn k, it stays a single net, the same as type B.",
+                              'E. pinch',
+                              'Stone 말, limnlimn k',
+                              '한 점에서 닿아 생긴 가짜 연결을 먼저 끊습니다. 윗면까지 갈라지면(Stone 말) 두 component로 나뉘어 C와 같이 처리되고, 윗면이 이어져 있으면(limnlimn k) 한 장 그대로 B와 같이 처리됩니다.',
                             ],
                           ].map(([type, example, result]) => (
                             <tr key={type} className='border-b border-neutral-200'>
@@ -977,15 +926,13 @@ export default function DailyFoldingPracticePage() {
                     </div>
                   </div>
                   <div className='flex flex-col gap-[6px]'>
-                    <SubHeading>Overlap</SubHeading>
+                    <SubHeading>겹침을 완전히 막을 수는 없습니다</SubHeading>
                     <p className='text-neutral-600'>
-                      Choosing a cutting tree that never overlaps is, in general, a difficult problem. It is still not
-                      known whether a non-overlapping edge unfolding always exists for convex polyhedra. This is known
-                      as Dürer's conjecture, and it remains unsolved. [10] For non-convex polyhedra, there are known
-                      examples where overlap cannot be avoided, no matter how the edges are cut. [11] Because of this,
-                      instead of simulating spanning trees directly, I check for overlap on the glyph itself. Going
-                      forward, I would like to generalize this approach, so that nets can also be generated for 3D
-                      solids beyond simple prisms.
+                      겹치지 않는 절단 트리를 고르는 문제는 일반적으로 어렵습니다. 볼록 다면체에 대해서도 항상 겹치지
+                      않는 모서리 전개가 존재하는지는 Dürer의 추측으로 아직 미해결이고, [10] 비볼록 다면체에서는 어떻게
+                      모서리를 잘라도 겹침을 피할 수 없는 예가 알려져 있습니다. [11] 그래서 spanning tree를 바로
+                      시뮬레이션하지 않고 glyph에서 겹침을 확인하는 방식으로 접근하고 있습니다. 좀 더 나아가 prism
+                      이외에 다양한 형태의 3D 입체에서 전개도가 생성될 수 있도록 일반화하는 연구를 진행하고 싶습니다.
                     </p>
                   </div>
                 </Chapter>
@@ -994,7 +941,7 @@ export default function DailyFoldingPracticePage() {
                   <p className='text-[13px] font-medium text-[#FF2D8C]'>References</p>
                   <ol className='flex flex-col gap-[2px] text-[13px] text-neutral-500'>
                     {[
-                      ['Typography Dictionary — Glyph', 'https://typography-dictionary.kr/terms/glyph'],
+                      ['타이포그래피 사전 — 글리프', 'https://typography-dictionary.kr/terms/glyph'],
                       ['Wikipedia — Counter (typography)', 'https://en.wikipedia.org/wiki/Counter_(typography)'],
                       [
                         'Microsoft — OpenType spec, glyf table',

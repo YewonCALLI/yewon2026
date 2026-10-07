@@ -52,7 +52,7 @@ const slides = [
     id: 'intro-6',
     title: '2025 Samsung Design Membership',
     src: '/images/intro/intro9.jpg',
-    projectSlug: 'samsung-design-membership',
+    projectSlug: 'samsung-design-membership-2025',
     color: '#2DFFA0',
     vimeoUrl:
       'https://player.vimeo.com/video/1151368571?autoplay=1&loop=1&muted=1&playsinline=1&autopause=1&byline=0&title=0&portrait=0&controls=0&dnt=1&background=1',

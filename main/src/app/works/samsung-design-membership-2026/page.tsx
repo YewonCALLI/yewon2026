@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { Header } from '@/components/projects'
+import { Header, LinkPreviewCard } from '@/components/projects'
 import { projects } from '../projectlist'
 import { Figure } from '@/components/projects/Figure'
 
@@ -91,7 +91,7 @@ export default function SamsungDesignMembership2026Page() {
       <main className='min-h-dvh w-full pt-[60px] text-black'>
         <div className='flex w-full flex-col md:flex-row md:items-start'>
           {/* Left: full project list */}
-          <aside className='hidden md:block w-full shrink-0 border-b border-black px-[30px] py-[24px] md:sticky md:top-[60px] md:h-[calc(100dvh-60px)] md:w-[240px] md:overflow-y-auto md:border-b-0 md:border-r md:px-[40px] md:py-[40px]'>
+          <aside className='hidden md:block w-full shrink-0 border-b border-black px-[30px] py-[24px] md:sticky md:top-[60px] md:h-[calc(100dvh-60px)] md:w-[240px] md:overflow-y-auto md:border-b-0 md:border-r md:px-[30px] md:py-[20px]'>
             <p className='text-[11px] text-neutral-400'>All Works</p>
             <nav className='mt-[16px] flex flex-col gap-[10px]'>
               {projects.map((p) => {
@@ -152,7 +152,7 @@ export default function SamsungDesignMembership2026Page() {
             <div className='mt-[32px] flex flex-col gap-[64px] text-[15px] leading-relaxed'>
               <section id='overview' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-full'>
                 <Chapter kicker='Overview' title='2026 MEP Online Exibition <everyelse>'>
-                  {/* TODO: fill in overview text */}
+                  <LinkPreviewCard href='https://everyelse.com/' />
 
                   <div className='flex flex-col gap-[16px]'>
                     <div className='relative aspect-video w-full overflow-hidden'>

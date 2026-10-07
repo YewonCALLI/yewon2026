@@ -110,9 +110,9 @@ export const projects: Project[] = [
     vimeoId: '1151529949',
   },
   {
-    slug: 'new-formative',
-    name: 'Samsung Design Membership 2025 Online Exhibition',
-    cover: '/images/projects/new-formative/cover.jpg',
+    slug: 'samsung-design-membership-2025',
+    name: '2025 Samsung Design Membership',
+    cover: '/images/projects/samsung-design-membership-2025/cover.jpg',
     part: 'Frontend Developer',
     client: 'Samsung Design Membership',
     created_date: '2025',

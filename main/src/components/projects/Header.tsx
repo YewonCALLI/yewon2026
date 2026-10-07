@@ -27,15 +27,19 @@ const CONTACT = {
   address: 'Based in Pittsburgh and Seoul',
 }
 
-const SOCIALS = [
-  { label: 'Instagram', href: 'https://www.instagram.com/yewon.calli/' },
-  { label: 'X' },
-]
+const SOCIALS = [{ label: 'Instagram', href: 'https://www.instagram.com/yewon.calli/' }, { label: 'X' }]
+
+// Pages that exist in more than one language, mapped to their counterpart.
+const LANGUAGE_ALTERNATES: Record<string, { label: string; href: string }> = {
+  '/works/daily-folding-practice': { label: '한국어', href: '/works/daily-folding-practice/ko' },
+  '/works/daily-folding-practice/ko': { label: 'EN', href: '/works/daily-folding-practice' },
+}
 
 export function Header({ title, accentColor = '#FF2D8C', light = false, mobileLight = light }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [time, setTime] = useState('')
   const pathname = usePathname()
+  const languageAlternate = pathname ? LANGUAGE_ALTERNATES[pathname] : undefined
 
   useEffect(() => {
     const updateTime = () => {
@@ -100,10 +104,7 @@ export function Header({ title, accentColor = '#FF2D8C', light = false, mobileLi
                   }`}
                 >
                   {item.identity && (
-                    <span
-                      className='mr-[6px] text-[13px] font-normal transition-colors'
-                      style={{ color: accentColor }}
-                    >
+                    <span className='mr-[6px] text-[13px] font-normal transition-colors' style={{ color: accentColor }}>
                       {item.identity}
                     </span>
                   )}
@@ -114,7 +115,15 @@ export function Header({ title, accentColor = '#FF2D8C', light = false, mobileLi
           </nav>
         </div>
 
-        <div className={`flex shrink-0 items-center gap-5 text-[11px] ${light ? 'text-black/60' : 'text-white/70'}`}>
+        <div className={`flex shrink-0 items-center gap-5 text-[12px] ${light ? 'text-black/60' : 'text-white/70'}`}>
+          {languageAlternate && (
+            <Link
+              href={languageAlternate.href}
+              className={`transition-colors ${light ? 'hover:text-black' : 'hover:text-white'}`}
+            >
+              {languageAlternate.label}
+            </Link>
+          )}
           <span>{CONTACT.inquiries}</span>
           <span>{CONTACT.address}</span>
           <div className='flex items-center gap-3'>
@@ -154,7 +163,9 @@ export function Header({ title, accentColor = '#FF2D8C', light = false, mobileLi
           }`}
         >
           <span className='flex flex-col items-start justify-center leading-[120%]'>
-            <span className={`text-[10px] font-medium ${mobileLight ? 'text-black/60' : 'text-white/60'}`}>Yewon Jang</span>
+            <span className={`text-[10px] font-medium ${mobileLight ? 'text-black/60' : 'text-white/60'}`}>
+              Yewon Jang
+            </span>
             <span
               className={`max-w-[240px] truncate text-[12px] font-semibold ${mobileLight ? 'text-black' : 'text-white'}`}
             >
@@ -210,6 +221,21 @@ export function Header({ title, accentColor = '#FF2D8C', light = false, mobileLi
           </div>
 
           <div className='flex flex-col gap-[10px] pt-[10px]'>
+            {languageAlternate && (
+              <div
+                className={`flex flex-col gap-[2px] border-t pt-[10px] text-[11px] ${
+                  mobileLight ? 'border-black/10 text-black/70' : 'border-white/10 text-white/80'
+                }`}
+              >
+                <Link
+                  href={languageAlternate.href}
+                  onClick={() => setIsOpen(false)}
+                  className={`transition-colors ${mobileLight ? 'hover:text-black' : 'hover:text-white'}`}
+                >
+                  {languageAlternate.label}
+                </Link>
+              </div>
+            )}
             <div
               className={`flex flex-col gap-[2px] border-t pt-[10px] text-[11px] ${
                 mobileLight ? 'border-black/10 text-black/70' : 'border-white/10 text-white/80'
