@@ -33,6 +33,10 @@ const SOCIALS = [{ label: 'Instagram', href: 'https://www.instagram.com/yewon.ca
 const LANGUAGE_ALTERNATES: Record<string, { label: string; href: string }> = {
   '/works/daily-folding-practice': { label: '한국어', href: '/works/daily-folding-practice/ko' },
   '/works/daily-folding-practice/ko': { label: 'EN', href: '/works/daily-folding-practice' },
+  '/works/weaving-letters': { label: '한국어', href: '/works/weaving-letters/ko' },
+  '/works/weaving-letters/ko': { label: 'EN', href: '/works/weaving-letters' },
+  '/works/xr-science-museum': { label: '한국어', href: '/works/xr-science-museum/ko' },
+  '/works/xr-science-museum/ko': { label: 'EN', href: '/works/xr-science-museum' },
 }
 
 export function Header({ title, accentColor = '#FF2D8C', light = false, mobileLight = light }: HeaderProps) {

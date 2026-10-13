@@ -18,6 +18,7 @@ export const ALL_SKILLS: ProjectSkill[] = [
 export interface Project {
   slug: string
   name: string
+  parent?: string // slug of the project this one is an outcome of
   cover: string
   part?: string
   description?: string
@@ -50,6 +51,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'daily-folding-practice',
+    parent: 'typofold',
     name: 'Daily Folding Practice',
     cover: '/images/projects/daily-folding-practice/cover.jpg',
     part: '',
@@ -57,6 +59,18 @@ export const projects: Project[] = [
     researchQuestion: '',
     keyFindings: '',
     created_date: '2026',
+    skills: [],
+  },
+  {
+    slug: 'weaving-letters',
+    parent: 'typofold',
+    name: 'Weaving Letters',
+    cover: '/images/intro/intro4.jpg',
+    part: '',
+    description: '',
+    researchQuestion: '',
+    keyFindings: '',
+    created_date: '2025',
     skills: [],
   },
   {
@@ -97,7 +111,7 @@ export const projects: Project[] = [
     slug: 'xr-science-museum',
     name: 'XR Science Museum',
     cover: '/images/projects/xr-science-museum/cover.jpg',
-    part: 'UX/UI Designer, Frontend Developer',
+    part: 'UX/UI Designer, 3D Frontend Developer',
     description:
       '14 WebXR contents (websites) included in the MiraeN Science Digital Textbook for Elementary School 5th-6th Grade under the 2022 Revised Curriculum.',
     researchQuestion: 'How can interactive 3D simulations reduce instructional friction in digital science textbooks?',

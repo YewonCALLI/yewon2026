@@ -29,7 +29,7 @@ const slides = [
     id: 'intro-3',
     title: 'Weaving Letters',
     src: '/images/intro/intro4.jpg',
-    projectSlug: 'new-formative',
+    projectSlug: 'weaving-letters',
     color: '#B02DFF',
   },
   {

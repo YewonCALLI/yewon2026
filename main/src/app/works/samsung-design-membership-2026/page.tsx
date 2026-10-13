@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Header, LinkPreviewCard } from '@/components/projects'
 import { projects } from '../projectlist'
+import { ProjectSidebar } from '../ProjectSidebar'
 import { Figure } from '@/components/projects/Figure'
 
 const sectionIds = ['overview', 'process'] as const
@@ -91,25 +92,7 @@ export default function SamsungDesignMembership2026Page() {
       <main className='min-h-dvh w-full pt-[60px] text-black'>
         <div className='flex w-full flex-col md:flex-row md:items-start'>
           {/* Left: full project list */}
-          <aside className='hidden md:block w-full shrink-0 border-b border-black px-[30px] py-[24px] md:sticky md:top-[60px] md:h-[calc(100dvh-60px)] md:w-[240px] md:overflow-y-auto md:border-b-0 md:border-r md:px-[30px] md:py-[20px]'>
-            <p className='text-[11px] text-neutral-400'>All Works</p>
-            <nav className='mt-[16px] flex flex-col gap-[10px]'>
-              {projects.map((p) => {
-                const isActive = p.slug === project.slug
-                return (
-                  <Link
-                    key={p.slug}
-                    href={`/works/${p.slug}`}
-                    className={`text-[13px] leading-snug transition-colors ${
-                      isActive ? 'font-bold text-black' : 'text-neutral-400 hover:text-black'
-                    }`}
-                  >
-                    {p.name}
-                  </Link>
-                )
-              })}
-            </nav>
-          </aside>
+          <ProjectSidebar activeSlug={project.slug} />
 
           {/* Right: project content */}
           <div className='min-w-0 flex-1 px-[22px] py-[24px] md:px-[40px] md:py-[40px]'>

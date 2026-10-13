@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation'
 import { Header } from '@/components/projects'
 import { ProjectMedia } from '../../ProjectMedia'
 import { projects } from '../../projectlist'
+import { ProjectSidebar } from '../../ProjectSidebar'
 import CroppedFigure from '../../../../components/projects/CroppedFigure'
 import { Figure } from '../../../../components/projects/Figure'
 import Head from 'next/head'
@@ -110,30 +111,17 @@ export default function DailyFoldingPracticePage() {
       <main className='min-h-dvh w-full pt-[60px] text-black'>
         <div className='flex w-full flex-col md:flex-row md:items-start'>
           {/* Left: full project list */}
-          <aside className='hidden md:block w-full shrink-0 border-b border-black px-[30px] py-[24px] md:sticky md:top-[60px] md:h-[calc(100dvh-60px)] md:w-[240px] md:overflow-y-auto md:border-b-0 md:border-r md:px-[30px] md:py-[20px]'>
-            <p className='text-[11px] text-neutral-400'>All Works</p>
-            <nav className='mt-[16px] flex flex-col gap-[10px]'>
-              {projects.map((p) => {
-                const isActive = p.slug === project.slug
-                return (
-                  <Link
-                    key={p.slug}
-                    href={`/works/${p.slug}`}
-                    className={`text-[13px] leading-snug transition-colors ${
-                      isActive ? 'font-bold text-black' : 'text-neutral-400 hover:text-black'
-                    }`}
-                  >
-                    {p.name}
-                  </Link>
-                )
-              })}
-            </nav>
-          </aside>
+          <ProjectSidebar activeSlug={project.slug} />
 
           {/* Right: project content */}
           <div className='min-w-0 flex-1 px-[22px] py-[24px] md:px-[40px] md:py-[40px]'>
             <div className='flex flex-col justify-between  md:flex-row'>
-              <h1 className='text-[24px] font-semibold'>{project.name}</h1>
+              <div>
+                <Link href={`/works/${project.parent}`} className='text-[13px] text-neutral-400 hover:text-black'>
+                  ← Part of TypoFold
+                </Link>
+                <h1 className='text-[24px] font-semibold'>{project.name}</h1>
+              </div>
               <div className='flex flex-col gap-[4px] text-[16px] leading-relaxed lg:w-[60%]'>
                 <p className='text-[#FF2D8C]'>
                   Collaborated with type designer Namju Ok to further develop TypoFold through a deeper understanding of
