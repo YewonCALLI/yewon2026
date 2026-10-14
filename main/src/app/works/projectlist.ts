@@ -151,7 +151,7 @@ export const projects: Project[] = [
   {
     slug: 'word-wide-web',
     name: 'Word Wide Web',
-    cover: '/images/projects/word-wide-web/cover.gif',
+    cover: '/images/projects/word-wide-web/cover.jpg',
     part: 'Graphic Designer, AI Engineer, Frontend Developer',
     description: 'A word-weaving platform that creates poems through connected synonyms.',
     researchQuestion: `Can a community's shared vocabulary become the foundation for a tool that supports poetic expression?`,

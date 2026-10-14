@@ -82,9 +82,9 @@ export function Header({ title, accentColor = '#FF2D8C', light = false, mobileLi
       >
         <div className='flex shrink-0 items-center gap-6'>
           <Link href='/' className='flex flex-col items-start justify-center leading-[120%]'>
-            <span className={`text-[20px] font-semibold ${light ? 'text-black' : 'text-white'}`}>Yewon Jang</span>
+            <span className={`text-title font-medium ${light ? 'text-black' : 'text-white'}`}>Yewon Jang</span>
             <span
-              className={`md:hidden max-w-[160px] truncate text-[20px] font-semibold ${light ? 'text-black' : 'text-white'}`}
+              className={`md:hidden max-w-[160px] truncate text-title font-medium ${light ? 'text-black' : 'text-white'}`}
             >
               {title}
             </span>
@@ -97,7 +97,7 @@ export function Header({ title, accentColor = '#FF2D8C', light = false, mobileLi
                 <Link
                   key={item.label}
                   href={item.href}
-                  className={`whitespace-nowrap text-[20px] font-medium transition-colors ${
+                  className={`whitespace-nowrap text-title font-medium transition-colors ${
                     light
                       ? isActive
                         ? 'text-black'
@@ -108,7 +108,7 @@ export function Header({ title, accentColor = '#FF2D8C', light = false, mobileLi
                   }`}
                 >
                   {item.identity && (
-                    <span className='mr-[6px] text-[13px] font-normal transition-colors' style={{ color: accentColor }}>
+                    <span className='mr-[6px] text-label font-normal transition-colors' style={{ color: accentColor }}>
                       {item.identity}
                     </span>
                   )}
@@ -119,7 +119,7 @@ export function Header({ title, accentColor = '#FF2D8C', light = false, mobileLi
           </nav>
         </div>
 
-        <div className={`flex shrink-0 items-center gap-5 text-[12px] ${light ? 'text-black/60' : 'text-white/70'}`}>
+        <div className={`flex shrink-0 items-center gap-5 text-label ${light ? 'text-black/60' : 'text-white/70'}`}>
           {languageAlternate && (
             <Link
               href={languageAlternate.href}
@@ -167,11 +167,11 @@ export function Header({ title, accentColor = '#FF2D8C', light = false, mobileLi
           }`}
         >
           <span className='flex flex-col items-start justify-center leading-[120%]'>
-            <span className={`text-[10px] font-medium ${mobileLight ? 'text-black/60' : 'text-white/60'}`}>
+            <span className={`text-label font-medium ${mobileLight ? 'text-black/60' : 'text-white/60'}`}>
               Yewon Jang
             </span>
             <span
-              className={`max-w-[240px] truncate text-[12px] font-semibold ${mobileLight ? 'text-black' : 'text-white'}`}
+              className={`max-w-[240px] truncate text-label font-medium ${mobileLight ? 'text-black' : 'text-white'}`}
             >
               {isOpen ? 'Menu' : title}
             </span>
@@ -206,13 +206,13 @@ export function Header({ title, accentColor = '#FF2D8C', light = false, mobileLi
                     if (item.href === '#') event.preventDefault()
                     setIsOpen(false)
                   }}
-                  className={`block border-b py-[12px] text-[15px] font-medium ${
+                  className={`block border-b py-[12px] text-body font-medium ${
                     mobileLight ? 'border-black/10' : 'border-white/10'
                   }`}
                 >
                   {item.identity && (
                     <span
-                      className='mr-[12px] text-[11px] font-normal transition-colors'
+                      className='mr-[12px] text-label font-normal transition-colors'
                       style={{ color: accentColor }}
                     >
                       {item.identity}
@@ -227,7 +227,7 @@ export function Header({ title, accentColor = '#FF2D8C', light = false, mobileLi
           <div className='flex flex-col gap-[10px] pt-[10px]'>
             {languageAlternate && (
               <div
-                className={`flex flex-col gap-[2px] border-t pt-[10px] text-[11px] ${
+                className={`flex flex-col gap-[2px] border-t pt-[10px] text-label ${
                   mobileLight ? 'border-black/10 text-black/70' : 'border-white/10 text-white/80'
                 }`}
               >
@@ -241,7 +241,7 @@ export function Header({ title, accentColor = '#FF2D8C', light = false, mobileLi
               </div>
             )}
             <div
-              className={`flex flex-col gap-[2px] border-t pt-[10px] text-[11px] ${
+              className={`flex flex-col gap-[2px] border-t pt-[10px] text-label ${
                 mobileLight ? 'border-black/10 text-black/70' : 'border-white/10 text-white/80'
               }`}
             >
@@ -250,7 +250,7 @@ export function Header({ title, accentColor = '#FF2D8C', light = false, mobileLi
             </div>
 
             <div
-              className={`flex flex-col gap-[2px] border-t pt-[10px] text-[11px] ${
+              className={`flex flex-col gap-[2px] border-t pt-[10px] text-label ${
                 mobileLight ? 'border-black/10 text-black/70' : 'border-white/10 text-white/80'
               }`}
             >
@@ -272,7 +272,7 @@ export function Header({ title, accentColor = '#FF2D8C', light = false, mobileLi
             </div>
 
             <div
-              className={`flex items-center justify-between border-t pt-[10px] text-[10px] ${
+              className={`flex items-center justify-between border-t pt-[10px] text-label ${
                 mobileLight ? 'border-black/10 text-black/60' : 'border-white/10 text-white/60'
               }`}
             >

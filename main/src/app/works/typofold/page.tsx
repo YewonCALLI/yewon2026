@@ -14,28 +14,28 @@ const imagePath = '/images/projects/typofold/'
 const sectionIds = ['research', 'design', 'development', 'final design', 'workshop'] as const
 
 function Kicker({ children }: { children: React.ReactNode }) {
-  return <p className='text-[13px] font-medium text-[#FF2D8C]'>{children}</p>
+  return <p className='text-label font-medium text-[#FF2D8C]'>{children}</p>
 }
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className='mt-[4px] max-w-[640px] text-[20px] font-semibold leading-snug text-black md:text-[22px]'>
+    <h2 className='mt-[4px] max-w-[640px] text-title font-medium leading-snug text-black md:text-title'>
       {children}
     </h2>
   )
 }
 
 function SubHeading({ children }: { children: React.ReactNode }) {
-  return <h3 className='text-[15px] font-semibold text-black'>{children}</h3>
+  return <h3 className='text-heading font-medium text-black'>{children}</h3>
 }
 
 function Statement({ children }: { children: React.ReactNode }) {
-  return <p className='max-w-[640px] text-[16px] font-semibold leading-snug text-black'>{children}</p>
+  return <p className='max-w-[640px] text-body font-medium leading-snug text-black'>{children}</p>
 }
 
 function Tag({ children }: { children: React.ReactNode }) {
   return (
-    <span className='inline-flex w-fit items-center rounded-full border border-black px-[10px] py-[3px] text-[11px] font-medium text-black'>
+    <span className='inline-flex w-fit items-center rounded-full border border-black px-[10px] py-[3px] text-label font-medium text-ink'>
       {children}
     </span>
   )
@@ -55,7 +55,7 @@ function Chapter({
   return (
     <div
       id={id}
-      className='flex scroll-mt-[110px] flex-col gap-[20px] border-t border-black pt-[40px] first:border-t-0 first:pt-0'
+      className='flex scroll-mt-[110px] flex-col gap-[36px] border-t border-black pt-[40px] first:border-t-0 first:pt-0'
     >
       <div>
         <Kicker>{kicker}</Kicker>
@@ -115,7 +115,7 @@ export default function TypofoldPage() {
   return (
     <>
       <Header title={project.name} accentColor='#FF2D8C' light mobileLight={isNavStuck} />
-      <main className='min-h-dvh w-full pt-[60px] text-black'>
+      <main className='min-h-dvh w-full pt-[60px] text-ink'>
         <div className='flex w-full flex-col md:flex-row md:items-start'>
           {/* Left: full project list */}
           <ProjectSidebar activeSlug={project.slug} />
@@ -123,10 +123,10 @@ export default function TypofoldPage() {
           {/* Right: project content */}
           <div className='min-w-0 flex-1 px-[22px] py-[24px] md:px-[40px] md:py-[40px]'>
             <div className='flex flex-col justify-between gap-[16px] md:flex-row'>
-              <h1 className='text-[24px] font-semibold'>{project.name}</h1>
-              <div className='flex flex-col gap-[4px] lg:w-[60%]'>
+              <h1 className='text-title font-medium'>{project.name}</h1>
+              <div className='flex flex-col gap-[4px] lg:w-[70%]'>
                 <p className='text-[#FF2D8C]'>A design tool that converts 3D models into paper crafts</p>
-                <p className='text-black'>
+                <p className='text-ink'>
                   08.2024 - Present / Computational Origami, Tool Development / Creative Awards, HCI Korea 2025 /
                   Advisor. Prof Yongsoon Choi
                 </p>
@@ -144,8 +144,8 @@ export default function TypofoldPage() {
                 <a
                   key={id}
                   href={`#${id}`}
-                  className={`shrink-0 text-[14px] capitalize transition-colors ${
-                    activeSection === id ? 'font-bold text-black' : 'text-neutral-400 hover:text-black'
+                  className={`shrink-0 text-body capitalize transition-colors ${
+                    activeSection === id ? 'font-medium text-black' : 'text-neutral-500 hover:text-black'
                   }`}
                 >
                   {id}
@@ -153,17 +153,17 @@ export default function TypofoldPage() {
               ))}
             </nav>
 
-            <div className='mt-[32px] flex flex-col gap-[64px] text-[15px] leading-relaxed'>
+            <div className='mt-[32px] flex flex-col gap-[64px] text-body leading-relaxed'>
               {/* Research Question / Key Findings from project data */}
-              <section className='flex flex-col gap-[16px] lg:w-[60%]'>
+              <section className='flex flex-col gap-[16px] lg:w-[70%]'>
                 <div>
-                  <p className='text-[#FF2D8C] text-[13px] font-medium'>Research Question</p>
+                  <p className='text-[#FF2D8C] text-label font-medium'>Research Question</p>
                   <p className='mt-[4px]'>{project.researchQuestion}</p>
                 </div>
               </section>
 
               {/* RESEARCH */}
-              <section id='research' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-[60%]'>
+              <section id='research' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-[70%]'>
                 <Chapter kicker='Background' title="Why don't digital creations feel like my own?">
                   <p>
                     As digital creation tools become faster and more automated, creative efficiency increases, but we
@@ -175,27 +175,27 @@ export default function TypofoldPage() {
                   <Figure src={imagePath + '01.jpg'} alt='TypeLab discussion' />
                   <div className='grid grid-cols-1 gap-[12px] md:grid-cols-3'>
                     <div className='flex flex-col gap-[8px] rounded-[6px] border border-black bg-neutral-50 px-[14px] py-[12px]'>
-                      <p className='text-[13px] leading-relaxed text-neutral-600'>
+                      <p className='text-label leading-relaxed text-neutral-600'>
                         Graphics made with digital tools feel like code files floating on a screen. They&apos;re just
                         temporarily rendered images, and they don&apos;t really feel like mine.
                       </p>
-                      <span className='text-[12px] font-medium text-black'>Member Jang</span>
+                      <span className='text-label font-medium text-ink'>Member Jang</span>
                     </div>
                     <div className='flex flex-col gap-[8px] rounded-[6px] border border-black bg-neutral-50 px-[14px] py-[12px]'>
-                      <p className='text-[13px] leading-relaxed text-neutral-600'>
+                      <p className='text-label leading-relaxed text-neutral-600'>
                         More like a code file floating on a screen, a momentary rendering that I don&apos;t truly hold
                         or own.
                       </p>
-                      <span className='text-[12px] font-medium text-black'>Member Lee</span>
+                      <span className='text-label font-medium text-ink'>Member Lee</span>
                     </div>
                     <div className='flex flex-col gap-[8px] rounded-[6px] border border-black bg-neutral-50 px-[14px] py-[12px]'>
-                      <p className='text-[13px] leading-relaxed text-neutral-600'>
+                      <p className='text-label leading-relaxed text-neutral-600'>
                         All I did was write a few prompts, so I wondered if I could even call this my work.
                       </p>
-                      <span className='text-[12px] font-medium text-black'>Member Kim</span>
+                      <span className='text-label font-medium text-ink'>Member Kim</span>
                     </div>
                   </div>
-                  <p className='text-neutral-600'>
+                  <p className='text-ink'>
                     We shared a recurring feeling that code art can seem distant. We started asking what kind of
                     materiality code art can have, and what realistic ways there are to distribute it. I wanted to
                     unpack the questions we raised together that day.
@@ -203,7 +203,7 @@ export default function TypofoldPage() {
                 </Chapter>
 
                 <Chapter kicker='Desk Research' title='How AI Automation Affects Creative Ownership and Idea Quality'>
-                  <p className='text-neutral-600'>
+                  <p className='text-ink'>
                     To explore the problem space more deeply, I conducted desk research to gather actionable insights.
                     The research revealed that as digital creative tools become faster and more automated, creators
                     experience increased efficiency—but at the cost of authorship and ownership. Prior studies show that
@@ -215,7 +215,7 @@ export default function TypofoldPage() {
                     <div className='flex flex-col gap-[12px] md:flex-row md:items-start'>
                       <div className='flex flex-col gap-[6px] md:w-[45%]'>
                         <SubHeading>1. Brainstorming feels more effective with conversational AI</SubHeading>
-                        <p className='text-neutral-600'>
+                        <p className='text-ink'>
                           Participants were able to explore ideas more quickly through iterative conversations with AI
                           and responded that it was more helpful in the brainstorming process.
                         </p>
@@ -226,7 +226,7 @@ export default function TypofoldPage() {
                     <div className='flex flex-col gap-[12px] md:flex-row md:items-start'>
                       <div className='flex flex-col gap-[6px] md:w-[45%]'>
                         <SubHeading>2. Idea quality did not significantly differ</SubHeading>
-                        <p className='text-neutral-600'>
+                        <p className='text-ink'>
                           Creators reported that there was no significant difference in idea quality between conditions
                           with and without AI use.
                         </p>
@@ -237,7 +237,7 @@ export default function TypofoldPage() {
                     <div className='flex flex-col gap-[12px] md:flex-row md:items-start'>
                       <div className='flex flex-col gap-[6px] md:w-[45%]'>
                         <SubHeading>3. Automation reduces authorship and ownership</SubHeading>
-                        <p className='text-neutral-600'>
+                        <p className='text-ink'>
                           When measuring sense of ownership over creations on a 1-7 scale, as AI involvement increased,
                           the sense of ownership felt by creators dropped sharply.
                         </p>
@@ -259,20 +259,20 @@ export default function TypofoldPage() {
               </section>
 
               {/* DESIGN */}
-              <section id='design' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-[60%]'>
+              <section id='design' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-[70%]'>
                 <Chapter kicker='Design Motivation' title='Where does the sense of ownership over creations come from?'>
                   <Figure src={imagePath + '05.png'} className='bg-[#0058AB] p-4' />
                   <Figure src={imagePath + '06.png'} className='-mt-1 bg-[#0058AB] px-8' />
-                  <p className='text-neutral-600'>
+                  <p className='text-ink'>
                     According to the IKEA effect, people assign higher value to outcomes they&apos;ve personally
                     invested effort in and feel a stronger sense of ownership. Noting that automation increases
                     efficiency but weakens ownership, I sought to apply the IKEA effect to creative coding tools.
                   </p>
 
-                  <div className='flex flex-col gap-[6px]'>
+                  <div className='flex flex-col gap-[24px]'>
                     <Kicker>What creates ownership?</Kicker>
-                    <p className='text-neutral-600'>
-                      <span className='font-medium text-black'>Effort and time | </span>
+                    <p className='text-ink'>
+                      <span className='font-medium text-ink'>Effort and time | </span>
                       People value creations more when they&apos;ve invested significant effort and time into making
                       them.
                     </p>
@@ -289,7 +289,7 @@ export default function TypofoldPage() {
                 </Chapter>
 
                 <Chapter kicker='Concept Framing' title='Transforming digital creation into a hands-on experience'>
-                  <p className='text-neutral-600'>
+                  <p className='text-ink'>
                     Based on insights from desk research and direct observation of creative coding classes, I reframed
                     my approach to digital making. Instead of one-click automatic generation, I shifted toward a
                     construction-based approach where students put in effort and assemble things themselves.
@@ -305,16 +305,16 @@ export default function TypofoldPage() {
 
                   <div className='flex flex-col gap-[8px]'>
                     <Figure src={imagePath + '07.jpg'} alt='p5.js editor' />
-                    <p className='text-[13px] text-neutral-500'>
+                    <p className='text-label text-neutral-600'>
                       One of the representative creative coding platforms, the p5.js editor
                     </p>
                   </div>
 
                   <div className='flex flex-col gap-[8px] rounded-[8px] bg-neutral-50 p-[20px]'>
                     <Kicker>Ideation Leap: From Generation to Assembly</Kicker>
-                    <p className='text-neutral-600'>Shifting digital creation toward hands-on construction</p>
+                    <p className='text-ink'>Shifting digital creation toward hands-on construction</p>
                     <Figure src={imagePath + '08.png'} className='bg-white p-4' />
-                    <p className='text-neutral-600'>
+                    <p className='text-ink'>
                       Inspired by the IKEA effect, origami, and paper craft templates, I designed a tool that allows
                       users to create digital outputs through hands-on experience.
                     </p>
@@ -322,7 +322,7 @@ export default function TypofoldPage() {
                 </Chapter>
 
                 <Chapter kicker='Design Direction' title='Designing for ownership in TypoFold'>
-                  <p className='text-neutral-600'>
+                  <p className='text-ink'>
                     Based on the research, I established three design principles for TypoFold.
                   </p>
 
@@ -333,7 +333,7 @@ export default function TypofoldPage() {
                         <SubHeading>
                           Provide paper craft templates that can be assembled by hand, instead of finished products.
                         </SubHeading>
-                        <p className='text-neutral-600'>
+                        <p className='text-ink'>
                           Rather than hiding the generation process, I made it so users can directly see and manipulate
                           how forms are created.
                         </p>
@@ -347,7 +347,7 @@ export default function TypofoldPage() {
                         <SubHeading>
                           Sense of ownership comes not from the result, but from the process of making.
                         </SubHeading>
-                        <p className='text-neutral-600'>
+                        <p className='text-ink'>
                           I designed an experience where users make things themselves through folding, assembling, and
                           choosing, rather than simply receiving the final product.
                         </p>
@@ -361,7 +361,7 @@ export default function TypofoldPage() {
                         <SubHeading>
                           Automation doesn&apos;t mean making it for you; it means enabling you to make it yourself.
                         </SubHeading>
-                        <p className='text-neutral-600'>
+                        <p className='text-ink'>
                           Automation is used to generate structures that users can transform, combine, and modify.
                         </p>
                       </div>
@@ -374,7 +374,7 @@ export default function TypofoldPage() {
                   kicker='User Scenario'
                   title='Creating a pipeline to generate paper craft templates from 3D models'
                 >
-                  <p className='text-neutral-600'>
+                  <p className='text-ink'>
                     I chose the alphabet as the first application case. Letters can form various words, and each one
                     functions as a module. Additionally, they can accommodate various languages and typefaces, offering
                     a wide range of variations. Based on this first case, I plan to expand to 3D models beyond the
@@ -385,9 +385,9 @@ export default function TypofoldPage() {
               </section>
 
               {/* DEVELOPMENT */}
-              <section id='development' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-[60%]'>
+              <section id='development' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-[70%]'>
                 <Chapter kicker='System Pipeline' title='From Mesh to Net: The 3D to 2D Pipeline'>
-                  <p className='text-neutral-600'>
+                  <p className='text-ink'>
                     To support the iterative making flow shown in the previous scenario, TypoFold translates
                     code-generated 3D forms into foldable paper nets through a structured 3D-to-2D pipeline.
                   </p>
@@ -395,7 +395,7 @@ export default function TypofoldPage() {
                 </Chapter>
 
                 <Chapter kicker='Technical Challenge' title='Perceptual Faces vs. Rendering Geometry'>
-                  <p className='text-neutral-600'>
+                  <p className='text-ink'>
                     While triangulation is efficient for rendering, it became a critical obstacle when building
                     TypoFold—fragmenting perceived surfaces and preventing reliable generation of foldable nets for
                     physical assembly.
@@ -404,7 +404,7 @@ export default function TypofoldPage() {
                   <div className='flex flex-col gap-[8px]'>
                     <Kicker>Problem</Kicker>
                     <SubHeading>Perceptual Surfaces Were Fragmented by Triangulation</SubHeading>
-                    <p className='text-neutral-600'>
+                    <p className='text-ink'>
                       When TypoFold imports 3D letterforms, each surface is automatically triangulated for rendering.
                       While efficient computationally, this breaks a single perceived surface into many small
                       faces—making it difficult to generate paper nets that align with how users cut, fold, and assemble
@@ -415,14 +415,14 @@ export default function TypofoldPage() {
 
                   <div className='flex flex-col gap-[8px]'>
                     <Kicker>Solution</Kicker>
-                    <p className='text-neutral-600'>
+                    <p className='text-ink'>
                       To address this, I grouped adjacent triangles that{' '}
-                      <span className='font-semibold text-black'>(1) share edges and</span>{' '}
-                      <span className='font-semibold text-black'>(2) have aligned surface normals</span>, allowing the
+                      <span className='font-medium text-ink'>(1) share edges and</span>{' '}
+                      <span className='font-medium text-ink'>(2) have aligned surface normals</span>, allowing the
                       system to reconstruct perceptually meaningful faces.
                     </p>
                     <Figure src={imagePath + '15.png'} />
-                    <p className='text-[13px] text-neutral-500'>
+                    <p className='text-label text-neutral-600'>
                       This enables the unfolding process to operate on surfaces as users perceive them—rather than on
                       low-level geometric primitives.
                     </p>
@@ -430,7 +430,7 @@ export default function TypofoldPage() {
                 </Chapter>
 
                 <Chapter kicker='Technical Challenge' title='Unfolding breaks due to internal faces'>
-                  <p className='text-neutral-600'>
+                  <p className='text-ink'>
                     After reconstructing the perceptual faces, another problem came up during net generation. When
                     unfolding them into 2D layouts, internal surfaces were still included, which caused overlaps and
                     made physical assembly impossible. This meant I needed a more selective approach to unfolding.
@@ -439,7 +439,7 @@ export default function TypofoldPage() {
                   <div className='flex flex-col gap-[8px]'>
                     <Kicker>Problem</Kicker>
                     <SubHeading>Unfolding Internal Faces Breaks Physical Assembly</SubHeading>
-                    <p className='text-neutral-600'>
+                    <p className='text-ink'>
                       When unfolding 3D letterforms into paper nets, including all faces caused internal surfaces to
                       overlap in the 2D layout. These internal faces do not contribute to physical assembly and instead
                       produce nets that cannot be cut, folded, or assembled correctly.
@@ -449,7 +449,7 @@ export default function TypofoldPage() {
 
                   <div className='flex flex-col gap-[8px]'>
                     <Kicker>Solution</Kicker>
-                    <p className='text-neutral-600'>
+                    <p className='text-ink'>
                       To solve this, I sorted the faces by their orientation and used a DFS algorithm that skips
                       internal faces. This ensures the generated paper nets don&apos;t overlap and can actually be
                       assembled by hand.
@@ -462,7 +462,7 @@ export default function TypofoldPage() {
                   kicker='Usability Testing'
                   title='Finding a paper craft template method suitable for actual assembly'
                 >
-                  <p className='text-neutral-600'>
+                  <p className='text-ink'>
                     After solving structural issues in template generation, I examined how the cutting and folding
                     process differs depending on the unfolding method. I conducted a user preference test to determine
                     which method is most suitable for assembly.
@@ -471,7 +471,7 @@ export default function TypofoldPage() {
                   <div className='flex flex-col gap-[8px] rounded-[8px] bg-neutral-50 p-[20px]'>
                     <Kicker>Key Question</Kicker>
                     <Statement>&quot;Which unfolding method is easiest to cut, fold, and assemble?&quot;</Statement>
-                    <p className='mt-[8px] text-neutral-600'>
+                    <p className='mt-[8px] text-ink'>
                       Participants preferred the side-priority unfolding method and responded that it was easier to cut
                       and assemble. Based on these results, TypoFold adopted side-priority unfolding as the default
                       method.
@@ -495,7 +495,7 @@ export default function TypofoldPage() {
                     href='https://typofold.vercel.app/'
                     target='_blank'
                     rel='noopener noreferrer'
-                    className='inline-flex w-fit items-center gap-[6px] text-[16px] font-medium text-black underline underline-offset-4 hover:text-neutral-500'
+                    className='inline-flex w-fit items-center gap-[6px] text-body font-medium text-black underline underline-offset-4 hover:text-black'
                   >
                     TypoFold Website →
                   </a>
@@ -511,7 +511,7 @@ export default function TypofoldPage() {
               {/* WORKSHOP */}
               <section id='workshop' className='flex scroll-mt-[110px] flex-col gap-[56px]'>
                 <Chapter kicker='Workshop' title=''>
-                  <p className='text-neutral-600'>
+                  <p className='text-ink'>
                     TypoFold met users through the HCI Korea 2025 workshop and Pado-Space Wave.
                   </p>
                   <div className='grid grid-cols-1 gap-[12px] md:grid-cols-3'>
@@ -522,24 +522,24 @@ export default function TypofoldPage() {
                 </Chapter>
 
                 <Chapter kicker='Workshop Evaluation' title='Ownership Emerges Through Making'>
-                  <p className='text-neutral-600'>
+                  <p className='text-ink'>
                     Through a subsequent survey, I confirmed that the process of assembling by hand increased both
                     enjoyment and sense of ownership.
                   </p>
-                  <p className='text-[13px] text-neutral-500'>*18 participants responded to the post-workshop survey</p>
+                  <p className='text-label text-neutral-600'>*18 participants responded to the post-workshop survey</p>
                   <Figure src={imagePath + '28.png'} className='md:w-full' />
 
                   <div className='flex flex-col gap-[12px]'>
-                    <p className='text-neutral-600'>
+                    <p className='text-ink'>
                       In the next phase, I extended TypoFold beyond letterforms to test how the unfolding pipeline
                       performs across more complex 3D geometries.
                     </p>
-                    <p className='text-neutral-600'>
+                    <p className='text-ink'>
                       By applying the system to varied shapes with different topology and surface structures, I
                       evaluated whether the workflow could generalize beyond typography while maintaining physical
                       assemblability and visual coherence.
                     </p>
-                    <p className='text-neutral-600'>
+                    <p className='text-ink'>
                       This shift turns TypoFold from a typography-focused prototype into a broader method for converting
                       digital 3D models into foldable physical structures. At the same time, it revealed new challenges
                       around face segmentation, overlap handling, and maintaining consistency at scale.

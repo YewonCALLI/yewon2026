@@ -79,7 +79,7 @@ export function ImageSlider({ images, autoPlay = false, autoPlayInterval = 3000,
           ))}
         </div>
       </div>
-      <div className='mt-[8px] flex items-center justify-between text-[12px] text-neutral-400'>
+      <div className='mt-[8px] flex items-center justify-between text-label text-neutral-500'>
         <div className='flex gap-[6px]'>
           {images.map((_, i) => (
             <button

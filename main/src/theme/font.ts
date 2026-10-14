@@ -15,17 +15,37 @@ export const pretendard = localFont({
   display: "swap",
 });
 
-// Satoshi (영문용; 가변 폰트) – weight 범위: 300 ~ 900
+// PP Neue Montreal (영문용)
 export const fontEnglish = localFont({
   src: [
     {
-      path: "../../public/fonts/Satoshi/Satoshi-Variable.woff2",
-      weight: "300 900",
+      path: "../../public/fonts/PPNeueMontreal/PPNeueMontreal-Thin.woff2",
+      weight: "100",
       style: "normal",
     },
     {
-      path: "../../public/fonts/Satoshi/Satoshi-VariableItalic.woff2",
-      weight: "300 900",
+      path: "../../public/fonts/PPNeueMontreal/PPNeueMontreal-Book.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/PPNeueMontreal/PPNeueMontreal-Medium.woff2",
+      weight: "500 600",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/PPNeueMontreal/PPNeueMontreal-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/PPNeueMontreal/PPNeueMontreal-Italic.woff2",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../../public/fonts/PPNeueMontreal/PPNeueMontreal-SemiBolditalic.woff2",
+      weight: "600 700",
       style: "italic",
     },
   ],

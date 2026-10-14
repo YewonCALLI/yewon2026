@@ -34,8 +34,8 @@ export default function WorksPage() {
                 key={skill}
                 type='button'
                 onClick={() => toggleSkill(skill)}
-                className={`text-[11px] transition-colors ${
-                  isActive ? 'text-black underline' : 'text-black hover:text-neutral-700'
+                className={`text-label transition-colors ${
+                  isActive ? 'text-black underline' : 'text-black hover:text-neutral-600'
                 }`}
               >
                 {skill}
@@ -47,7 +47,7 @@ export default function WorksPage() {
             <button
               type='button'
               onClick={clearFilters}
-              className='text-[11px] text-neutral-400 transition-colors hover:text-black'
+              className='text-label text-neutral-500 transition-colors hover:text-black'
             >
               Clear
             </button>

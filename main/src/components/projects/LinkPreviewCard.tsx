@@ -54,11 +54,11 @@ export function LinkPreviewCard({ href }: LinkPreviewCardProps) {
         )}
       </div>
       <div className='flex flex-col justify-center gap-[4px] px-[16px] py-[12px]'>
-        <p className='text-[15px] font-semibold text-black group-hover:text-white'>{data?.title ?? fallbackHost}</p>
+        <p className='text-body font-medium text-black group-hover:text-white'>{data?.title ?? fallbackHost}</p>
         {data?.description && (
-          <p className='text-[13px] text-neutral-500 group-hover:text-white'>{data.description}</p>
+          <p className='text-label text-neutral-600 group-hover:text-white'>{data.description}</p>
         )}
-        <p className='text-[11px] text-neutral-400 group-hover:text-white'>{data?.url ?? fallbackHost}</p>
+        <p className='text-label text-neutral-500 group-hover:text-white'>{data?.url ?? fallbackHost}</p>
       </div>
     </a>
   )

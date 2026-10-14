@@ -16,27 +16,27 @@ const imagePath = '/images/projects/daily-folding-practice/'
 const sectionIds = ['process', 'archive'] as const
 
 function Kicker({ children }: { children: React.ReactNode }) {
-  return <p className='text-[13px] font-medium text-[#FF2D8C]'>{children}</p>
+  return <p className='text-label font-medium text-[#FF2D8C]'>{children}</p>
 }
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className='mt-[4px] max-w-[640px] text-[20px] font-semibold leading-snug text-black md:text-[22px]'>
+    <h2 className='mt-[4px] max-w-[640px] text-title font-medium leading-snug text-black md:text-title'>
       {children}
     </h2>
   )
 }
 
 function SubHeading({ children }: { children: React.ReactNode }) {
-  return <h3 className='text-[15px] font-semibold text-black'>{children}</h3>
+  return <h3 className='text-heading font-medium text-black'>{children}</h3>
 }
 
 function ImagePlaceholder({ id, file, desc }: { id: string; file: string; desc: string }) {
   return (
     <div className='my-[12px] flex aspect-video w-full flex-col items-center justify-center gap-[6px] border border-dashed border-neutral-400 bg-neutral-50 px-[16px] text-center'>
-      <p className='text-[13px] font-semibold text-[#FF2D8C]'>{id}</p>
-      <p className='text-[13px] text-neutral-600'>{desc}</p>
-      <p className='font-mono text-[12px] text-neutral-400'>{file}</p>
+      <p className='text-label font-medium text-[#FF2D8C]'>{id}</p>
+      <p className='text-label text-neutral-600'>{desc}</p>
+      <p className='font-mono text-label text-neutral-500'>{file}</p>
     </div>
   )
 }
@@ -55,7 +55,7 @@ function Chapter({
   return (
     <div
       id={id}
-      className='flex scroll-mt-[110px] flex-col gap-[20px] border-t border-black pt-[40px] first:border-t-0 first:pt-0'
+      className='flex scroll-mt-[110px] flex-col gap-[36px] border-t border-black pt-[40px] first:border-t-0 first:pt-0'
     >
       <div>
         <Kicker>{kicker}</Kicker>
@@ -108,7 +108,7 @@ export default function DailyFoldingPracticePage() {
   return (
     <>
       <Header title={project.name} accentColor='#FF2D8C' light mobileLight={isNavStuck} />
-      <main className='min-h-dvh w-full pt-[60px] text-black'>
+      <main className='min-h-dvh w-full pt-[60px] text-ink'>
         <div className='flex w-full flex-col md:flex-row md:items-start'>
           {/* Left: full project list */}
           <ProjectSidebar activeSlug={project.slug} />
@@ -117,17 +117,17 @@ export default function DailyFoldingPracticePage() {
           <div className='min-w-0 flex-1 px-[22px] py-[24px] md:px-[40px] md:py-[40px]'>
             <div className='flex flex-col justify-between  md:flex-row'>
               <div>
-                <Link href={`/works/${project.parent}`} className='text-[13px] text-neutral-400 hover:text-black'>
+                <Link href={`/works/${project.parent}`} className='text-label text-neutral-500 hover:text-black'>
                   ← Part of TypoFold
                 </Link>
-                <h1 className='text-[24px] font-semibold'>{project.name}</h1>
+                <h1 className='text-title font-medium'>{project.name}</h1>
               </div>
-              <div className='flex flex-col gap-[4px] text-[16px] leading-relaxed lg:w-[60%]'>
+              <div className='flex flex-col gap-[4px] text-body leading-relaxed lg:w-[70%]'>
                 <p className='text-[#FF2D8C]'>
                   Collaborated with type designer Namju Ok to further develop TypoFold through a deeper understanding of
                   type design.
                 </p>
-                <p className='text-black'>
+                <p className='text-ink'>
                   04.2026 - 05.2026 / Workshop, Computational Design, Interactive Media / Space PADO
                 </p>
               </div>
@@ -144,8 +144,8 @@ export default function DailyFoldingPracticePage() {
                 <a
                   key={id}
                   href={`#${id}`}
-                  className={`shrink-0 text-[14px] capitalize transition-colors ${
-                    activeSection === id ? 'font-bold text-black' : 'text-neutral-400 hover:text-black'
+                  className={`shrink-0 text-body capitalize transition-colors ${
+                    activeSection === id ? 'font-medium text-black' : 'text-neutral-500 hover:text-black'
                   }`}
                 >
                   {id}
@@ -153,9 +153,9 @@ export default function DailyFoldingPracticePage() {
               ))}
             </nav>
 
-            <div className='mt-[32px] flex flex-col gap-[64px] text-[15px] leading-relaxed'>
+            <div className='mt-[32px] flex flex-col gap-[64px] text-body leading-relaxed'>
               {/* OVERVIEW */}
-              <section id='process' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-full'>
+              <section id='process' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-[70%]'>
                 <Chapter kicker='Process' title='About the Collaboration'>
                   <div className='grid grid-cols-1 gap-[12px] md:grid-cols-3'>
                     <Figure className='w-full' src={imagePath + 'workshop_poster.png'} />
@@ -177,7 +177,7 @@ export default function DailyFoldingPracticePage() {
                     Through this collaboration, I was fortunate to apply four of Namju's font families, 6 styles in
                     total, to TypoFold.
                   </p>
-                  <dl className='grid grid-cols-[max-content_1fr] gap-x-[24px] gap-y-[4px] text-[14px]'>
+                  <dl className='grid grid-cols-[max-content_1fr] gap-x-[24px] gap-y-[4px] text-body'>
                     {[
                       ['limnlimn', 'Leaves, Fresh'],
                       ['Stone', 'Heavy, Classy'],
@@ -185,8 +185,8 @@ export default function DailyFoldingPracticePage() {
                       ['Koshmar', 'Regular'],
                     ].map(([family, styles]) => (
                       <div key={family} className='contents'>
-                        <dt className='font-semibold'>{family}</dt>
-                        <dd className='text-neutral-600'>{styles}</dd>
+                        <dt className='font-medium'>{family}</dt>
+                        <dd className='text-ink'>{styles}</dd>
                       </div>
                     ))}
                   </dl>
@@ -281,7 +281,7 @@ export default function DailyFoldingPracticePage() {
                           <SubHeading>{term}</SubHeading>
                           {image && <Figure className='w-[70%] md:w-full' src={imagePath + image} />}
                         </div>
-                        <p className='text-neutral-600'>{body}</p>
+                        <p className='text-ink'>{body}</p>
                       </div>
                     ))}
                   </div>
@@ -296,9 +296,9 @@ export default function DailyFoldingPracticePage() {
                   </p>
                   <Figure src={imagePath + 'Font Tree.png'} />
                   <div className='flex flex-col gap-[24px]'>
-                    <div className='flex flex-col gap-[6px]'>
+                    <div className='flex flex-col gap-[24px]'>
                       <SubHeading>1. How many connected components?</SubHeading>
-                      <p className='text-neutral-600'>
+                      <p className='text-ink'>
                         The first question is how many separate components make up the glyph. A glyph with a single
                         component, like 'I' or 'O', becomes one Polyhedron. A glyph like 'i', where the body and the dot
                         are separate, becomes several Polyhedra. Even the same letter 'i' can become one Polyhedron or
@@ -306,18 +306,18 @@ export default function DailyFoldingPracticePage() {
                         net splits into that many separate pieces.
                       </p>
                     </div>
-                    <div className='flex flex-col gap-[6px]'>
+                    <div className='flex flex-col gap-[24px]'>
                       <SubHeading>2. Any Closed Counters?</SubHeading>
-                      <p className='text-neutral-600'>
+                      <p className='text-ink'>
                         The second question is whether the glyph has any closed counters. A glyph with no closed
                         counters has its boundary defined by the exterior ring alone. A glyph with closed counters gets
                         one interior ring for each counter. For example, 'O' is a Polyhedron with one exterior ring and
                         one interior ring, and 'B' has one exterior ring and two interior rings.
                       </p>
                     </div>
-                    <div className='flex flex-col gap-[6px]'>
+                    <div className='flex flex-col gap-[24px]'>
                       <SubHeading>3. Any Nested Exterior Rings?</SubHeading>
-                      <p className='text-neutral-600'>
+                      <p className='text-ink'>
                         When a glyph has several components and a closed counter, I check whether another component sits
                         inside the hole. This kind of component is called an exterior ring at depth 2. Even though it
                         looks like a single shape from the outside, it is not connected to the outer component. Because
@@ -326,20 +326,20 @@ export default function DailyFoldingPracticePage() {
                         exterior ring.
                       </p>
                     </div>
-                    <div className='flex flex-col gap-[6px]'>
+                    <div className='flex flex-col gap-[24px]'>
                       <SubHeading>Edge case: Pinch point</SubHeading>
-                      <p className='text-neutral-600'>
+                      <p className='text-ink'>
                         Some glyphs have a contour that touches another contour, or touches itself, at a single point. I
                         first noticed this in the horse-shaped dingbat in Stone Heavy and Classy. However, once I
                         checked every glyph across all four fonts, I found that this was more common than I expected.
                         There were three ways this contact could happen.
                       </p>
-                      <ul className='flex flex-col gap-[2px] pl-[16px] text-neutral-600'>
+                      <ul className='flex flex-col gap-[2px] pl-[16px] text-black'>
                         <li>(a) A contour touching itself: Stone's horse</li>
                         <li>(b) Two different exterior rings touching: limnlimn i, l, y</li>
                         <li>(c) An exterior ring touching an interior ring: limnlimn k</li>
                       </ul>
-                      <p className='text-neutral-600'>
+                      <p className='text-ink'>
                         Whether this kind of contact is allowed in a 2D polygon depends on the data model. OGC Simple
                         Features allows two different rings to touch at a point, but it does not allow a ring to touch
                         itself. [5] Esri's model, on the other hand, allows a ring to touch itself too. [6] Either way,
@@ -375,10 +375,10 @@ export default function DailyFoldingPracticePage() {
                     Earlier I classified glyph types by their number of connected components and their number of
                     exterior and interior rings. Now I want to explain how I designed the unfolding for each type.
                   </p>
-                  <div className='flex flex-col gap-[8px] border border-neutral-300 p-[16px] text-[14px]'>
-                    <dl className='flex flex-col gap-[8px] text-neutral-600'>
+                  <div className='flex flex-col gap-[8px] border border-neutral-300 p-[16px] text-body'>
+                    <dl className='flex flex-col gap-[8px] text-black'>
                       <div>
-                        <dt className='inline font-semibold text-black'>
+                        <dt className='inline font-medium text-black'>
                           <a
                             href='https://en.wikipedia.org/wiki/Dual_graph'
                             target='_blank'
@@ -395,7 +395,7 @@ export default function DailyFoldingPracticePage() {
                         </dd>
                       </div>
                       <div>
-                        <dt className='inline font-semibold text-black'>
+                        <dt className='inline font-medium text-black'>
                           <a
                             href='https://en.wikipedia.org/wiki/Spanning_tree'
                             target='_blank'
@@ -413,7 +413,7 @@ export default function DailyFoldingPracticePage() {
                         </dd>
                       </div>
                       <div>
-                        <dt className='inline font-semibold text-black'>
+                        <dt className='inline font-medium text-black'>
                           <a
                             href='https://en.wikipedia.org/wiki/Chordal_graph'
                             target='_blank'
@@ -430,9 +430,9 @@ export default function DailyFoldingPracticePage() {
                     </dl>
                   </div>
                   <div className='flex flex-col gap-[32px]'>
-                    <div className='flex flex-col gap-[6px]'>
+                    <div className='flex flex-col gap-[24px]'>
                       <SubHeading>Step 1. Unfolding the side faces: choosing which edges to cut</SubHeading>
-                      <p className='text-neutral-600'>
+                      <p className='text-ink'>
                         To flatten a solid, you need to decide which edges to cut and which edges to fold. To handle
                         this with computation, I split the solid's surface into flat faces and build a dual graph G =
                         (V, E). Here, V is the set of faces, and E is the set of face pairs that share an edge. An
@@ -440,7 +440,7 @@ export default function DailyFoldingPracticePage() {
                         such as star unfolding, source unfolding, and cut locus unfolding. However, this piece only
                         covers edge unfolding, which cuts strictly along the edges of the solid.
                       </p>
-                      <figure className='my-[12px] flex flex-col gap-[20px]'>
+                      <figure className='my-[12px] flex flex-col gap-[24px]'>
                         <svg
                           viewBox='0 0 460 215'
                           className='w-full max-w-[560px] text-black'
@@ -518,17 +518,17 @@ export default function DailyFoldingPracticePage() {
                             </text>
                           </g>
                         </svg>
-                        <figcaption className='text-[13px] text-neutral-500'>
+                        <figcaption className='text-label text-neutral-600'>
                           Each side face becomes a point, and adjacent faces are connected by a line.
                         </figcaption>
                       </figure>
-                      <p className='text-neutral-600'>
+                      <p className='text-ink'>
                         An edge unfolding is the same as choosing one spanning tree T from this dual graph G. Every
                         face, except the root, rotates flat around the edge it shares with its parent in T. A different
                         T produces a different layout, and it also changes the chance of overlap. In other words, the
                         question of how to unfold a solid is the same as the question of which spanning tree to choose.
                       </p>
-                      <p className='text-neutral-600'>
+                      <p className='text-ink'>
                         For glyphs without a pinch point, this choice was never a problem. Each side face only has two
                         neighbors, the ones directly before and after it. Because of this, the graph made only from side
                         faces is simply a collection of cycles. With one exterior ring and one interior ring, you get
@@ -537,9 +537,9 @@ export default function DailyFoldingPracticePage() {
                         changes, and the strip never overlaps itself.
                       </p>
                     </div>
-                    <div className='flex flex-col gap-[6px]'>
+                    <div className='flex flex-col gap-[24px]'>
                       <SubHeading>Where the overlap came from</SubHeading>
-                      <p className='text-neutral-600'>
+                      <p className='text-ink'>
                         The problem appeared in glyphs with a pinch point. At this point, four side faces share a single
                         vertical edge. As a result, two faces that would normally be reached only by going most of the
                         way around the contour suddenly become direct neighbors. In graph terms, this creates a chord
@@ -637,34 +637,34 @@ export default function DailyFoldingPracticePage() {
                             </text>
                           </g>
                         </svg>
-                        <figcaption className='text-[13px] text-neutral-500'>
+                        <figcaption className='text-label text-neutral-600'>
                           A chord connects two faces that are far apart on the contour, giving them a graph distance of
                           1. At an actual pinch point, all four side faces connect to each other. Here, though, this is
                           simplified to a single chord.
                         </figcaption>
                       </figure>
-                      <p className='text-neutral-600'>
+                      <p className='text-ink'>
                         The key point here is that BFS does not choose this shortcut because it prefers to. It simply
                         has no other choice. TypoFold builds its spanning tree using BFS, or breadth-first search. This
                         method attaches the faces closest to the start face first, so every face ends up connected to
                         the start by the fewest possible steps. Let's look at a case with 24 faces, where face 0 is the
                         start and a chord links face 5 and face 15.
                       </p>
-                      <table className='w-full max-w-[420px] text-[14px]'>
+                      <table className='w-full max-w-[420px] text-body'>
                         <tbody>
                           <tr className='border-b border-neutral-200'>
-                            <td className='py-[6px] pr-[16px] text-neutral-600'>
+                            <td className='py-[6px] pr-[16px] text-black'>
                               Distance to face 15 without the chord
                             </td>
                             <td className='py-[6px]'>min(15, 24 − 15) = 9</td>
                           </tr>
                           <tr className='border-b border-neutral-200'>
-                            <td className='py-[6px] pr-[16px] text-neutral-600'>With the chord</td>
+                            <td className='py-[6px] pr-[16px] text-black'>With the chord</td>
                             <td className='py-[6px]'>d(5) + 1 = 6</td>
                           </tr>
                         </tbody>
                       </table>
-                      <p className='text-neutral-600'>
+                      <p className='text-ink'>
                         Since 6 is less than 9, the chord lies on the shortest path. By definition, BFS produces a
                         shortest-path tree, so it cannot avoid using this chord. The moment the chord is used as a fold
                         axis, though, the layout breaks. When a strip is unfolded in a single line, each face's position
@@ -674,15 +674,15 @@ export default function DailyFoldingPracticePage() {
                         from face 6 demands the same slot. As a result, the two subtrees overlap.
                       </p>
                     </div>
-                    <div className='flex flex-col gap-[6px]'>
+                    <div className='flex flex-col gap-[24px]'>
                       <SubHeading>The fix: removing the chord</SubHeading>
-                      <p className='text-neutral-600'>
+                      <p className='text-ink'>
                         I considered weighting the edges by the length of the shared edge. However, in a solid extruded
                         to a uniform height, every edge shared between side faces has the same thickness, so this
                         weighting did not help at all. Instead, I left BFS as it was. I simply removed the problem
                         connection from the graph before the search even began.
                       </p>
-                      <p className='text-neutral-600'>
+                      <p className='text-ink'>
                         When a contour touches itself at a point p, the four side faces that meet there share the same
                         vertical edge. As a result, they are all treated as neighbors of one another. This false
                         connection binds together side walls that should actually unfold separately.
@@ -729,14 +729,14 @@ export default function DailyFoldingPracticePage() {
                             </text>
                           </g>
                         </svg>
-                        <figcaption className='text-[13px] text-neutral-500'>
+                        <figcaption className='text-label text-neutral-600'>
                           The outcome depends on how the four side faces meeting at the pinch point are reconnected. If
                           they are reconnected following contour order, they stay as a single component, just as before.
                           If only the side faces that belong to the same component are reconnected, they split into two
                           components instead.
                         </figcaption>
                       </figure>
-                      <p className='text-neutral-600'>
+                      <p className='text-ink'>
                         So which of the four side faces at p were originally connected to each other? The clue lies in
                         the top and bottom faces. At p, the top faces only touch at a single vertex. Since TypoFold only
                         treats two faces as neighbors when they share an edge, meaning they share at least two vertices,
@@ -746,7 +746,7 @@ export default function DailyFoldingPracticePage() {
                         component each of the four side faces is attached to. I reconnect only the pairs that belong to
                         the same component, and I cut the rest.
                       </p>
-                      <p className='text-neutral-600'>
+                      <p className='text-ink'>
                         At first, I tried pairing side faces that were simply close to each other, but this approach
                         failed. Near a pinch point, physical closeness does not tell you which component a face belongs
                         to. Relying on the top and bottom faces, which were already correctly split, turned out to be
@@ -762,7 +762,7 @@ export default function DailyFoldingPracticePage() {
                         className='h-[260px] my-4 w-auto object-contain'
                         src={imagePath + 'pinch_cap_split.jpg'}
                       />
-                      <p className='text-neutral-600'>
+                      <p className='text-ink'>
                         The outcome falls into two cases, depending on the shape of the top face. For glyphs like
                         Stone's horse or limnlimn i, the top face splits into two pieces at p. In these cases, the graph
                         also splits into two components, which gives two separate nets. These two nets are folded
@@ -785,7 +785,7 @@ export default function DailyFoldingPracticePage() {
                               src={imagePath + 'pinch_overlap_before.jpg'}
                               className='h-[260px] w-auto object-contain'
                             />
-                            <p className='text-center text-[13px] text-neutral-500'>
+                            <p className='text-center text-label text-neutral-600'>
                               Before cutting the chord. Two subtrees claim the same slot and overlap.
                             </p>
                           </div>
@@ -800,7 +800,7 @@ export default function DailyFoldingPracticePage() {
                               src={imagePath + 'pinch_overlap_after.jpg'}
                               className='h-[260px] w-auto object-contain'
                             />
-                            <p className='text-center text-[13px] text-neutral-500'>
+                            <p className='text-center text-label text-neutral-600'>
                               After cutting the chord. Split into two components, unfolding without overlap.
                             </p>
                           </div>
@@ -808,20 +808,20 @@ export default function DailyFoldingPracticePage() {
                       </figure>
                     </div>
                   </div>
-                  <div className='flex flex-col gap-[6px]'>
+                  <div className='flex flex-col gap-[24px]'>
                     <SubHeading>Step 2. Where to attach the top and bottom faces</SubHeading>
-                    <p className='text-neutral-600'>
+                    <p className='text-ink'>
                       Once the entire side-face strip is unfolded, the top and bottom faces remain. These two faces
                       touch the whole perimeter of side faces, so there are as many possible fold edges as there are
                       side faces in the strip. Unlike the side faces, which only ever had one neighbor in front and one
                       behind, here there are a lot of options.
                     </p>
-                    <p className='text-neutral-600'>
+                    <p className='text-ink'>
                       Which side face it is attached to determines where the top and bottom face rotate into place. For
                       glyphs with a concave outline, an arbitrary choice can swing the face right over the strip that is
                       already unfolded, causing an overlap.
                     </p>
-                    <p className='text-neutral-600'>
+                    <p className='text-ink'>
                       So, for this step, I measured the overlap area directly, using bounding boxes. For each candidate
                       side face, I calculate the smallest rectangle that would enclose the top face if it were unfolded
                       along that axis. I then compare this rectangle with the rectangle that encloses the whole strip
@@ -830,7 +830,7 @@ export default function DailyFoldingPracticePage() {
                       am measuring the exact quantity I care about, so this method stays reliable no matter how many
                       candidates there are.
                     </p>
-                    <p className='text-neutral-600'>
+                    <p className='text-ink'>
                       This comparison is only an approximation, though. It compares bounding rectangles rather than each
                       face's actual shape. Because of this, a long, winding strip can make the rectangle much larger
                       than the strip itself. As a result, an empty space can sometimes be misjudged as overlapping. In
@@ -851,7 +851,7 @@ export default function DailyFoldingPracticePage() {
                             src={imagePath + 'cap_hinge_before.jpg'}
                             className='h-[260px] w-auto object-contain'
                           />
-                          <p className='text-center text-[13px] text-neutral-500'>
+                          <p className='text-center text-label text-neutral-600'>
                             Attached to an arbitrary side face. The top face swings over the already-unfolded strip and
                             overlaps it.
                           </p>
@@ -864,7 +864,7 @@ export default function DailyFoldingPracticePage() {
                             desc='The same glyph, the top face attached at the least-overlapping side face. Compared against the same dashed bounding box'
                           /> */}
                           <Figure src={imagePath + 'cap_hinge_after.jpg'} className='h-[260px] w-auto object-contain' />
-                          <p className='text-center text-[13px] text-neutral-500'>
+                          <p className='text-center text-label text-neutral-600'>
                             Attached to the least-overlapping side face. It lands in a spot that does not overlap the
                             strip.
                           </p>
@@ -872,22 +872,22 @@ export default function DailyFoldingPracticePage() {
                       </div>
                     </figure>
                   </div>
-                  <div className='flex flex-col gap-[6px]'>
+                  <div className='flex flex-col gap-[24px]'>
                     <SubHeading>Step 3. Excluding the inner wall of a hole</SubHeading>
-                    <p className='text-neutral-600'>
+                    <p className='text-ink'>
                       Glyphs with holes have their side faces split into several cycles. 'O' has one cycle running
                       around the outer contour and one cycle running around the inside of the hole. 'B' has two holes,
                       so it has three cycles in total. Only the cycle that forms the outer wall is unfolded into the
                       net. The inner wall of the hole is removed from the net only, not from the 3D model.
                     </p>
-                    <p className='text-neutral-600'>
+                    <p className='text-ink'>
                       The problem is that nothing at the 3D stage records which cycle is the outer wall. At the 2D
                       stage, I distinguished exterior from interior based on which contour contained which. However,
                       this information is not carried over when several contours are merged into one 3D solid. Because
                       of this, I currently treat whichever cycle has the most side faces as the outer wall. This is
                       based on the assumption that a longer outer contour will also have more faces than the hole.
                     </p>
-                    <p className='text-neutral-600'>
+                    <p className='text-ink'>
                       However, this assumption does not hold. The number of side faces depends more on how finely a
                       curve is subdivided into segments than on how long the contour actually is. Point density varies a
                       lot from font to font. Built in the same way, Stone's 'O' has only 16 side faces, while Arbor's
@@ -905,9 +905,9 @@ export default function DailyFoldingPracticePage() {
                     /> */}
                     <Figure src={imagePath + 'inner_wall.jpg'} />
                   </div>
-                  <div className='flex flex-col gap-[6px]'>
+                  <div className='flex flex-col gap-[24px]'>
                     <SubHeading>Step 4. Stacking multiple components vertically</SubHeading>
-                    <p className='text-neutral-600'>
+                    <p className='text-ink'>
                       Each component gets its own reference face and its own net. I then measure each net's fully
                       unfolded size and stack them vertically so that none of them overlap.
                     </p>
@@ -919,18 +919,18 @@ export default function DailyFoldingPracticePage() {
                     /> */}
                     <Figure src={imagePath + 'islands_stack.jpg'} />
                   </div>
-                  <div className='flex flex-col gap-[6px]'>
+                  <div className='flex flex-col gap-[24px]'>
                     <SubHeading>Nets by type</SubHeading>
                     <div className='overflow-x-auto'>
-                      <table className='w-full min-w-[520px] text-left text-[14px]'>
+                      <table className='w-full min-w-[520px] text-left text-body'>
                         <thead>
                           <tr className='border-b border-black text-black'>
-                            <th className='py-[6px] pr-[16px] font-semibold'>Type</th>
-                            <th className='py-[6px] pr-[16px] font-semibold'>Examples</th>
-                            <th className='py-[6px] font-semibold'>Net</th>
+                            <th className='py-[6px] pr-[16px] font-medium'>Type</th>
+                            <th className='py-[6px] pr-[16px] font-medium'>Examples</th>
+                            <th className='py-[6px] font-medium'>Net</th>
                           </tr>
                         </thead>
-                        <tbody className='align-top text-neutral-600'>
+                        <tbody className='align-top text-black'>
                           {[
                             [
                               'A. Simple',
@@ -955,7 +955,7 @@ export default function DailyFoldingPracticePage() {
                             ],
                           ].map(([type, example, result]) => (
                             <tr key={type} className='border-b border-neutral-200'>
-                              <td className='py-[8px] pr-[16px] font-semibold text-black'>{type}</td>
+                              <td className='py-[8px] pr-[16px] font-medium text-black'>{type}</td>
                               <td className='py-[8px] pr-[16px]'>{example}</td>
                               <td className='py-[8px]'>{result}</td>
                             </tr>
@@ -964,9 +964,9 @@ export default function DailyFoldingPracticePage() {
                       </table>
                     </div>
                   </div>
-                  <div className='flex flex-col gap-[6px]'>
+                  <div className='flex flex-col gap-[24px]'>
                     <SubHeading>Overlap</SubHeading>
-                    <p className='text-neutral-600'>
+                    <p className='text-ink'>
                       Choosing a cutting tree that never overlaps is, in general, a difficult problem. It is still not
                       known whether a non-overlapping edge unfolding always exists for convex polyhedra. This is known
                       as Dürer's conjecture, and it remains unsolved. [10] For non-convex polyhedra, there are known
@@ -979,8 +979,8 @@ export default function DailyFoldingPracticePage() {
                 </Chapter>
 
                 <div className='flex flex-col gap-[8px] border-t border-black pt-[24px]'>
-                  <p className='text-[13px] font-medium text-[#FF2D8C]'>References</p>
-                  <ol className='flex flex-col gap-[2px] text-[13px] text-neutral-500'>
+                  <p className='text-label font-medium text-[#FF2D8C]'>References</p>
+                  <ol className='flex flex-col gap-[2px] text-label text-neutral-600'>
                     {[
                       ['Typography Dictionary — Glyph', 'https://typography-dictionary.kr/terms/glyph'],
                       ['Wikipedia — Counter (typography)', 'https://en.wikipedia.org/wiki/Counter_(typography)'],
@@ -1017,7 +1017,7 @@ export default function DailyFoldingPracticePage() {
                 </div>
               </section>
 
-              <section id='archive' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-full'>
+              <section id='archive' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-[70%]'>
                 <Chapter kicker='Archive' title='Installation views'>
                   <div className='flex flex-wrap gap-[12px]'>
                     <Figure src={imagePath + '01.jpg'} />

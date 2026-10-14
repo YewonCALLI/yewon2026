@@ -39,14 +39,14 @@ export default function Error({ error }: { error: Error & { digest?: string } })
 
   return (
     <div className='fixed inset-0 z-[100000] bg-white flex flex-col items-center justify-center gap-4 p-8 text-center'>
-      <p className='text-[#222222] text-base font-medium'>
+      <p className='text-black text-body font-medium'>
         페이지를 불러오는 중 문제가 발생했습니다.
         <br />
         새로고침해 주세요.
       </p>
       <button
         onClick={() => window.location.reload()}
-        className='px-6 py-2 bg-white rounded-full outline outline-2 outline-offset-[-2px] outline-black text-black text-sm font-semibold'
+        className='px-6 py-2 bg-white rounded-full outline outline-2 outline-offset-[-2px] outline-black text-black text-body font-medium'
       >
         새로고침
       </button>

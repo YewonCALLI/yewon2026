@@ -19,27 +19,27 @@ const range = (from: number, to: number) => Array.from({ length: to - from + 1 }
 const num = (n: number) => String(n).padStart(2, '0')
 
 function Kicker({ children }: { children: React.ReactNode }) {
-  return <p className='text-[13px] font-medium text-[#0B5FFF]'>{children}</p>
+  return <p className='text-label font-medium text-[#0B5FFF]'>{children}</p>
 }
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className='mt-[4px] max-w-[640px] text-[20px] font-semibold leading-snug text-black md:text-[22px]'>
+    <h2 className='mt-[4px] max-w-[640px] text-title font-medium leading-snug text-black md:text-title'>
       {children}
     </h2>
   )
 }
 
 function SubHeading({ children }: { children: React.ReactNode }) {
-  return <h3 className='text-[15px] font-semibold text-black'>{children}</h3>
+  return <h3 className='text-heading font-medium text-black'>{children}</h3>
 }
 
 function Statement({ children }: { children: React.ReactNode }) {
-  return <p className='max-w-[640px] text-[16px] font-semibold leading-snug text-black'>{children}</p>
+  return <p className='max-w-[640px] text-body font-medium leading-snug text-black'>{children}</p>
 }
 
 function Caption({ children }: { children: React.ReactNode }) {
-  return <p className='text-[13px] text-neutral-400'>{children}</p>
+  return <p className='text-label text-neutral-500'>{children}</p>
 }
 
 function Chapter({
@@ -56,7 +56,7 @@ function Chapter({
   return (
     <div
       id={id}
-      className='flex scroll-mt-[110px] flex-col gap-[20px] border-t border-black pt-[40px] first:border-t-0 first:pt-0'
+      className='flex scroll-mt-[110px] flex-col gap-[36px] border-t border-black pt-[40px] first:border-t-0 first:pt-0'
     >
       <div>
         <Kicker>{kicker}</Kicker>
@@ -93,7 +93,7 @@ function Cols({ items }: { items: { title: string; body: string; note?: string }
         <div key={item.title} className='flex flex-col gap-[8px]'>
           <SubHeading>{item.title}</SubHeading>
           <p>{item.body}</p>
-          {item.note && <p className='text-[13px] text-neutral-400'>{item.note}</p>}
+          {item.note && <p className='text-label text-neutral-500'>{item.note}</p>}
         </div>
       ))}
     </div>
@@ -114,7 +114,7 @@ function Direction({
   return (
     <div className='grid grid-cols-[2fr_1fr] items-center gap-[16px] md:hidden'>
       <div className='flex flex-col gap-[8px]'>
-        <span className='w-fit border border-black px-[8px] py-[2px] text-[13px] font-semibold'>{title}</span>
+        <span className='w-fit border border-black px-[8px] py-[2px] text-label font-medium'>{title}</span>
         <SubHeading>{statement}</SubHeading>
         <ul className='flex flex-col gap-[2px]'>
           {points.map((p) => (
@@ -178,7 +178,7 @@ export default function XRScienceMuseumKoPage() {
   return (
     <>
       <Header title={project.name} accentColor={accentColor} light mobileLight={isNavStuck} />
-      <main className='min-h-dvh w-full pt-[60px] text-black'>
+      <main className='min-h-dvh w-full pt-[60px] text-ink'>
         <div className='flex w-full flex-col md:flex-row md:items-start'>
           {/* Left: full project list */}
           <ProjectSidebar activeSlug={project.slug} />
@@ -186,12 +186,12 @@ export default function XRScienceMuseumKoPage() {
           {/* Right: project content */}
           <div className='min-w-0 flex-1 px-[22px] py-[24px] md:px-[40px] md:py-[40px]'>
             <div className='flex flex-col justify-between gap-[16px] md:flex-row'>
-              <h1 className='text-[24px] font-semibold'>{project.name}</h1>
-              <div className='flex flex-col gap-[4px] lg:w-[60%]'>
+              <h1 className='text-title font-medium'>{project.name}</h1>
+              <div className='flex flex-col gap-[4px] lg:w-[70%]'>
                 <p className='text-[#0B5FFF]'>
                   2022 개정 교육과정 기반 미래엔 초등 5~6학년 과학 디지털 교과서에 수록된 14개의 WebXR 콘텐츠(웹사이트).
                 </p>
-                <p className='text-black'>
+                <p className='text-ink'>
                   2025 - 2026 / WebXR, Computer Graphics, Tool Development / 미래엔 / UX/UI Designer, Frontend Developer
                 </p>
               </div>
@@ -208,8 +208,8 @@ export default function XRScienceMuseumKoPage() {
                 <a
                   key={id}
                   href={`#${id}`}
-                  className={`shrink-0 text-[14px] capitalize transition-colors ${
-                    activeSection === id ? 'font-bold text-black' : 'text-neutral-400 hover:text-black'
+                  className={`shrink-0 text-body capitalize transition-colors ${
+                    activeSection === id ? 'font-medium text-black' : 'text-neutral-500 hover:text-black'
                   }`}
                 >
                   {id}
@@ -217,16 +217,16 @@ export default function XRScienceMuseumKoPage() {
               ))}
             </nav>
 
-            <div className='mt-[32px] flex flex-col gap-[64px] text-[15px] leading-relaxed'>
-              <section className='flex flex-col gap-[16px] lg:w-[60%]'>
+            <div className='mt-[32px] flex flex-col gap-[64px] text-body leading-relaxed'>
+              <section className='flex flex-col gap-[16px] lg:w-[70%]'>
                 <div>
-                  <p className='text-[13px] font-medium text-[#0B5FFF]'>Research Question</p>
+                  <p className='text-label font-medium text-[#0B5FFF]'>Research Question</p>
                   <p className='mt-[4px]'>인터랙티브 3D 시뮬레이션은 디지털 과학 교과서에서 수업 운영의 부담을 어떻게 줄일 수 있을까?</p>
                 </div>
               </section>
 
               {/* RESEARCH */}
-              <section id='research' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-[60%]'>
+              <section id='research' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-[70%]'>
                 <Chapter kicker='Background' title='AI 디지털 교과서 도입을 둘러싼 목소리'>
                   <p>
                     2025년 AI 디지털 교과서가 도입된 이후 디지털 인프라는 확충되었지만, 교육 콘텐츠의 질은 이를 따라가지
@@ -286,7 +286,7 @@ export default function XRScienceMuseumKoPage() {
               </section>
 
               {/* DEVELOPMENT */}
-              <section id='development' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-[60%]'>
+              <section id='development' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-[70%]'>
                 <Chapter kicker='MVP List' title='우리가 만들려는 것'>
                   <p>
                     교실 환경의 핵심 제약과 학생 학습의 공백을 파악한 뒤, 기능의 중요도에 따라 우선순위를 매긴 MVP를
@@ -473,20 +473,19 @@ export default function XRScienceMuseumKoPage() {
 
                 <Chapter kicker='Wireframes & Layout' title='실험 유형별 인터랙션 및 UI 디자인 가이드를 만들었습니다.'>
                   <p>교육과정을 네 가지 실험 유형으로 묶고, 유형별 인터랙션 및 UI 디자인 가이드를 만들었습니다.</p>
-                  {/* The section is 60% wide on lg, so 100%/0.6 breaks out to the full content width */}
-                  <div className='lg:w-[calc(100%/0.6)]'>
-                    <Grid cols={2}>
-                      <Images files={range(50, 53)} />
-                    </Grid>
-                  </div>
+                  <Grid cols={2}>
+                    <Images files={range(50, 53)} />
+                  </Grid>
                 </Chapter>
               </section>
 
               {/* OUTPUT */}
               <section id='output' className='flex scroll-mt-[110px] flex-col gap-[56px]'>
-                <Figure src={imagePath + 'finaldesign1.jpg'} />
+                <div className='lg:w-[70%]'>
+                  <Figure src={imagePath + 'finaldesign1.jpg'} />
+                </div>
 
-                <div className='flex flex-col gap-[56px] lg:w-[60%]'>
+                <div className='flex flex-col gap-[56px] lg:w-[70%]'>
                   <Chapter kicker='Final Design' title='실험 준비와 목표'>
                     <p>
                       XR 과학관은 모든 활동을 실험 소개로 시작합니다. 직접 해 보는 탐구에 들어가기 전에 실험의 목표와 전체
@@ -543,9 +542,11 @@ export default function XRScienceMuseumKoPage() {
                   </Chapter>
                 </div>
 
-                <Figure src={imagePath + 'finaldesign2.webp'} />
+                <div className='lg:w-[70%]'>
+                  <Figure src={imagePath + 'finaldesign2.webp'} />
+                </div>
 
-                <div className='lg:w-[60%]'>
+                <div className='lg:w-[70%]'>
                   <Chapter kicker='Final Design' title='Curriculum'>
                     <p>
                       교육과정 기반 실험 전반에서 반복되는 패턴을 분석해, 다양한 과학 콘텐츠를 재사용 가능한 네 가지 XR
@@ -566,7 +567,7 @@ export default function XRScienceMuseumKoPage() {
               </section> 
 
               {/* REFLECTION */}
-              <section id='reflection' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-[60%]'>
+              <section id='reflection' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-[70%]'>
                 <Chapter kicker='Reflection' title='Future Steps'>
                   <p>
                     XR 과학관은 2026년 3월에 출시되어 여러 교실에 도입될 예정입니다. 이번 도입으로 프로토타입을 넘어 실제

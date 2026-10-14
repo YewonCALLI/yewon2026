@@ -16,27 +16,27 @@ const imagePath = '/images/projects/daily-folding-practice/'
 const sectionIds = ['process', 'archive'] as const
 
 function Kicker({ children }: { children: React.ReactNode }) {
-  return <p className='text-[13px] font-medium text-[#FF2D8C]'>{children}</p>
+  return <p className='text-label font-medium text-[#FF2D8C]'>{children}</p>
 }
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className='mt-[4px] max-w-[640px] text-[20px] font-semibold leading-snug text-black md:text-[22px]'>
+    <h2 className='mt-[4px] max-w-[640px] text-title font-medium leading-snug text-black md:text-title'>
       {children}
     </h2>
   )
 }
 
 function SubHeading({ children }: { children: React.ReactNode }) {
-  return <h3 className='text-[15px] font-semibold text-black'>{children}</h3>
+  return <h3 className='text-heading font-medium text-black'>{children}</h3>
 }
 
 function ImagePlaceholder({ id, file, desc }: { id: string; file: string; desc: string }) {
   return (
     <div className='my-[12px] flex aspect-video w-full flex-col items-center justify-center gap-[6px] border border-dashed border-neutral-400 bg-neutral-50 px-[16px] text-center'>
-      <p className='text-[13px] font-semibold text-[#FF2D8C]'>{id}</p>
-      <p className='text-[13px] text-neutral-600'>{desc}</p>
-      <p className='font-mono text-[12px] text-neutral-400'>{file}</p>
+      <p className='text-label font-medium text-[#FF2D8C]'>{id}</p>
+      <p className='text-label text-neutral-600'>{desc}</p>
+      <p className='font-mono text-label text-neutral-500'>{file}</p>
     </div>
   )
 }
@@ -55,7 +55,7 @@ function Chapter({
   return (
     <div
       id={id}
-      className='flex scroll-mt-[110px] flex-col gap-[20px] border-t border-black pt-[40px] first:border-t-0 first:pt-0'
+      className='flex scroll-mt-[110px] flex-col gap-[36px] border-t border-black pt-[40px] first:border-t-0 first:pt-0'
     >
       <div>
         <Kicker>{kicker}</Kicker>
@@ -108,7 +108,7 @@ export default function DailyFoldingPracticePage() {
   return (
     <>
       <Header title={project.name} accentColor='#FF2D8C' light mobileLight={isNavStuck} />
-      <main className='min-h-dvh w-full pt-[60px] text-black'>
+      <main className='min-h-dvh w-full pt-[60px] text-ink'>
         <div className='flex w-full flex-col md:flex-row md:items-start'>
           {/* Left: full project list */}
           <ProjectSidebar activeSlug={project.slug} />
@@ -117,17 +117,17 @@ export default function DailyFoldingPracticePage() {
           <div className='min-w-0 flex-1 px-[22px] py-[24px] md:px-[40px] md:py-[40px]'>
             <div className='flex flex-col justify-between  md:flex-row'>
               <div>
-                <Link href={`/works/${project.parent}`} className='text-[13px] text-neutral-400 hover:text-black'>
+                <Link href={`/works/${project.parent}`} className='text-label text-neutral-500 hover:text-black'>
                   ← Part of TypoFold
                 </Link>
-                <h1 className='text-[24px] font-semibold'>{project.name}</h1>
+                <h1 className='text-title font-medium'>{project.name}</h1>
               </div>
-              <div className='flex flex-col gap-[4px] text-[16px] leading-relaxed lg:w-[60%]'>
+              <div className='flex flex-col gap-[4px] text-body leading-relaxed lg:w-[70%]'>
                 <p className='text-[#FF2D8C]'>
                   Collaborated with type designer Namju Ok to further develop TypoFold through a deeper understanding of
                   type design.
                 </p>
-                <p className='text-black'>
+                <p className='text-ink'>
                   04.2026 - 05.2026 / Workshop, Computational Design, Interactive Media / Space PADO
                 </p>
               </div>
@@ -144,8 +144,8 @@ export default function DailyFoldingPracticePage() {
                 <a
                   key={id}
                   href={`#${id}`}
-                  className={`shrink-0 text-[14px] capitalize transition-colors ${
-                    activeSection === id ? 'font-bold text-black' : 'text-neutral-400 hover:text-black'
+                  className={`shrink-0 text-body capitalize transition-colors ${
+                    activeSection === id ? 'font-medium text-black' : 'text-neutral-500 hover:text-black'
                   }`}
                 >
                   {id}
@@ -153,9 +153,9 @@ export default function DailyFoldingPracticePage() {
               ))}
             </nav>
 
-            <div className='mt-[32px] flex flex-col gap-[64px] text-[15px] leading-relaxed'>
+            <div className='mt-[32px] flex flex-col gap-[64px] text-body leading-relaxed'>
               {/* OVERVIEW */}
-              <section id='process' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-full'>
+              <section id='process' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-[70%]'>
                 <Chapter kicker='Process' title='About the Collaboration'>
                   <div className='grid grid-cols-1 gap-[12px] md:grid-cols-3'>
                     <Figure className='w-full' src={imagePath + 'workshop_poster.png'} />
@@ -174,7 +174,7 @@ export default function DailyFoldingPracticePage() {
                 <Chapter kicker='Fonts' title='Four Font Families by Namju Ok'>
                   {/* TODO: Koshmar Italic을 썼다면 '7개 스타일'로, 아래 Koshmar를 'Regular, Italic'으로 */}
                   <p>이번 협업을 통해 감사하게도 남주님의 폰트 4종(6개 스타일)을 TypoFold에 적용할 수 있었습니다.</p>
-                  <dl className='grid grid-cols-[max-content_1fr] gap-x-[24px] gap-y-[4px] text-[14px]'>
+                  <dl className='grid grid-cols-[max-content_1fr] gap-x-[24px] gap-y-[4px] text-body'>
                     {[
                       ['limnlimn', 'Leaves, Fresh'],
                       ['Stone', 'Heavy, Classy'],
@@ -182,8 +182,8 @@ export default function DailyFoldingPracticePage() {
                       ['Koshmar', 'Regular'],
                     ].map(([family, styles]) => (
                       <div key={family} className='contents'>
-                        <dt className='font-semibold'>{family}</dt>
-                        <dd className='text-neutral-600'>{styles}</dd>
+                        <dt className='font-medium'>{family}</dt>
+                        <dd className='text-ink'>{styles}</dd>
                       </div>
                     ))}
                   </dl>
@@ -272,7 +272,7 @@ export default function DailyFoldingPracticePage() {
                           <SubHeading>{term}</SubHeading>
                           {image && <Figure className='w-[70%] md:w-full' src={imagePath + image} />}
                         </div>
-                        <p className='text-neutral-600'>{body}</p>
+                        <p className='text-ink'>{body}</p>
                       </div>
                     ))}
                   </div>
@@ -287,9 +287,9 @@ export default function DailyFoldingPracticePage() {
                   </p>
                   <Figure src={imagePath + 'Font Tree.png'} />
                   <div className='flex flex-col gap-[24px]'>
-                    <div className='flex flex-col gap-[6px]'>
+                    <div className='flex flex-col gap-[24px]'>
                       <SubHeading>1. How many connected components?</SubHeading>
-                      <p className='text-neutral-600'>
+                      <p className='text-ink'>
                         첫 번째 질문은 글리프가 서로 떨어진 몇 개의 component로 이루어져 있는지입니다. 'I'나 'O'처럼
                         component가 하나라면 결과물은 하나의 Polyhedron이 되고, 'i'처럼 몸통과 점이 떨어져 있다면 여러
                         개의 Polyhedra가 됩니다. 같은 문자 'i'라고 해도 폰트의 생김새에 따라 Polyhedron이 될 수도
@@ -297,37 +297,37 @@ export default function DailyFoldingPracticePage() {
                         Polyhedra의 개수만큼 나뉘어집니다.
                       </p>
                     </div>
-                    <div className='flex flex-col gap-[6px]'>
+                    <div className='flex flex-col gap-[24px]'>
                       <SubHeading>2. Any Closed Counters?</SubHeading>
-                      <p className='text-neutral-600'>
+                      <p className='text-ink'>
                         두 번째 질문은 closed counter가 있는지입니다. closed counter가 없는 글리프는 exterior ring만으로
                         경계가 정의되고, closed counter가 있으면 그 개수만큼 interior ring이 생깁니다. 예를 들어 'O'는
                         exterior ring 1개와 interior ring 1개, 'B'는 exterior ring 1개와 interior ring 2개로 이루어진
                         Polyhedron입니다.
                       </p>
                     </div>
-                    <div className='flex flex-col gap-[6px]'>
+                    <div className='flex flex-col gap-[24px]'>
                       <SubHeading>3. Any Nested Exterior Rings?</SubHeading>
-                      <p className='text-neutral-600'>
+                      <p className='text-ink'>
                         component가 여러 개이면서 closed counter가 있는 경우에는 구멍 안에 또 다른 component(depth 2의
                         exterior ring)가 들어 있는지 확인합니다. 겉으로는 하나의 형태처럼 보여도 바깥 component와 이어져
                         있지 않기 때문에 별도의 Polyhedron으로 떨어집니다. 예를 들어 Arbor의 '0'은 바깥 테두리, 가운데
                         점, 위쪽 막대로 이루어진 3개의 Polyhedra이고, 이 중 가운데 점이 nested exterior ring입니다.
                       </p>
                     </div>
-                    <div className='flex flex-col gap-[6px]'>
+                    <div className='flex flex-col gap-[24px]'>
                       <SubHeading>Edge case: Pinch point</SubHeading>
-                      <p className='text-neutral-600'>
+                      <p className='text-ink'>
                         글리프 중에는 윤곽선이 한 점에서 다른 윤곽선이나 자기 자신과 맞닿아 있는 것들이 있습니다.
                         처음에는 Stone Heavy와 Classy의 말 모양 딩벳에서 이런 접점을 발견했는데, 네 폰트의 글리프를 전부
                         조사해 보니 생각보다 흔했습니다. 세 가지의 맞닿는 방식이 있었습니다.
                       </p>
-                      <ul className='flex flex-col gap-[2px] pl-[16px] text-neutral-600'>
+                      <ul className='flex flex-col gap-[2px] pl-[16px] text-black'>
                         <li>(a) 윤곽선 하나가 자기 자신과 닿는 경우: Stone 말</li>
                         <li>(b) 서로 다른 exterior ring 두 개가 닿는 경우: limnlimn i, l, y</li>
                         <li>(c) exterior ring이 interior ring과 닿는 경우: limnlimn k</li>
                       </ul>
-                      <p className='text-neutral-600'>
+                      <p className='text-ink'>
                         2D 폴리곤에서 이런 접점을 허용하는지는 데이터 모델마다 다릅니다. OGC Simple Features는 서로 다른
                         링이 한 점에서 닿는 것은 허용하지만 링이 자기 자신과 닿는 것은 허용하지 않고 [5], Esri의 모델은
                         자기 자신과 닿는 링도 허용합니다. [6] 어느 쪽이든 이를 압출하면 그 점은 옆면 네 개가 공유하는
@@ -361,10 +361,10 @@ export default function DailyFoldingPracticePage() {
                     저는 앞서 글리프의 유형을 connected components의 개수와 exterior/interior ring의 개수로
                     나누었습니다. 이제 유형별로 어떻게 전개도를 디자인하였는지 설명하려고 합니다.
                   </p>
-                  <div className='flex flex-col gap-[8px] border border-neutral-300 p-[16px] text-[14px]'>
-                    <dl className='flex flex-col gap-[8px] text-neutral-600'>
+                  <div className='flex flex-col gap-[8px] border border-neutral-300 p-[16px] text-body'>
+                    <dl className='flex flex-col gap-[8px] text-black'>
                       <div>
-                        <dt className='inline font-semibold text-black'>
+                        <dt className='inline font-medium text-black'>
                           <a
                             href='https://ko.wikipedia.org/wiki/듀얼_그래프'
                             target='_blank'
@@ -381,7 +381,7 @@ export default function DailyFoldingPracticePage() {
                         </dd>
                       </div>
                       <div>
-                        <dt className='inline font-semibold text-black'>
+                        <dt className='inline font-medium text-black'>
                           <a
                             href='https://ko.wikipedia.org/wiki/신장_부분_그래프'
                             target='_blank'
@@ -398,7 +398,7 @@ export default function DailyFoldingPracticePage() {
                         </dd>
                       </div>
                       <div>
-                        <dt className='inline font-semibold text-black'>
+                        <dt className='inline font-medium text-black'>
                           <a
                             href='https://en.wikipedia.org/wiki/Chordal_graph'
                             target='_blank'
@@ -415,16 +415,16 @@ export default function DailyFoldingPracticePage() {
                     </dl>
                   </div>
                   <div className='flex flex-col gap-[32px]'>
-                    <div className='flex flex-col gap-[6px]'>
+                    <div className='flex flex-col gap-[24px]'>
                       <SubHeading>Step 1. 옆면 펼치기: 자를 모서리를 고릅니다</SubHeading>
-                      <p className='text-neutral-600'>
+                      <p className='text-ink'>
                         입체를 평면에 펴려면 어느 모서리를 자르고 어느 모서리를 접을지 정해야 합니다. 이를 계산으로
                         다루기 위해, 입체의 표면을 평면 면들로 나누고 듀얼 그래프 G = (V, E)를 만듭니다. V는 면, E는
                         모서리를 공유하는 면 쌍이고, 변의 가중치 w(e)는 공유하는 모서리의 길이입니다. 전개도를 만드는
                         방법은 여러 가지가 있지만(star unfolding, source unfolding, cut locus unfolding 등) 이 글에서는
                         모서리를 따라서만 자르는 모서리 전개(edge unfolding)를 다룹니다.
                       </p>
-                      <figure className='my-[12px] flex flex-col gap-[20px]'>
+                      <figure className='my-[12px] flex flex-col gap-[24px]'>
                         <svg
                           viewBox='0 0 460 215'
                           className='w-full max-w-[560px] text-black'
@@ -502,26 +502,26 @@ export default function DailyFoldingPracticePage() {
                             </text>
                           </g>
                         </svg>
-                        <figcaption className='text-[13px] text-neutral-500'>
+                        <figcaption className='text-label text-neutral-600'>
                           옆면 하나가 점 하나가 되고, 붙어 있는 면끼리 선으로 이어집니다.
                         </figcaption>
                       </figure>
-                      <p className='text-neutral-600'>
+                      <p className='text-ink'>
                         모서리 전개는 이 듀얼 그래프 G에서 신장 트리 T를 하나 고르는 것과 같습니다. 루트가 아닌 각 면은
                         T에서 자기 부모와 공유하는 모서리를 축으로 회전해 평면에 눕습니다. T가 달라지면 배치가 달라지고,
                         겹침 여부도 달라집니다. 즉 '어떻게 펼 것인가'는 '어떤 신장 트리를 고를 것인가'와 같은
                         질문입니다.
                       </p>
-                      <p className='text-neutral-600'>
+                      <p className='text-ink'>
                         pinch point가 없는 글리프에서는 이 선택이 문제가 되지 않았습니다. 옆면은 앞뒤로 하나씩만
                         이웃하므로, 옆면으로만 제한한 그래프는 고리들의 모임이 됩니다. 만약 exterior ring이 하나,
                         interior ring이 하나라면 2개의 옆면 띠가 나옵니다. 고리의 신장 트리는 변 하나를 지운 것이고,
                         어느 것을 지우든 결과는 한 줄짜리 띠입니다. 자르는 위치만 다를 뿐 겹치지 않습니다.
                       </p>
                     </div>
-                    <div className='flex flex-col gap-[6px]'>
+                    <div className='flex flex-col gap-[24px]'>
                       <SubHeading>어디서 겹침이 발생했는가</SubHeading>
-                      <p className='text-neutral-600'>
+                      <p className='text-ink'>
                         문제는 pinch point가 있는 글리프에서 발생했습니다. pinch point에서 옆면 네 개가 하나의 수직
                         모서리를 공유하면서, 원래는 윤곽선을 따라 한참 돌아가야 만나는 두 면이 갑자기 이웃이 됩니다.
                         그래프로 보면 고리를 가로지르는 현이 하나 생기고, 그 점에 모인 면들은 이웃이 하나씩 늘어 차수가
@@ -618,30 +618,30 @@ export default function DailyFoldingPracticePage() {
                             </text>
                           </g>
                         </svg>
-                        <figcaption className='text-[13px] text-neutral-500'>
+                        <figcaption className='text-label text-neutral-600'>
                           현은 윤곽선상 멀리 떨어진 두 면을 그래프 거리 1로 연결합니다. 실제 pinch point에서는 옆면 네
                           개가 서로 모두 이어지지만, 여기서는 현 하나로 단순화했습니다.
                         </figcaption>
                       </figure>
-                      <p className='text-neutral-600'>
+                      <p className='text-ink'>
                         여기서 중요한 점은, BFS가 이 지름길을 선호해서 고르는 게 아니라 고를 수밖에 없다는 것입니다.
                         TypoFold는 BFS(너비 우선 탐색)로 신장 트리를 만듭니다. 시작 면에서 가까운 면부터 차례로 붙여
                         나가기 때문에, 모든 면이 시작 면에서 최소한의 칸 수로 연결됩니다. 면이 24개, 시작이 0번, 현이
                         5번과 15번을 잇는 경우를 보겠습니다.
                       </p>
-                      <table className='w-full max-w-[420px] text-[14px]'>
+                      <table className='w-full max-w-[420px] text-body'>
                         <tbody>
                           <tr className='border-b border-neutral-200'>
-                            <td className='py-[6px] pr-[16px] text-neutral-600'>현이 없을 때 15번까지의 거리</td>
+                            <td className='py-[6px] pr-[16px] text-black'>현이 없을 때 15번까지의 거리</td>
                             <td className='py-[6px]'>min(15, 24 − 15) = 9</td>
                           </tr>
                           <tr className='border-b border-neutral-200'>
-                            <td className='py-[6px] pr-[16px] text-neutral-600'>현이 있을 때</td>
+                            <td className='py-[6px] pr-[16px] text-black'>현이 있을 때</td>
                             <td className='py-[6px]'>d(5) + 1 = 6</td>
                           </tr>
                         </tbody>
                       </table>
-                      <p className='text-neutral-600'>
+                      <p className='text-ink'>
                         6이 9보다 작으므로 현은 최단경로 위에 놓입니다. 최단경로 트리의 정의상 BFS는 현을 쓰지 않을 수
                         없습니다. 그리고 현을 접는 축으로 쓰는 순간 배치가 어긋납니다. 띠를 한 줄로 펼 때 면의 평면상
                         위치는 윤곽선을 따라 누적한 폭으로 정해지는데, 윤곽선상 5번 다음인 6번이 차지해야 할 자리에
@@ -649,14 +649,14 @@ export default function DailyFoldingPracticePage() {
                         자리를 요구하기 때문에 둘이 겹칩니다.
                       </p>
                     </div>
-                    <div className='flex flex-col gap-[6px]'>
+                    <div className='flex flex-col gap-[24px]'>
                       <SubHeading>해결: 현을 지우기</SubHeading>
-                      <p className='text-neutral-600'>
+                      <p className='text-ink'>
                         변에 공유 모서리 길이를 가중치로 주는 방법도 생각했지만, 균일한 높이로 압출한 입체에서는
                         옆면끼리 공유하는 모서리가 모두 같은 두께라 소용이 없었습니다. 그래서 BFS는 그대로 두고,
                         탐색하기 전에 문제가 되는 연결을 그래프에서 끊기로 했습니다.
                       </p>
-                      <p className='text-neutral-600'>
+                      <p className='text-ink'>
                         윤곽선이 한 점 p에서 맞닿으면, p에 모인 옆면 넷은 같은 수직 모서리를 공유해서 서로 전부 이웃으로
                         잡힙니다. 이 가짜 연결 때문에 원래는 따로 펼쳐져야 할 옆면 벽들이 하나로 묶여 버립니다.
                       </p>
@@ -702,13 +702,13 @@ export default function DailyFoldingPracticePage() {
                             </text>
                           </g>
                         </svg>
-                        <figcaption className='text-[13px] text-neutral-500'>
+                        <figcaption className='text-label text-neutral-600'>
                           pinch point에 모인 네 옆면을 어떻게 다시 잇느냐에 따라 결과가 갈립니다. 윤곽선 순서를 따르면
                           원래처럼 하나의 component가 되고, 같은 component에 붙은 옆면끼리 이어야 두 component로
                           나뉩니다.
                         </figcaption>
                       </figure>
-                      <p className='text-neutral-600'>
+                      <p className='text-ink'>
                         그렇다면 p에 모인 넷 중 어느 옆면끼리가 원래 이어져 있던 것일까요? 단서는 윗면과 아랫면에
                         있습니다. p에서 윗면끼리는 꼭짓점 하나만 맞닿는데, TypoFold는 두 면이 모서리를 공유해야(꼭짓점을
                         두 개 이상 공유해야) 이웃으로 보기 때문에 윗면은 p를 이음매로 쓰지 않습니다. 그래서 p에 모인
@@ -716,7 +716,7 @@ export default function DailyFoldingPracticePage() {
                         component에 속하는지가 드러납니다. 네 옆면이 각각 어느 component에 붙어 있는지 확인해, 같은
                         component에 붙은 것끼리만 다시 잇고 나머지 연결은 끊습니다.
                       </p>
-                      <p className='text-neutral-600'>
+                      <p className='text-ink'>
                         처음에는 가까이 있는 옆면끼리 짝지어 보았지만, pinch 근처에서는 거리가 곧 소속을 뜻하지 않아
                         실패했습니다. 이미 올바르게 나뉘어 있는 윗면과 아랫면에 기대는 방법이 안정적이었습니다.
                       </p>
@@ -730,7 +730,7 @@ export default function DailyFoldingPracticePage() {
                         className='h-[260px] my-4 w-auto object-contain'
                         src={imagePath + 'pinch_cap_split.jpg'}
                       />
-                      <p className='text-neutral-600'>
+                      <p className='text-ink'>
                         결과는 윗면의 모양에 따라 두 가지로 나뉩니다. Stone 말이나 limnlimn i처럼 윗면이 p에서 두
                         조각으로 갈라지는 글리프는 그래프도 두 component로 나뉘어 전개도가 두 장이 되고, 두 장은 따로
                         접은 뒤 접착제로 이어 붙입니다. limnlimn k처럼 counter가 바깥 윤곽에 닿아 윗면이 한 조각으로
@@ -750,7 +750,7 @@ export default function DailyFoldingPracticePage() {
                               src={imagePath + 'pinch_overlap_before.jpg'}
                               className='h-[260px] w-auto object-contain'
                             />
-                            <p className='text-center text-[13px] text-neutral-500'>
+                            <p className='text-center text-label text-neutral-600'>
                               현을 끊기 전. 두 부분트리가 같은 자리를 요구해 겹칩니다.
                             </p>
                           </div>
@@ -765,7 +765,7 @@ export default function DailyFoldingPracticePage() {
                               src={imagePath + 'pinch_overlap_after.jpg'}
                               className='h-[260px] w-auto object-contain'
                             />
-                            <p className='text-center text-[13px] text-neutral-500'>
+                            <p className='text-center text-label text-neutral-600'>
                               현을 끊은 뒤. 두 component로 갈라져 겹침 없이 펼쳐집니다.
                             </p>
                           </div>
@@ -773,25 +773,25 @@ export default function DailyFoldingPracticePage() {
                       </figure>
                     </div>
                   </div>
-                  <div className='flex flex-col gap-[6px]'>
+                  <div className='flex flex-col gap-[24px]'>
                     <SubHeading>Step 2. 위·아래 면을 어디에 붙이는가</SubHeading>
-                    <p className='text-neutral-600'>
+                    <p className='text-ink'>
                       옆면 띠를 모두 펼치고 나면 윗면과 아랫면이 남습니다. 이 두 면은 옆면 둘레 전체와 맞닿아 있어서,
                       접는 선으로 쓸 수 있는 옆면이 띠를 이루는 옆면 수만큼 있습니다. 앞의 옆면들이 앞뒤로 하나씩만
                       이웃했던 것과 달리, 여기서는 선택지가 아주 많습니다.
                     </p>
-                    <p className='text-neutral-600'>
+                    <p className='text-ink'>
                       어느 옆면에 붙이느냐에 따라 윗면과 아랫면이 회전해 놓이는 자리가 달라집니다. 오목한 윤곽을 가진
                       글리프에서는 아무 옆면이나 고르면 이미 펼쳐 둔 띠 위로 넘어와 겹칩니다.
                     </p>
-                    <p className='text-neutral-600'>
+                    <p className='text-ink'>
                       그래서 여기서는 bounding box로 겹치는 넓이를 직접 쟀습니다. 후보 옆면마다 실제로 그 축으로 펼쳤을
                       때 윗면이 차지하는 범위를 감싸는 최소 직사각형을 구하고, 이미 펼쳐 둔 띠 전체를 감싸는 직사각형과
                       겹치는 넓이를 비교해 가장 덜 겹치는 옆면을 고릅니다. 옆면에서 모서리 길이라는 간접적인 기준이
                       통하지 않았던 것과 달리, 이쪽은 원하는 값을 그대로 재기 때문에 후보가 많아도 안정적으로
                       동작합니다.
                     </p>
-                    <p className='text-neutral-600'>
+                    <p className='text-ink'>
                       다만 이 비교는 근사입니다. 각 면의 실제 모양이 아니라 감싸는 직사각형끼리 비교하기 때문에, 띠가
                       길게 꺾여 있으면 직사각형이 실제 띠보다 훨씬 넓어져서 비어 있는 자리도 겹친다고 판단할 수
                       있습니다. 또 윗면을 놓은 뒤 그 자리를 반영하지 않고 아랫면을 고르기 때문에 둘이 서로 겹칠 가능성도
@@ -810,7 +810,7 @@ export default function DailyFoldingPracticePage() {
                             src={imagePath + 'cap_hinge_before.jpg'}
                             className='h-[260px] w-auto object-contain'
                           />
-                          <p className='text-center text-[13px] text-neutral-500'>
+                          <p className='text-center text-label text-neutral-600'>
                             임의의 옆면에 붙이면. 윗면이 이미 펼친 띠 위로 넘어와 겹칩니다.
                           </p>
                         </div>
@@ -822,27 +822,27 @@ export default function DailyFoldingPracticePage() {
                             desc='같은 글리프, 가장 덜 겹치는 옆면에 붙인 윗면. 같은 bbox 점선과 비교'
                           /> */}
                           <Figure src={imagePath + 'cap_hinge_after.jpg'} className='h-[260px] w-auto object-contain' />
-                          <p className='text-center text-[13px] text-neutral-500'>
+                          <p className='text-center text-label text-neutral-600'>
                             가장 덜 겹치는 옆면에 붙이면. 띠와 겹치지 않는 자리에 놓입니다.
                           </p>
                         </div>
                       </div>
                     </figure>
                   </div>
-                  <div className='flex flex-col gap-[6px]'>
+                  <div className='flex flex-col gap-[24px]'>
                     <SubHeading>Step 3. 구멍의 안쪽 벽은 제외합니다</SubHeading>
-                    <p className='text-neutral-600'>
+                    <p className='text-ink'>
                       구멍이 있는 글리프는 옆면이 여러 개의 고리로 나뉩니다. 'O'라면 바깥 윤곽을 도는 고리 하나와 구멍
                       안쪽을 도는 고리 하나, 'B'라면 구멍이 두 개라 고리가 셋입니다. 이 중 바깥 벽에 해당하는 고리만
                       전개도에 펼치고, 구멍의 안쪽 벽은 전개도에서만 뺍니다.
                     </p>
-                    <p className='text-neutral-600'>
+                    <p className='text-ink'>
                       문제는 어느 고리가 바깥 벽인지를 3D 단계에서 알려주는 정보가 남아 있지 않다는 점입니다. 2D
                       단계에서는 윤곽선끼리의 포함 관계로 exterior와 interior를 구분했습니다. 하지만 이 정보는 여러
                       윤곽을 하나의 3D 입체로 합치는 과정에서 따로 저장되지 않습니다. 그래서 지금은 옆면 조각이 가장
                       많은 고리를 바깥 벽으로 간주합니다. 바깥 윤곽이 구멍보다 길면 면도 더 많을 거라는 가정입니다.
                     </p>
-                    <p className='text-neutral-600'>
+                    <p className='text-ink'>
                       하지만 이 가정은 맞지 않습니다. 옆면 조각의 수는 윤곽선의 길이보다 곡선이 얼마나 잘게 나뉘었는지에
                       더 좌우되기 때문입니다. 실제로 폰트에 따라 점 밀도가 크게 달라서, 같은 방식으로 만들어도 Stone
                       'O'는 옆면이 16개인데 Arbor 'G'는 517개였습니다. 한 글자 안에서도 구멍 쪽 곡선이 바깥 윤곽보다
@@ -858,9 +858,9 @@ export default function DailyFoldingPracticePage() {
                     /> */}
                     <Figure src={imagePath + 'inner_wall.jpg'} />
                   </div>
-                  <div className='flex flex-col gap-[6px]'>
+                  <div className='flex flex-col gap-[24px]'>
                     <SubHeading>Step 4. component가 여럿이면 세로로 쌓습니다</SubHeading>
-                    <p className='text-neutral-600'>
+                    <p className='text-ink'>
                       component마다 기준 면을 따로 두고 전개도를 만든 다음, 완전히 펼친 크기를 재서 서로 겹치지 않도록
                       위아래로 배치합니다.
                     </p>
@@ -872,18 +872,18 @@ export default function DailyFoldingPracticePage() {
                     /> */}
                     <Figure src={imagePath + 'islands_stack.jpg'} />
                   </div>
-                  <div className='flex flex-col gap-[6px]'>
+                  <div className='flex flex-col gap-[24px]'>
                     <SubHeading>유형별 전개도</SubHeading>
                     <div className='overflow-x-auto'>
-                      <table className='w-full min-w-[520px] text-left text-[14px]'>
+                      <table className='w-full min-w-[520px] text-left text-body'>
                         <thead>
                           <tr className='border-b border-black text-black'>
-                            <th className='py-[6px] pr-[16px] font-semibold'>유형</th>
-                            <th className='py-[6px] pr-[16px] font-semibold'>예시</th>
-                            <th className='py-[6px] font-semibold'>전개도</th>
+                            <th className='py-[6px] pr-[16px] font-medium'>유형</th>
+                            <th className='py-[6px] pr-[16px] font-medium'>예시</th>
+                            <th className='py-[6px] font-medium'>전개도</th>
                           </tr>
                         </thead>
-                        <tbody className='align-top text-neutral-600'>
+                        <tbody className='align-top text-black'>
                           {[
                             ['A. 단순', 'I, L', '옆면이 한 줄의 띠로 펴지고, 위·아래 면이 각각 한 자리에 붙습니다.'],
                             [
@@ -904,7 +904,7 @@ export default function DailyFoldingPracticePage() {
                             ],
                           ].map(([type, example, result]) => (
                             <tr key={type} className='border-b border-neutral-200'>
-                              <td className='py-[8px] pr-[16px] font-semibold text-black'>{type}</td>
+                              <td className='py-[8px] pr-[16px] font-medium text-black'>{type}</td>
                               <td className='py-[8px] pr-[16px]'>{example}</td>
                               <td className='py-[8px]'>{result}</td>
                             </tr>
@@ -913,9 +913,9 @@ export default function DailyFoldingPracticePage() {
                       </table>
                     </div>
                   </div>
-                  <div className='flex flex-col gap-[6px]'>
+                  <div className='flex flex-col gap-[24px]'>
                     <SubHeading>겹침을 완전히 막을 수는 없습니다</SubHeading>
-                    <p className='text-neutral-600'>
+                    <p className='text-ink'>
                       겹치지 않는 절단 트리를 고르는 문제는 일반적으로 어렵습니다. 볼록 다면체에 대해서도 항상 겹치지
                       않는 모서리 전개가 존재하는지는 Dürer의 추측으로 아직 미해결이고, [10] 비볼록 다면체에서는 어떻게
                       모서리를 잘라도 겹침을 피할 수 없는 예가 알려져 있습니다. [11] 그래서 spanning tree를 바로
@@ -926,8 +926,8 @@ export default function DailyFoldingPracticePage() {
                 </Chapter>
 
                 <div className='flex flex-col gap-[8px] border-t border-black pt-[24px]'>
-                  <p className='text-[13px] font-medium text-[#FF2D8C]'>References</p>
-                  <ol className='flex flex-col gap-[2px] text-[13px] text-neutral-500'>
+                  <p className='text-label font-medium text-[#FF2D8C]'>References</p>
+                  <ol className='flex flex-col gap-[2px] text-label text-neutral-600'>
                     {[
                       ['타이포그래피 사전 — 글리프', 'https://typography-dictionary.kr/terms/glyph'],
                       ['Wikipedia — Counter (typography)', 'https://en.wikipedia.org/wiki/Counter_(typography)'],
@@ -964,7 +964,7 @@ export default function DailyFoldingPracticePage() {
                 </div>
               </section>
 
-              <section id='archive' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-full'>
+              <section id='archive' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-[70%]'>
                 <Chapter kicker='Archive' title='Installation views'>
                   <div className='flex flex-wrap gap-[12px]'>
                     <Figure src={imagePath + '01.jpg'} />

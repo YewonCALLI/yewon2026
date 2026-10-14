@@ -17,7 +17,7 @@ export default function ProgrammerPage() {
       <Header title='Programmer' />
       <main className='min-h-dvh w-full bg-white px-[30px] pb-[100px] pt-[60px] text-black md:px-[40px] md:pt-[60px]'>
         <ProjectGrid projects={programmerProjects} />
-        <Link href='/works' className='mt-[40px] block text-[11px] text-neutral-400 hover:text-black'>
+        <Link href='/works' className='mt-[40px] block text-label text-neutral-500 hover:text-black'>
           View all work →
         </Link>
       </main>

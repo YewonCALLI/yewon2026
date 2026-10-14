@@ -10,11 +10,11 @@ import { ProjectSidebar } from '../ProjectSidebar'
 const sectionIds = ['overview'] as const
 
 function Kicker({ children }: { children: React.ReactNode }) {
-  return <p className='text-[13px] font-medium text-[#FF2D8C]'>{children}</p>
+  return <p className='text-label font-medium text-[#FF2D8C]'>{children}</p>
 }
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
-  return <h2 className='mt-[4px] text-[20px] font-semibold leading-snug text-black md:text-[22px]'>{children}</h2>
+  return <h2 className='mt-[4px] text-title font-medium leading-snug text-black md:text-title'>{children}</h2>
 }
 
 function Chapter({
@@ -31,7 +31,7 @@ function Chapter({
   return (
     <div
       id={id}
-      className='flex scroll-mt-[110px] flex-col gap-[20px] border-t border-black pt-[40px] first:border-t-0 first:pt-0'
+      className='flex scroll-mt-[110px] flex-col gap-[36px] border-t border-black pt-[40px] first:border-t-0 first:pt-0'
     >
       <div>
         <Kicker>{kicker}</Kicker>
@@ -98,7 +98,7 @@ export default function SamsungDesignMembership2025Page() {
   return (
     <>
       <Header title={project.name} accentColor='#FF2D8C' light mobileLight={isNavStuck} />
-      <main className='min-h-dvh w-full pt-[60px] text-black'>
+      <main className='min-h-dvh w-full pt-[60px] text-ink'>
         <div className='flex w-full flex-col md:flex-row md:items-start'>
           {/* Left: full project list */}
           <ProjectSidebar activeSlug={project.slug} />
@@ -106,10 +106,10 @@ export default function SamsungDesignMembership2025Page() {
           {/* Right: project content */}
           <div className='min-w-0 flex-1 px-[22px] py-[24px] md:px-[40px] md:py-[40px]'>
             <div className='flex flex-col justify-between md:flex-row'>
-              <h1 className='text-[24px] font-semibold'>{project.name}</h1>
-              <div className='flex flex-col gap-[4px] text-[16px] leading-relaxed lg:w-[60%]'>
+              <h1 className='text-title font-medium'>{project.name}</h1>
+              <div className='flex flex-col gap-[4px] text-body leading-relaxed lg:w-[70%]'>
                 <p className='text-[#FF2D8C]'>The online website for 2025 Samsung Design Membership</p>
-                <p className='text-black'>06.2025 - 08.2025 / Frontend Development / Samsung Design Membership</p>
+                <p className='text-ink'>06.2025 - 08.2025 / Frontend Development / Samsung Design Membership</p>
               </div>
             </div>
 
@@ -130,8 +130,8 @@ export default function SamsungDesignMembership2025Page() {
                 <a
                   key={id}
                   href={`#${id}`}
-                  className={`shrink-0 text-[14px] capitalize transition-colors ${
-                    activeSection === id ? 'font-bold text-black' : 'text-neutral-400 hover:text-black'
+                  className={`shrink-0 text-body capitalize transition-colors ${
+                    activeSection === id ? 'font-medium text-black' : 'text-neutral-500 hover:text-black'
                   }`}
                 >
                   {id}
@@ -139,8 +139,8 @@ export default function SamsungDesignMembership2025Page() {
               ))}
             </nav>
 
-            <div className='mt-[32px] flex flex-col gap-[64px] text-[15px] leading-relaxed'>
-              <section id='overview' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-full'>
+            <div className='mt-[32px] flex flex-col gap-[64px] text-body leading-relaxed'>
+              <section id='overview' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-[70%]'>
                 <Chapter kicker='Overview' title='Samsung Design Membership 2025 Online Exhibition <New Formative>'>
                   <LinkPreviewCard href='https://www.newformative.com/' />
 

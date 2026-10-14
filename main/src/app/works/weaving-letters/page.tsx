@@ -16,12 +16,12 @@ const imagePath = '/images/projects/weaving-letters/'
 const sectionIds = ['overview', 'process', 'archive'] as const
 
 function Kicker({ children }: { children: React.ReactNode }) {
-  return <p className='text-[13px] font-medium text-[#B02DFF]'>{children}</p>
+  return <p className='text-label font-medium text-[#B02DFF]'>{children}</p>
 }
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className='mt-[4px] max-w-[640px] text-[20px] font-semibold leading-snug text-black md:text-[22px]'>
+    <h2 className='mt-[4px] max-w-[640px] text-title font-medium leading-snug text-black md:text-title'>
       {children}
     </h2>
   )
@@ -30,9 +30,9 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 function ImagePlaceholder({ id, file, desc }: { id: string; file: string; desc: string }) {
   return (
     <div className='my-[12px] flex aspect-video w-full flex-col items-center justify-center gap-[6px] border border-dashed border-neutral-400 bg-neutral-50 px-[16px] text-center'>
-      <p className='text-[13px] font-semibold text-[#B02DFF]'>{id}</p>
-      <p className='text-[13px] text-neutral-600'>{desc}</p>
-      <p className='font-mono text-[12px] text-neutral-400'>{file}</p>
+      <p className='text-label font-medium text-[#B02DFF]'>{id}</p>
+      <p className='text-label text-neutral-600'>{desc}</p>
+      <p className='font-mono text-label text-neutral-500'>{file}</p>
     </div>
   )
 }
@@ -59,7 +59,7 @@ function Chapter({
   return (
     <div
       id={id}
-      className='flex scroll-mt-[110px] flex-col gap-[20px] border-t border-black pt-[40px] first:border-t-0 first:pt-0'
+      className='flex scroll-mt-[110px] flex-col gap-[36px] border-t border-black pt-[40px] first:border-t-0 first:pt-0'
     >
       <div>
         <Kicker>{kicker}</Kicker>
@@ -112,7 +112,7 @@ export default function WeavingLettersPage() {
   return (
     <>
       <Header title={project.name} accentColor={accentColor} light mobileLight={isNavStuck} />
-      <main className='min-h-dvh w-full pt-[60px] text-black'>
+      <main className='min-h-dvh w-full pt-[60px] text-ink'>
         <div className='flex w-full flex-col md:flex-row md:items-start'>
           {/* Left: full project list */}
           <ProjectSidebar activeSlug={project.slug} />
@@ -121,16 +121,16 @@ export default function WeavingLettersPage() {
           <div className='min-w-0 flex-1 px-[22px] py-[24px] md:px-[40px] md:py-[40px]'>
             <div className='flex flex-col justify-between  md:flex-row'>
               <div>
-                <Link href={`/works/${project.parent}`} className='text-[13px] text-neutral-400 hover:text-black'>
+                <Link href={`/works/${project.parent}`} className='text-label text-neutral-500 hover:text-black'>
                   ← Part of TypoFold
                 </Link>
-                <h1 className='text-[24px] font-semibold'>{project.name}</h1>
+                <h1 className='text-title font-medium'>{project.name}</h1>
               </div>
-              <div className='flex flex-col gap-[4px] text-[16px] leading-relaxed lg:w-[60%]'>
+              <div className='flex flex-col gap-[4px] text-body leading-relaxed lg:w-[70%]'>
                 <p className='text-[#B02DFF]'>
                   A zine compiling the content of TypoFold, which I submitted as a poster paper to HCI Korea.{' '}
                 </p>
-                <p className='text-black'>
+                <p className='text-ink'>
                   06.2026 - 07.2026 / Zine, Typography, Textile Pattern / bokbokbok, Hugan Books
                 </p>
               </div>
@@ -147,8 +147,8 @@ export default function WeavingLettersPage() {
                 <a
                   key={id}
                   href={`#${id}`}
-                  className={`shrink-0 text-[14px] capitalize transition-colors ${
-                    activeSection === id ? 'font-bold text-black' : 'text-neutral-400 hover:text-black'
+                  className={`shrink-0 text-body capitalize transition-colors ${
+                    activeSection === id ? 'font-medium text-black' : 'text-neutral-500 hover:text-black'
                   }`}
                 >
                   {id}
@@ -156,9 +156,9 @@ export default function WeavingLettersPage() {
               ))}
             </nav>
 
-            <div className='mt-[32px] flex flex-col gap-[64px] text-[15px] leading-relaxed'>
+            <div className='mt-[32px] flex flex-col gap-[64px] text-body leading-relaxed'>
               {/* OVERVIEW */}
-              <section id='overview' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-full'>
+              <section id='overview' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-[70%]'>
                 <Chapter kicker='Overview' title='About the Zine'>
                   <p>
                     <i>Weaving Letters</i> is a collection of unfolded nets in which five textile patterns woven in
@@ -171,7 +171,7 @@ export default function WeavingLettersPage() {
               </section>
 
               {/* PROCESS */}
-              <section id='process' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-full'>
+              <section id='process' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-[70%]'>
                 <Chapter kicker='Process' title='Making the Zine'>
                   <p>
                     I made the zine <i>Weaving Letters</i> based on TypoFold, which I submitted as a poster paper to the
@@ -194,7 +194,7 @@ export default function WeavingLettersPage() {
               </section>
 
               {/* ARCHIVE */}
-              <section id='archive' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-full'>
+              <section id='archive' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-[70%]'>
                 <Chapter kicker='Archive' title='Exhibited'>
                   <p>
                     <i>Weaving Letters</i> is introduced at{' '}

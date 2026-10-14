@@ -19,27 +19,27 @@ const range = (from: number, to: number) => Array.from({ length: to - from + 1 }
 const num = (n: number) => String(n).padStart(2, '0')
 
 function Kicker({ children }: { children: React.ReactNode }) {
-  return <p className='text-[13px] font-medium text-[#0B5FFF]'>{children}</p>
+  return <p className='text-label font-medium text-[#0B5FFF]'>{children}</p>
 }
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className='mt-[4px] max-w-[640px] text-[20px] font-semibold leading-snug text-black md:text-[22px]'>
+    <h2 className='mt-[4px] max-w-[640px] text-title font-medium leading-snug text-black md:text-title'>
       {children}
     </h2>
   )
 }
 
 function SubHeading({ children }: { children: React.ReactNode }) {
-  return <h3 className='text-[15px] font-semibold text-black'>{children}</h3>
+  return <h3 className='text-heading font-medium text-black'>{children}</h3>
 }
 
 function Statement({ children }: { children: React.ReactNode }) {
-  return <p className='max-w-[640px] text-[16px] font-semibold leading-snug text-black'>{children}</p>
+  return <p className='max-w-[640px] text-body font-medium leading-snug text-black'>{children}</p>
 }
 
 function Caption({ children }: { children: React.ReactNode }) {
-  return <p className='text-[13px] text-neutral-400'>{children}</p>
+  return <p className='text-label text-neutral-500'>{children}</p>
 }
 
 function Chapter({
@@ -56,7 +56,7 @@ function Chapter({
   return (
     <div
       id={id}
-      className='flex scroll-mt-[110px] flex-col gap-[20px] border-t border-black pt-[40px] first:border-t-0 first:pt-0'
+      className='flex scroll-mt-[110px] flex-col gap-[36px] border-t border-black pt-[40px] first:border-t-0 first:pt-0'
     >
       <div>
         <Kicker>{kicker}</Kicker>
@@ -93,7 +93,7 @@ function Cols({ items }: { items: { title: string; body: string; note?: string }
         <div key={item.title} className='flex flex-col gap-[8px]'>
           <SubHeading>{item.title}</SubHeading>
           <p>{item.body}</p>
-          {item.note && <p className='text-[13px] text-neutral-400'>{item.note}</p>}
+          {item.note && <p className='text-label text-neutral-500'>{item.note}</p>}
         </div>
       ))}
     </div>
@@ -114,7 +114,7 @@ function Direction({
   return (
     <div className='grid grid-cols-[2fr_1fr] items-center gap-[16px] md:hidden'>
       <div className='flex flex-col gap-[8px]'>
-        <span className='w-fit border border-black px-[8px] py-[2px] text-[13px] font-semibold'>{title}</span>
+        <span className='w-fit border border-black px-[8px] py-[2px] text-label font-medium'>{title}</span>
         <SubHeading>{statement}</SubHeading>
         <ul className='flex flex-col gap-[2px]'>
           {points.map((p) => (
@@ -178,7 +178,7 @@ export default function XRScienceMuseumPage() {
   return (
     <>
       <Header title={project.name} accentColor={accentColor} light mobileLight={isNavStuck} />
-      <main className='min-h-dvh w-full pt-[60px] text-black'>
+      <main className='min-h-dvh w-full pt-[60px] text-ink'>
         <div className='flex w-full flex-col md:flex-row md:items-start'>
           {/* Left: full project list */}
           <ProjectSidebar activeSlug={project.slug} />
@@ -186,10 +186,10 @@ export default function XRScienceMuseumPage() {
           {/* Right: project content */}
           <div className='min-w-0 flex-1 px-[22px] py-[24px] md:px-[40px] md:py-[40px]'>
             <div className='flex flex-col justify-between gap-[16px] md:flex-row'>
-              <h1 className='text-[24px] font-semibold'>{project.name}</h1>
-              <div className='flex flex-col gap-[4px] lg:w-[60%]'>
+              <h1 className='text-title font-medium'>{project.name}</h1>
+              <div className='flex flex-col gap-[4px] lg:w-[70%]'>
                 <p className='text-[#0B5FFF]'>{project.description}</p>
-                <p className='text-black'>
+                <p className='text-ink'>
                   04.2025 - 12.2025 / WebXR, Computer Graphics, EdTech / {project.client} / {project.part}
                 </p>
               </div>
@@ -206,8 +206,8 @@ export default function XRScienceMuseumPage() {
                 <a
                   key={id}
                   href={`#${id}`}
-                  className={`shrink-0 text-[14px] capitalize transition-colors ${
-                    activeSection === id ? 'font-bold text-black' : 'text-neutral-400 hover:text-black'
+                  className={`shrink-0 text-body capitalize transition-colors ${
+                    activeSection === id ? 'font-medium text-black' : 'text-neutral-500 hover:text-black'
                   }`}
                 >
                   {id}
@@ -215,16 +215,16 @@ export default function XRScienceMuseumPage() {
               ))}
             </nav>
 
-            <div className='mt-[32px] flex flex-col gap-[64px] text-[15px] leading-relaxed'>
-              <section className='flex flex-col gap-[16px] lg:w-[60%]'>
+            <div className='mt-[32px] flex flex-col gap-[64px] text-body leading-relaxed'>
+              <section className='flex flex-col gap-[16px] lg:w-[70%]'>
                 <div>
-                  <p className='text-[13px] font-medium text-[#0B5FFF]'>Research Question</p>
+                  <p className='text-label font-medium text-[#0B5FFF]'>Research Question</p>
                   <p className='mt-[4px]'>{project.researchQuestion}</p>
                 </div>
               </section>
 
               {/* RESEARCH */}
-              <section id='research' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-[60%]'>
+              <section id='research' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-[70%]'>
                 <Chapter kicker='Background' title='Voices surrounding the implementation of AI digital textbooks in South Korea'>
                   <p>
                     Since the implementation of AI digital textbooks in 2025, digital infrastructure has been expanded,
@@ -293,7 +293,7 @@ export default function XRScienceMuseumPage() {
               </section>
 
               {/* DEVELOPMENT */}
-              <section id='development' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-[60%]'>
+              <section id='development' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-[70%]'>
                 <Chapter kicker='MVP List' title="What We're Building">
                   <p>
                     After identifying the key constraints in the classroom setting and the gaps in student learning, I
@@ -503,20 +503,19 @@ export default function XRScienceMuseumPage() {
                   title='I created interaction and UI design guides based on experiment types.'
                 >
                   <p>I grouped the curriculum into four experiment types and created interaction and UI design guides.</p>
-                  {/* The section is 60% wide on lg, so 100%/0.6 breaks out to the full content width */}
-                  <div className='lg:w-[calc(100%/0.6)]'>
-                    <Grid cols={2}>
-                      <Images files={range(50, 53)} />
-                    </Grid>
-                  </div>
+                  <Grid cols={2}>
+                    <Images files={range(50, 53)} />
+                  </Grid>
                 </Chapter>
               </section>
 
               {/* OUTPUT */}
               <section id='output' className='flex scroll-mt-[110px] flex-col gap-[56px]'>
-                <Figure src={imagePath + 'finaldesign1.jpg'} />
+                <div className='lg:w-[70%]'>
+                  <Figure src={imagePath + 'finaldesign1.jpg'} />
+                </div>
 
-                <div className='flex flex-col gap-[56px] lg:w-[60%]'>
+                <div className='flex flex-col gap-[56px] lg:w-[70%]'>
                   <Chapter kicker='Final Design' title='Experiment Setup & Objectives'>
                     <p>
                       XR Science Museum begins each activity by orienting learners to the experiment, clarifying its
@@ -577,9 +576,11 @@ export default function XRScienceMuseumPage() {
                   </Chapter>
                 </div>
 
-                <Figure src={imagePath + 'finaldesign2.webp'} />
+                <div className='lg:w-[70%]'>
+                  <Figure src={imagePath + 'finaldesign2.webp'} />
+                </div>
 
-                <div className='lg:w-[60%]'>
+                <div className='lg:w-[70%]'>
                   <Chapter kicker='Final Design' title='Curriculum'>
                     <p>
                       By analyzing recurring patterns across curriculum-based experiments, I translated diverse science
@@ -600,7 +601,7 @@ export default function XRScienceMuseumPage() {
               </section>
 
               {/* REFLECTION */}
-              <section id='reflection' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-[60%]'>
+              <section id='reflection' className='flex scroll-mt-[110px] flex-col gap-[56px] lg:w-[70%]'>
                 <Chapter kicker='Reflection' title='Future Steps'>
                   <p>
                     XR Science Museum will launch in March 2026 and be deployed across multiple classrooms. This

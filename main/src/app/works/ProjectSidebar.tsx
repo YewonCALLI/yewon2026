@@ -8,8 +8,8 @@ export function ProjectSidebar({ activeSlug }: { activeSlug: string }) {
     <Link
       key={slug}
       href={`/works/${slug}`}
-      className={`text-[13px] leading-snug transition-colors ${isChild ? 'pl-[12px]' : ''} ${
-        slug === activeSlug ? 'font-bold text-black' : 'text-neutral-400 hover:text-black'
+      className={`text-label leading-snug transition-colors ${isChild ? 'pl-[12px]' : ''} ${
+        slug === activeSlug ? 'font-medium text-black' : 'text-neutral-500 hover:text-black'
       }`}
     >
       {name}
@@ -18,7 +18,7 @@ export function ProjectSidebar({ activeSlug }: { activeSlug: string }) {
 
   return (
     <aside className='hidden md:block w-full shrink-0 border-b border-black px-[30px] py-[24px] md:sticky md:top-[60px] md:h-[calc(100dvh-60px)] md:w-[240px] md:overflow-y-auto md:border-b-0 md:border-r md:px-[30px] md:py-[20px]'>
-      <p className='text-[11px] text-neutral-400'>All Works</p>
+      <p className='text-label text-neutral-500'>All Works</p>
       <nav className='mt-[16px] flex flex-col gap-[10px]'>
         {topLevel.flatMap((p) => [
           renderLink(p.slug, p.name),

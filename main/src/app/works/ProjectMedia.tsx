@@ -4,7 +4,13 @@ import { useState } from 'react'
 import Image from 'next/image'
 import type { Project } from './projectlist'
 
-export function ProjectMedia({ project }: { project: Project }) {
+export function ProjectMedia({
+  project,
+  sizes = '(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw',
+}: {
+  project: Project
+  sizes?: string
+}) {
   const [imageFailed, setImageFailed] = useState(false)
 
   if (project.vimeoId) {
@@ -25,7 +31,8 @@ export function ProjectMedia({ project }: { project: Project }) {
         src={project.cover}
         alt={project.name}
         fill
-        sizes='(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw'
+        sizes={sizes}
+        quality={90}
         className='object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]'
         onError={() => setImageFailed(true)}
       />
@@ -34,7 +41,7 @@ export function ProjectMedia({ project }: { project: Project }) {
 
   return (
     <div className='flex h-full w-full items-center justify-center'>
-      <span className='text-[11px] text-neutral-300'>{project.name}</span>
+      <span className='text-label text-neutral-500'>{project.name}</span>
     </div>
   )
 }

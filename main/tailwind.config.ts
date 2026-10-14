@@ -9,21 +9,10 @@ export default {
   ],
   theme: {
     fontSize: {
-      xxxs: '0.6rem', // 10px
-      xxs: '0.65rem', // 11px
-      xs: '0.75rem', // 12px
-      sm: '0.875rem', // 14px
-      base: '1rem', // 16px
-      lg: '1.125rem', // 18px
-      xl: '1.25rem', // 20px
-      '2xl': '1.5rem', // 24px
-      '3xl': '1.875rem', // 30px
-      '4xl': '2.25rem', // 36px
-      '5xl': '3rem', // 48px
-      '6xl': '4rem', // 64px
-      '7xl': '5rem', // 80px
-      '8xl': '6rem', // 96px
-      '9xl': '8rem', // 128px
+      label: '0.875rem', // 14px - 키커, 캡션, 보조 텍스트
+      body: ['1.125rem', { fontWeight: '500' }], // 18px / Medium - 본문
+      heading: '1.25rem', // 20px - 소제목
+      title: '1.5rem', // 24px - 섹션/프로젝트 제목
     },
     extend: {
       writingMode: {
@@ -36,7 +25,9 @@ export default {
         lg: '1440px',
         xl: '1920px',
       },
-      colors: {},
+      colors: {
+        ink: '#3A3A3A', // 본문 텍스트
+      },
       fontFamily: {
         // 한글용 폰트
         korean: ['var(--font-pretendard)', 'ui-sans-serif', 'system-ui', 'sans-serif'],

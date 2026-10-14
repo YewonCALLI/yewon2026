@@ -68,7 +68,7 @@ const slides = [
     id: 'intro-8',
     title: 'Franklin',
     src: '/images/intro/intro12.jpg',
-    projectSlug: 'ganpan',
+    projectSlug: 'franklin',
     color: '#FF7A2D',
   },
   {
@@ -82,14 +82,14 @@ const slides = [
     id: 'intro-10',
     title: 'Word Wide Web',
     src: '/images/intro/intro13.jpg',
-    projectSlug: 'ganpan',
+    projectSlug: 'word-wide-web',
     color: '#2DFFA0',
   },
   {
     id: 'intro-11',
     title: 'Singlet & Multiplet',
     src: '/images/intro/intro14.jpg',
-    projectSlug: 'ganpan',
+    projectSlug: 'singlet-multiplet',
     color: '#B02DFF',
   },
   {
@@ -238,7 +238,7 @@ export default function Page() {
           <Link
             href={`/works/${activeSlide.projectSlug}`}
             style={{ backgroundColor: activeSlide.color }}
-            className='pointer-events-auto text-[18px] font-semibold transition-opacity duration-300 hover:opacity-70 px-2'
+            className='pointer-events-auto text-title font-medium transition-opacity duration-300 hover:opacity-70 px-2'
             onPointerDown={(event) => event.stopPropagation()}
           >
             {activeSlide.title}

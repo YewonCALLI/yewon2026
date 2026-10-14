@@ -4,7 +4,7 @@ import { ProjectMedia } from './ProjectMedia'
 
 function SkillTags({ skills }: { skills?: ProjectSkill[] }) {
   if (!skills || skills.length === 0) return null
-  return <p className='text-[10px] tracking-wide text-neutral-400'>{skills.join('  /  ')}</p>
+  return <p className='text-label tracking-wide text-neutral-500'>{skills.join('  /  ')}</p>
 }
 
 function ProjectMeta({ project }: { project: Project }) {
@@ -22,8 +22,8 @@ function ProjectMeta({ project }: { project: Project }) {
   return (
     <div className='mt-[2px] flex flex-col gap-[3px]'>
       {rows.map((row) => (
-        <p key={row.label} className='text-[10px] leading-snug text-neutral-400'>
-          <span className='text-neutral-500'>{row.label}</span> · {row.value}
+        <p key={row.label} className='text-label leading-snug text-neutral-500'>
+          <span className='text-black'>{row.label}</span> · {row.value}
         </p>
       ))}
     </div>
@@ -46,11 +46,11 @@ function ProjectCard({ project }: { project: Project }) {
 
       <div className='flex flex-col gap-[2px]'>
         <div className='flex items-baseline justify-between gap-[8px]'>
-          <span className='text-[12px] font-bold leading-tight'>{project.name}</span>
+          <span className='text-label font-medium leading-tight'>{project.name}</span>
         </div>
 
         {project.description && (
-          <p className='text-[12px] leading-snug text-neutral-500'>{project.description}</p>
+          <p className='text-label leading-snug text-neutral-600'>{project.description}</p>
         )}
         <ProjectMeta project={project} />
       </div>
@@ -61,7 +61,7 @@ function ProjectCard({ project }: { project: Project }) {
 export function ProjectGrid({ projects }: { projects: Project[] }) {
   if (projects.length === 0) {
     return (
-      <div className='w-full py-[80px] text-center text-[13px] text-neutral-400'>
+      <div className='w-full py-[80px] text-center text-label text-neutral-500'>
         No projects match the selected filters.
       </div>
     )
