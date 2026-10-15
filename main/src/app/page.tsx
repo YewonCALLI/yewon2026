@@ -75,7 +75,7 @@ const slides = [
     id: 'intro-9',
     title: 'Naver Software Education Festival 2023',
     src: '/images/intro/intro17.jpg',
-    projectSlug: 'ganpan',
+    projectSlug: 'sef-2023',
     color: '#FF2D8C',
   },
   {

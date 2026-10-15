@@ -186,6 +186,15 @@ export const projects: Project[] = [
     skills: ['Tool Development', 'Media Art'],
   },
   {
+    slug: 'sef-2023',
+    name: 'Software Education Festival 2023',
+    cover: '/images/projects/sef-2023/cover.jpg',
+    part: 'Product Manager (Website)',
+    description: 'Website planning, UX writing and deployment for the NAVER Connect Foundation\'s Software Education Festival 2023.',
+    client: 'NAVER Connect Foundation',
+    created_date: '2023',
+  },
+  {
     slug: 'hongyeon-1.0',
     name: 'Hongyeon 1.0',
     cover: '/images/projects/hongyeon-1.0/cover.jpg',
