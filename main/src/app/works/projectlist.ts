@@ -34,6 +34,7 @@ export interface Project {
   featured?: boolean
   skills?: ProjectSkill[]
   vimeoId?: string
+  externalUrl?: string // no detail page: link straight to this URL
 }
 
 export const projects: Project[] = [
@@ -195,20 +196,6 @@ export const projects: Project[] = [
     created_date: '2023',
   },
   {
-    slug: 'hongyeon-1.0',
-    name: 'Hongyeon 1.0',
-    cover: '/images/projects/hongyeon-1.0/cover.jpg',
-    part: 'AI Engineer, Frontend Developer',
-    description:
-      'A chatbot blending multigenerational voices from Hongyeon-gil, sharing local stories and culture through AI-driven narrative.',
-    researchQuestion:
-      'Can AI bridge the generational and cultural divide between long-time residents and newcomers in a rapidly gentrifying neighborhood?',
-    residency: 'The Silver Bell Challenge, ten to n gallery',
-    created_date: '2023',
-    skills: ['AI & Society', 'Media Art'],
-    vimeoId: '911056877',
-  },
-  {
     slug: 'simulating-1-2-3',
     name: 'Simulating #1,2,3',
     cover: '/images/projects/simulating-1-2-3/cover.jpg',
@@ -231,6 +218,7 @@ export const projects: Project[] = [
     created_date: '2022',
     skills: ['Digital Fabrication', 'Media Art'],
     vimeoId: '1151380515',
+    externalUrl: 'https://vimeo.com/1151380515',
   },
   {
     slug: 'singlet-multiplet',

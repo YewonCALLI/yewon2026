@@ -4,11 +4,24 @@ import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Footer, Header } from '@/components/projects'
+import { projects } from '@/app/works/projectlist'
 
 // projectSlug should match a `slug` in src/app/works/projectlist.ts — clicking the
 // centered title (md and up) sends you to that project's dedicated page at /works/[slug].
 // color drives the Identity 01-04 text in the header and the active footer thumbnail border.
-const slides = [
+type Slide = {
+  id: string
+  title: string
+  src: string
+  projectSlug: string
+  color: string
+  vimeoUrl?: string
+  // shrink the video inside the viewport (1 = full-bleed) and fill the margin with videoBg
+  videoScale?: number
+  videoBg?: string
+}
+
+const slides: Slide[] = [
   {
     id: 'intro-1',
     title: 'TypoFold',
@@ -86,6 +99,20 @@ const slides = [
     color: '#2DFFA0',
   },
   {
+    id: 'intro-14',
+    title: 'Memeproject',
+    src: '/images/intro/intro19.jpg',
+    projectSlug: 'memeproject',
+    color: '#2DFFA0',
+  },
+  {
+    id: 'intro-15',
+    title: 'Simulating #1,2,3',
+    src: '/images/intro/intro20.jpg',
+    projectSlug: 'simulating-1-2-3',
+    color: '#FF2D8C',
+  },
+  {
     id: 'intro-11',
     title: 'Singlet & Multiplet',
     src: '/images/intro/intro14.jpg',
@@ -94,21 +121,30 @@ const slides = [
   },
   {
     id: 'intro-12',
-    title: 'The Silver Bell Challenge',
+    title: 'Silver Bell',
     src: '/images/intro/intro15.jpg',
-    projectSlug: 'ganpan',
-    color: '#FF7A2D',
+    projectSlug: 'silver-bell',
+    color: '#5220B7',
+    videoScale: 0.8,
+    videoBg: '#FFFFFF',
     vimeoUrl:
-      'https://player.vimeo.com/video/1219658843?autoplay=1&loop=1&muted=1&playsinline=1&autopause=1&byline=0&title=0&portrait=0&controls=0&dnt=1&background=1',
+      'https://player.vimeo.com/video/1165424772?autoplay=1&loop=1&muted=1&playsinline=1&autopause=1&byline=0&title=0&portrait=0&controls=0&dnt=1&background=1',
   },
   {
     id: 'intro-13',
     title: 'delta-individualism',
     src: '/images/intro/intro16.jpg',
-    projectSlug: 'ganpan',
+    projectSlug: 'delta-individualism',
     color: '#FF2D8C',
     vimeoUrl:
       'https://player.vimeo.com/video/1151380515?autoplay=1&loop=1&muted=1&playsinline=1&autopause=1&byline=0&title=0&portrait=0&controls=0&dnt=1&background=1',
+  },
+  {
+    id: 'intro-16',
+    title: 'Draw the Beat!',
+    src: '/images/intro/intro21.jpg',
+    projectSlug: 'draw-the-beat',
+    color: '#B02DFF',
   },
 ]
 
@@ -156,6 +192,7 @@ export default function Page() {
   }, [])
 
   const activeSlide = slides[activeIndex]
+  const activeExternalUrl = projects.find((p) => p.slug === activeSlide.projectSlug)?.externalUrl
 
   const goToSlide = (direction: 1 | -1) => {
     isTransitioning.current = true
@@ -210,13 +247,19 @@ export default function Page() {
                 className={`pointer-events-none absolute inset-0 overflow-hidden transition-opacity duration-500 ${
                   index === activeIndex ? 'opacity-100' : 'opacity-0'
                 }`}
+                style={slide.videoBg ? { backgroundColor: slide.videoBg } : undefined}
               >
-                <iframe
-                  src={slide.vimeoUrl}
-                  title={slide.title}
-                  allow='autoplay; fullscreen'
-                  className='absolute left-1/2 top-1/2 h-[56.25vw] min-h-full w-screen min-w-[177.78vh] -translate-x-1/2 -translate-y-1/2 border-0'
-                />
+                <div
+                  className='absolute inset-0'
+                  style={slide.videoScale ? { transform: `scale(${slide.videoScale})` } : undefined}
+                >
+                  <iframe
+                    src={slide.vimeoUrl}
+                    title={slide.title}
+                    allow='autoplay; fullscreen'
+                    className='absolute left-1/2 top-1/2 h-[56.25vw] min-h-full w-screen min-w-[177.78vh] -translate-x-1/2 -translate-y-1/2 border-0'
+                  />
+                </div>
               </div>
             ) : (
               <Image
@@ -236,7 +279,8 @@ export default function Page() {
 
         <div className='pointer-events-none absolute left-1/2 -translate-x-1/2 bottom-[100px] md:flex text-center'>
           <Link
-            href={`/works/${activeSlide.projectSlug}`}
+            href={activeExternalUrl ?? `/works/${activeSlide.projectSlug}`}
+            {...(activeExternalUrl ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
             style={{ backgroundColor: activeSlide.color }}
             className='pointer-events-auto text-title font-medium transition-opacity duration-300 hover:opacity-70 px-2'
             onPointerDown={(event) => event.stopPropagation()}
