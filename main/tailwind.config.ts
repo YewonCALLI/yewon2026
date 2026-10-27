@@ -13,6 +13,7 @@ export default {
       body: ['1.125rem', { fontWeight: '500' }], // 18px / Medium - 본문
       heading: '1.25rem', // 20px - 소제목
       title: '1.5rem', // 24px - 섹션/프로젝트 제목
+      display: ['3.5rem', { lineHeight: '1.1' }], // 56px - 페이지 히어로 제목
     },
     extend: {
       writingMode: {

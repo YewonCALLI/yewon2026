@@ -125,11 +125,8 @@ export default function TypofoldPage() {
             <div className='flex flex-col justify-between gap-[16px] md:flex-row'>
               <h1 className='text-title font-medium'>{project.name}</h1>
               <div className='flex flex-col gap-[4px] lg:w-[70%]'>
-                <p className='text-[#FF2D8C]'>A design tool that converts 3D models into paper crafts</p>
-                <p className='text-ink'>
-                  08.2024 - Present / Computational Origami, Tool Development / Creative Awards, HCI Korea 2025 /
-                  Advisor. Prof Yongsoon Choi
-                </p>
+                <p className='text-[#FF2D8C]'>{project.description}</p>
+                <p className='text-ink'>{project.meta}</p>
               </div>
             </div>
 

@@ -1,6 +1,5 @@
 'use client'
 
-import Link from 'next/link'
 import { Header } from '@/components/projects'
 import { projects } from '@/app/works/projectlist'
 
@@ -30,10 +29,6 @@ export default function WriterPage() {
             </div>
           </section>
         )}
-
-        <Link href='/works' className='mt-[48px] block text-label text-neutral-500 hover:text-black'>
-          View all work →
-        </Link>
       </main>
     </>
   )

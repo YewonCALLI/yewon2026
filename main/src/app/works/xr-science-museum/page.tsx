@@ -189,9 +189,7 @@ export default function XRScienceMuseumPage() {
               <h1 className='text-title font-medium'>{project.name}</h1>
               <div className='flex flex-col gap-[4px] lg:w-[70%]'>
                 <p className='text-[#0B5FFF]'>{project.description}</p>
-                <p className='text-ink'>
-                  04.2025 - 12.2025 / WebXR, Computer Graphics, EdTech / {project.client} / {project.part}
-                </p>
+                <p className='text-ink'>{project.meta}</p>
               </div>
             </div>
 

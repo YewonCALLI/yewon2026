@@ -114,13 +114,8 @@ export default function MemeprojectPage() {
             <div className='flex flex-col justify-between gap-[16px] md:flex-row'>
               <h1 className='text-title font-medium'>{project.name}</h1>
               <div className='flex flex-col gap-[4px] lg:w-[70%]'>
-                <p className='text-[#FF6B00]'>
-                  An interactive website that explores meme origins, impact, and replication, and helps users create
-                  their own memes.
-                </p>
-                <p className='text-ink'>
-                  2023 / Generative, Tool / Graphic Designer, Frontend Developer / PlanT House, Hongcheon Art Museum
-                </p>
+                <p className='text-[#FF6B00]'>{project.description}</p>
+                <p className='text-ink'>{project.meta}</p>
               </div>
             </div>
 

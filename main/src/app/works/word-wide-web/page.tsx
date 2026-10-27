@@ -116,11 +116,8 @@ export default function WordWideWebPage() {
             <div className='flex flex-col justify-between gap-[16px] md:flex-row'>
               <h1 className='text-title font-medium'>{project.name}</h1>
               <div className='flex flex-col gap-[4px] lg:w-[70%]'>
-                <p className='text-[#FF6B00]'>A word-weaving platform that creates poems through connected synonyms.</p>
-                <p className='text-ink'>
-                  2024 / Tool Development, Media Art / Graphic Designer, AI Engineer, Frontend Developer / SFPC Summer
-                  2024
-                </p>
+                <p className='text-[#FF6B00]'>{project.description}</p>
+                <p className='text-ink'>{project.meta}</p>
               </div>
             </div>
 

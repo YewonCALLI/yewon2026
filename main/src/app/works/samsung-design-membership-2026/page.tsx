@@ -99,10 +99,8 @@ export default function SamsungDesignMembership2026Page() {
             <div className='flex flex-col justify-between  md:flex-row'>
               <h1 className='text-title font-medium'>{project.name}</h1>
               <div className='flex flex-col gap-[4px] text-body leading-relaxed lg:w-[70%]'>
-                <p className='text-[#FF2D8C]'>The online website for 2026 Samsung Design Membership</p>
-                <p className='text-ink'>
-                  06.2026 - 08.2026 / Design Engineering, Frontend Development / Samsung Electronics
-                </p>
+                <p className='text-[#FF2D8C]'>{project.description}</p>
+                <p className='text-ink'>{project.meta}</p>
               </div>
             </div>
 

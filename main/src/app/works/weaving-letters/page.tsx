@@ -127,12 +127,8 @@ export default function WeavingLettersPage() {
                 <h1 className='text-title font-medium'>{project.name}</h1>
               </div>
               <div className='flex flex-col gap-[4px] text-body leading-relaxed lg:w-[70%]'>
-                <p className='text-[#B02DFF]'>
-                  A zine compiling the content of TypoFold, which I submitted as a poster paper to HCI Korea.{' '}
-                </p>
-                <p className='text-ink'>
-                  06.2026 - 07.2026 / Zine, Typography, Textile Pattern / bokbokbok, Hugan Books
-                </p>
+                <p className='text-[#B02DFF]'>{project.description}</p>
+                <p className='text-ink'>{project.meta}</p>
               </div>
             </div>
 

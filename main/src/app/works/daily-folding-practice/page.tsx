@@ -123,13 +123,8 @@ export default function DailyFoldingPracticePage() {
                 <h1 className='text-title font-medium'>{project.name}</h1>
               </div>
               <div className='flex flex-col gap-[4px] text-body leading-relaxed lg:w-[70%]'>
-                <p className='text-[#FF2D8C]'>
-                  Collaborated with type designer Namju Ok to further develop TypoFold through a deeper understanding of
-                  type design.
-                </p>
-                <p className='text-ink'>
-                  04.2026 - 05.2026 / Workshop, Computational Design, Interactive Media / Space PADO
-                </p>
+                <p className='text-[#FF2D8C]'>{project.description}</p>
+                <p className='text-ink'>{project.meta}</p>
               </div>
             </div>
 

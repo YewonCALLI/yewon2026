@@ -339,12 +339,8 @@ export default function SilverBellPage() {
             <div className='flex flex-col justify-between gap-[16px] md:flex-row'>
               <h1 className='text-title font-medium'>{project.name}</h1>
               <div className='flex flex-col gap-[4px] lg:w-[70%]'>
-                <p className='text-[#5220B7]'>
-                  A research-based app that makes it easier for seniors with mobility challenges to start exercising.
-                </p>
-                <p className='text-ink'>
-                  2024 / Design Research, Application Development / Hwawon: Hongyeongil Residency / Team project
-                </p>
+                <p className='text-[#5220B7]'>{project.description}</p>
+                <p className='text-ink'>{project.meta}</p>
               </div>
             </div>
 

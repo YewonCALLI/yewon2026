@@ -115,9 +115,7 @@ export default function Sef2023Page() {
               <h1 className='text-title font-medium'>{project.name}</h1>
               <div className='flex flex-col gap-[4px] lg:w-[70%]'>
                 <p className='text-[#FF6B00]'>{project.description}</p>
-                <p className='text-ink'>
-                  05.2023 - 09.2023 / Web Planning, UX Writing / NAVER Connect Foundation / Product Manager
-                </p>
+                <p className='text-ink'>{project.meta}</p>
               </div>
             </div>
 

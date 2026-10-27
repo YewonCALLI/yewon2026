@@ -1,34 +1,7 @@
+import Link from 'next/link'
 import { motion } from 'framer-motion'
-import type { Project, ProjectSkill } from './projectlist'
+import type { Project } from './projectlist'
 import { ProjectMedia } from './ProjectMedia'
-
-function SkillTags({ skills }: { skills?: ProjectSkill[] }) {
-  if (!skills || skills.length === 0) return null
-  return <p className='text-label tracking-wide text-neutral-500'>{skills.join('  /  ')}</p>
-}
-
-function ProjectMeta({ project }: { project: Project }) {
-  const rows = [
-    project.award && { label: 'Award', value: project.award },
-    project.exhibition && { label: 'Exhibition', value: project.exhibition },
-    project.residency && { label: 'Residency', value: project.residency },
-    project.publication && { label: 'Publication', value: project.publication },
-    project.client && { label: 'Client', value: project.client },
-    project.funded && project.funded.length > 0 && { label: 'Funded by', value: project.funded.join(', ') },
-  ].filter(Boolean) as { label: string; value: string }[]
-
-  if (rows.length === 0) return null
-
-  return (
-    <div className='mt-[2px] flex flex-col gap-[3px]'>
-      {rows.map((row) => (
-        <p key={row.label} className='text-label leading-snug text-neutral-500'>
-          <span className='text-black'>{row.label}</span> · {row.value}
-        </p>
-      ))}
-    </div>
-  )
-}
 
 function ProjectCard({ project }: { project: Project }) {
   return (
@@ -38,22 +11,22 @@ function ProjectCard({ project }: { project: Project }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-10%' }}
       transition={{ duration: 0.5 }}
-      className='group flex scroll-mt-[80px] flex-col gap-[12px] rounded-[8px] border border-transparent p-[10px] transition-colors duration-200 hover:border-black'
+      className='scroll-mt-[80px]'
     >
-      <div className='relative aspect-video w-full overflow-hidden bg-neutral-100'>
-        <ProjectMedia project={project} />
-      </div>
-
-      <div className='flex flex-col gap-[2px]'>
-        <div className='flex items-baseline justify-between gap-[8px]'>
-          <span className='text-label font-medium leading-tight'>{project.name}</span>
+      <Link
+        href={project.externalUrl ?? `/works/${project.slug}`}
+        {...(project.externalUrl ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+        className='group flex flex-col gap-[12px] p-[10px]'
+      >
+        <div className='relative aspect-video w-full overflow-hidden bg-neutral-100'>
+          <ProjectMedia project={project} />
         </div>
 
-        {project.description && (
-          <p className='text-label leading-snug text-neutral-600'>{project.description}</p>
-        )}
-        <ProjectMeta project={project} />
-      </div>
+        <div className='flex flex-col gap-[4px]'>
+          <h3 className='text-heading font-medium leading-tight text-black'>{project.name}</h3>
+          {project.description && <p className='text-label leading-snug text-ink'>{project.description}</p>}
+          {project.meta && <p className='text-label leading-snug text-neutral-500'>{project.meta}</p>}        </div>
+      </Link>
     </motion.div>
   )
 }

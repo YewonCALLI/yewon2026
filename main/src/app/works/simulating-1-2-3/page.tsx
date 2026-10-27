@@ -114,10 +114,8 @@ export default function SimulatingPage() {
             <div className='flex flex-col justify-between gap-[16px] md:flex-row'>
               <h1 className='text-title font-medium'>{project.name}</h1>
               <div className='flex flex-col gap-[4px] lg:w-[70%]'>
-                <p className='text-[#FF6B00]'>Simulating gravity through Unreal Engine&apos;s Blueprint.</p>
-                <p className='text-ink'>
-                  2023 / Generative, Physics, Media Facade / 3D Artist, Media Facade Developer / ACC Media Cube, Gwangju
-                </p>
+                <p className='text-[#FF6B00]'>{project.description}</p>
+                <p className='text-ink'>{project.meta}</p>
               </div>
             </div>
 

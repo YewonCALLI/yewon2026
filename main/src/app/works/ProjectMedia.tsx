@@ -16,12 +16,13 @@ export function ProjectMedia({
   const [imageFailed, setImageFailed] = useState(false)
 
   if (project.vimeoId) {
+    const hash = project.vimeoHash ? `h=${project.vimeoHash}&` : ''
     return (
       <iframe
         src={
           nativeControls
-            ? `https://player.vimeo.com/video/${project.vimeoId}?autoplay=1&muted=1&loop=1&playsinline=1&title=0&byline=0&portrait=0&dnt=1`
-            : `https://player.vimeo.com/video/${project.vimeoId}?background=1&autoplay=1&muted=1&loop=1&playsinline=1`
+            ? `https://player.vimeo.com/video/${project.vimeoId}?${hash}autoplay=1&muted=1&loop=1&playsinline=1&title=0&byline=0&portrait=0&dnt=1`
+            : `https://player.vimeo.com/video/${project.vimeoId}?${hash}background=1&autoplay=1&muted=1&loop=1&playsinline=1`
         }
         title={`${project.name} video`}
         allow='autoplay; fullscreen; picture-in-picture'

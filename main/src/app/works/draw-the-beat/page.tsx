@@ -114,8 +114,8 @@ export default function DrawTheBeatPage() {
             <div className='flex flex-col justify-between gap-[16px] md:flex-row'>
               <h1 className='text-title font-medium'>{project.name}</h1>
               <div className='flex flex-col gap-[4px] lg:w-[70%]'>
-                <p className='text-[#FF6B00]'>A program that creates music by drawing.</p>
-                <p className='text-ink'>2021 / Music, Tool / Creative Technologist</p>
+                <p className='text-[#FF6B00]'>{project.description}</p>
+                <p className='text-ink'>{project.meta}</p>
               </div>
             </div>
 
