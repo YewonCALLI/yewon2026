@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { METADATA } from './metadata'
-import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import { pretendard, fontEnglish } from '@/theme/font'
 import { Layout } from '@/components/projects/Layout'
 
@@ -107,6 +107,7 @@ export default function RootLayout({
     <html lang='ko'>
       <body className={`${pretendard.variable} ${fontEnglish.variable} antialiased`}>
         <Layout>{children}</Layout>
+        <GoogleAnalytics gaId='G-LY9JQWZ3S3' />
       </body>
     </html>
   )
