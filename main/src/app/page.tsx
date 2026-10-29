@@ -25,7 +25,7 @@ const slides: Slide[] = [
   {
     id: 'intro-1',
     title: 'TypoFold',
-    src: '/images/intro/intro18.jpg',
+    src: '/images/intro/intro22.jpg',
     projectSlug: 'typofold',
     color: '#FF2D8C',
     vimeoUrl:
@@ -149,6 +149,68 @@ const slides: Slide[] = [
 ]
 
 const DRAG_THRESHOLD = 80
+const VIMEO_ORIGIN = 'https://player.vimeo.com'
+
+// Shows slide.src as a poster until the Vimeo player reports actual playback,
+// so the slide isn't blank while the iframe buffers.
+function VimeoSlide({ slide, isActive, priority }: { slide: Slide; isActive: boolean; priority: boolean }) {
+  const iframeRef = useRef<HTMLIFrameElement>(null)
+  const [isPlaying, setIsPlaying] = useState(false)
+
+  const subscribe = () => {
+    iframeRef.current?.contentWindow?.postMessage({ method: 'addEventListener', value: 'timeupdate' }, VIMEO_ORIGIN)
+  }
+
+  useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      if (event.origin !== VIMEO_ORIGIN || event.source !== iframeRef.current?.contentWindow) return
+      let data = event.data
+      if (typeof data === 'string') {
+        try {
+          data = JSON.parse(data)
+        } catch {
+          return
+        }
+      }
+      if (data?.event === 'ready') subscribe()
+      else if (data?.event === 'timeupdate' && data.data?.seconds > 0) setIsPlaying(true)
+    }
+
+    window.addEventListener('message', handleMessage)
+    return () => window.removeEventListener('message', handleMessage)
+  }, [])
+
+  return (
+    <div
+      className={`pointer-events-none absolute inset-0 overflow-hidden transition-opacity duration-500 ${
+        isActive ? 'opacity-100' : 'opacity-0'
+      }`}
+      style={slide.videoBg ? { backgroundColor: slide.videoBg } : undefined}
+    >
+      <div
+        className='absolute inset-0'
+        style={slide.videoScale ? { transform: `scale(${slide.videoScale})` } : undefined}
+      >
+        <iframe
+          ref={iframeRef}
+          src={slide.vimeoUrl}
+          title={slide.title}
+          allow='autoplay; fullscreen'
+          onLoad={subscribe}
+          className='absolute left-1/2 top-1/2 h-[56.25vw] min-h-full w-screen min-w-[177.78vh] -translate-x-1/2 -translate-y-1/2 border-0'
+        />
+        <Image
+          src={slide.src}
+          alt={slide.title}
+          fill
+          priority={priority}
+          sizes='100vw'
+          className={`object-cover transition-opacity duration-500 ${isPlaying ? 'opacity-0' : 'opacity-100'}`}
+        />
+      </div>
+    </div>
+  )
+}
 
 export default function Page() {
   const [activeIndex, setActiveIndex] = useState(0)
@@ -242,25 +304,7 @@ export default function Page() {
         >
           {slides.map((slide, index) =>
             slide.vimeoUrl ? (
-              <div
-                key={slide.id}
-                className={`pointer-events-none absolute inset-0 overflow-hidden transition-opacity duration-500 ${
-                  index === activeIndex ? 'opacity-100' : 'opacity-0'
-                }`}
-                style={slide.videoBg ? { backgroundColor: slide.videoBg } : undefined}
-              >
-                <div
-                  className='absolute inset-0'
-                  style={slide.videoScale ? { transform: `scale(${slide.videoScale})` } : undefined}
-                >
-                  <iframe
-                    src={slide.vimeoUrl}
-                    title={slide.title}
-                    allow='autoplay; fullscreen'
-                    className='absolute left-1/2 top-1/2 h-[56.25vw] min-h-full w-screen min-w-[177.78vh] -translate-x-1/2 -translate-y-1/2 border-0'
-                  />
-                </div>
-              </div>
+              <VimeoSlide key={slide.id} slide={slide} isActive={index === activeIndex} priority={index === 0} />
             ) : (
               <Image
                 key={slide.id}
