@@ -1,10 +1,52 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { Header } from '@/components/projects'
 
-const INTRO =
-  'As a researcher working in computational origami, digital fabrication, and computer graphics, I am engaged in designing tools that turn digital 3D forms into foldable objects, presenting papers at conferences such as HCI Korea, and collaborating across design and engineering.'
+const TEXT_LINK_CLASS = 'underline underline-offset-[3px] transition-colors hover:text-neutral-500'
+
+// internal paths use next/link; full URLs open in a new tab
+function TextLink({ href, children }: { href: string; children: React.ReactNode }) {
+  if (href.startsWith('http')) {
+    return (
+      <a href={href} target='_blank' rel='noopener noreferrer' className={TEXT_LINK_CLASS}>
+        {children}
+      </a>
+    )
+  }
+  return (
+    <Link href={href} className={TEXT_LINK_CLASS}>
+      {children}
+    </Link>
+  )
+}
+
+const INTRO: React.ReactNode[] = [
+  <>
+    Hi, there. I am Yewon Jang, a master&rsquo;s student in Computational Design at Carnegie Mellon University&apos;s
+    School of Architecture.
+  </>,
+  <>
+    My research focuses on computational origami and digital fabrication, particularly in turning digital 3D forms into
+    objects people can cut, fold, and assemble by hand.
+  </>,
+  <>
+    I received HCI Korea Conference Creative Awards twice, in 2025 and 2023. One was for{' '}
+    <TextLink href='/works/typofold'>TypoFold</TextLink>, a tool that unfolds 3D typography into papercraft nets that
+    people can print, cut, and assemble, which I developed under the advising of Professor Yongsoon Choi of the{' '}
+    <TextLink href='https://lifestylemedia.org/'>lifestyle media group</TextLink> at Sogang University. The other was <TextLink href='/works/franklin'>Franklin</TextLink>, a
+    gender-debiased Korean fairytale generator.
+  </>,
+  <>
+    Before joining CMU, I graduated from Sogang University with bachelor&rsquo;s degrees in{' '}
+    <TextLink href='https://creative.sogang.ac.kr/'>Art & Technology</TextLink> and
+    Convergence Software. I worked as a 3D web front-end engineer building interactive science simulations for{' '}
+    <TextLink href='/works/xr-science-museum'>MiraeN&apos;s XR Science Museum</TextLink>. I also worked as a
+    research assistant for Professor Kyootai Lee, a professor in the Graduate School of Management of Technology at
+    Sogang University.
+  </>,
+]
 
 const THEMES = [
   {
@@ -46,7 +88,7 @@ const PROFILE: { label: string; lines: ProfileLine[]; note?: string }[] = [
   },
   {
     label: 'Research Fields',
-    lines: ['Origami Engineering, Digital Fabrication,', 'Computer Graphics, Human–Computer Interaction'],
+    lines: ['Computational Origami, Digital Fabrication,', 'Computer Graphics, Human–Computer Interaction'],
   },
   {
     label: 'External Links',
@@ -119,7 +161,11 @@ export default function ResearcherPage() {
     <>
       <Header title='Researcher' />
       <main className='min-h-dvh w-full bg-white px-[16px] pb-[100px] pt-[120px] text-ink md:px-[40px] md:pt-[160px]'>
-        <p className='max-w-[720px] text-body font-medium leading-snug text-black'>{INTRO}</p>
+        <div className='flex max-w-[720px] flex-col gap-[12px] text-body font-medium leading-snug text-black'>
+          {INTRO.map((paragraph, i) => (
+            <p key={i}>{paragraph}</p>
+          ))}
+        </div>
 
         <section className='mt-[80px]'>
           <h2 className='text-label font-medium'>Profile</h2>
