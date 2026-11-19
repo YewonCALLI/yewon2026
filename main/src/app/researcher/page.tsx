@@ -125,11 +125,11 @@ export default function ResearcherPage() {
           <h2 className='text-label font-medium'>Profile</h2>
           <div className='mt-[24px] flex flex-col gap-[32px] md:flex-row md:gap-[48px]'>
             <Image
-              src='/images/profile/yewon.jpg'
+              src='/images/profile/yewon3.jpg'
               alt='Yewon Jang'
               width={1400}
               height={1400}
-              className='aspect-square h-auto w-full max-w-[160px] shrink-0 self-start object-cover'
+              className='h-auto w-full max-w-[210px] shrink-0 self-start object-cover'
             />
             <dl className='min-w-0 max-w-[480px] flex-1'>
               {PROFILE.map((row) => (
