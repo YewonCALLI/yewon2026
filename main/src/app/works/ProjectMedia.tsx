@@ -42,7 +42,7 @@ export function ProjectMedia({
         fill
         sizes={sizes}
         quality={90}
-        className='object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]'
+        className='object-cover object-center'
         onError={() => setImageFailed(true)}
       />
     )

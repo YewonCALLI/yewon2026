@@ -192,7 +192,7 @@ export default function XRScienceMuseumKoPage() {
                   2022 개정 교육과정 기반 미래엔 초등 5~6학년 과학 디지털 교과서에 수록된 14개의 WebXR 콘텐츠(웹사이트).
                 </p>
                 <p className='text-ink'>
-                  2025 - 2026 / WebXR, Computer Graphics, Tool Development / 미래엔 / UX/UI Designer, Frontend Developer
+                  2025 - 2026 / Computer Graphics, Tool Development / 미래엔 / UX/UI Designer, Frontend Developer
                 </p>
               </div>
             </div>
@@ -203,7 +203,7 @@ export default function XRScienceMuseumKoPage() {
 
             {/* In-page section nav */}
             <div id='nav-sentinel' className='h-0' />
-            <nav className='sticky top-[60px] z-10 -mx-[22px] mt-[24px] flex gap-x-[16px] overflow-x-auto border-b border-black bg-white px-[22px] py-[10px] no-scroll-bar md:-mx-[40px] md:px-[40px]'>
+            <nav className='sticky top-[46px] z-10 -mx-[22px] md:top-[60px] mt-[24px] flex gap-x-[16px] overflow-x-auto border-y border-black bg-white px-[22px] md:border-t-0 py-[10px] no-scroll-bar md:-mx-[40px] md:px-[40px]'>
               {sectionIds.map((id) => (
                 <a
                   key={id}

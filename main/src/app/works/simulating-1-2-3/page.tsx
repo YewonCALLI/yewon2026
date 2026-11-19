@@ -125,7 +125,7 @@ export default function SimulatingPage() {
 
             {/* In-page section nav */}
             <div id='nav-sentinel' className='h-0' />
-            <nav className='sticky top-[60px] z-10 -mx-[22px] mt-[24px] flex gap-x-[16px] overflow-x-auto border-b border-black bg-white px-[22px] py-[10px] no-scroll-bar md:-mx-[40px] md:px-[40px]'>
+            <nav className='sticky top-[46px] z-10 -mx-[22px] md:top-[60px] mt-[24px] flex gap-x-[16px] overflow-x-auto border-y border-black bg-white px-[22px] md:border-t-0 py-[10px] no-scroll-bar md:-mx-[40px] md:px-[40px]'>
               {sectionIds.map((id) => (
                 <a
                   key={id}

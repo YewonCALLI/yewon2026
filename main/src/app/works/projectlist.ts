@@ -4,6 +4,7 @@ export type ProjectSkill =
   | 'Computer Graphics'
   | 'Media Art'
   | 'Interaction Design'
+  | 'Design Engineering'
   | 'Digital Fabrication'
 
 export const ALL_SKILLS: ProjectSkill[] = [
@@ -11,6 +12,7 @@ export const ALL_SKILLS: ProjectSkill[] = [
   'AI & Society',
   'Computer Graphics',
   'Digital Fabrication',
+  'Design Engineering',
   'Interaction Design',
   'Media Art',
 ]
@@ -35,25 +37,11 @@ export interface Project {
   skills?: ProjectSkill[]
   vimeoId?: string
   vimeoHash?: string // privacy hash (`h=`) required for unlisted Vimeo videos
-  meta?: string // date / categories / role / venue, shown on cards and detail pages
+  meta?: string // period / categories / venue, shown on cards and detail pages
   externalUrl?: string // no detail page: link straight to this URL
 }
 
 export const projects: Project[] = [
-  {
-    slug: 'samsung-design-membership-2026',
-    name: '2026 Samsung Design Membership',
-    cover: '/images/projects/samsung-design-membership-2026/cover.jpg',
-    part: '',
-    description: 'The online website for 2026 Samsung Design Membership',
-    meta: '06.2026 - 08.2026 / Design Engineering, Frontend Development / Samsung Electronics',
-    researchQuestion: '',
-    keyFindings: '',
-    created_date: '2026',
-    skills: ['Interaction Design', 'Tool Development'],
-    vimeoId: '1216876134',
-    vimeoHash: 'b5132f6bf0',
-  },
   {
     slug: 'daily-folding-practice',
     parent: 'typofold',
@@ -61,12 +49,26 @@ export const projects: Project[] = [
     cover: '/images/projects/daily-folding-practice/cover.jpg',
     part: '',
     description:
-      'Collaborated with type designer Namju Ok to further develop TypoFold through a deeper understanding of type design.',
+      'Collaborated with type designer Namju Ok to further develop TypoFold.',
     meta: '04.2026 - 05.2026 / Workshop, Computational Design, Interactive Media / Space PADO',
     researchQuestion: '',
     keyFindings: '',
     created_date: '2026',
     skills: ['Digital Fabrication', 'Interaction Design'],
+  },
+  {
+    slug: 'samsung-design-membership-2026',
+    name: '2026 Samsung Design Membership',
+    cover: '/images/projects/samsung-design-membership-2026/cover.jpg',
+    part: '',
+    description: 'The online website for 2026 Samsung Design Membership.',
+    meta: '06.2026 - 08.2026 / Design Engineering / Samsung Electronics',
+    researchQuestion: '',
+    keyFindings: '',
+    created_date: '2026',
+    skills: ['Design Engineering'],
+    vimeoId: '1216876134',
+    vimeoHash: 'b5132f6bf0',
   },
   {
     slug: 'weaving-letters',
@@ -78,7 +80,7 @@ export const projects: Project[] = [
     meta: '06.2026 - 07.2026 / Zine, Typography, Textile Pattern / bokbokbok, Hugan Books',
     researchQuestion: '',
     keyFindings: '',
-    created_date: '2025',
+    created_date: '2026',
     skills: ['Digital Fabrication'],
   },
   {
@@ -86,8 +88,8 @@ export const projects: Project[] = [
     name: 'Typofold',
     cover: '/images/projects/typofold/cover.jpg',
     part: 'Tool development, Digital Fabrication',
-    description: 'A design tool that converts 3D models into paper crafts',
-    meta: '08.2024 - Present / Computational Origami, Tool Development / Creative Awards, HCI Korea 2025 / Advisor. Prof Yongsoon Choi',
+    description: 'A design tool that converts 3D models into paper crafts.',
+    meta: '09.2024 - Present / Computational Origami, Tool Development / Creative Awards, HCI Korea 2025',
     researchQuestion:
       'How can we provide the convenience of automation while not losing the sense of having made it yourself?',
     keyFindings:
@@ -107,7 +109,7 @@ export const projects: Project[] = [
     part: 'AI Engineer, Backend Developer',
     description:
       "A gender-neutral Korean fairy tale generator using AI, addressing social biases in children's literature.",
-    meta: '2022 / AI Writing, Tool / AI Engineer, Backend Developer',
+    meta: '08.2022 - 08.2023 / Gender Debiasing, AI Writing / Smilegate AI Membership, Naver SW Scholarship, HCI Korea Conference 2023',
     researchQuestion: 'Why all fairytale girls want party, while all fairytale boys fight with dragons?',
     keyFindings:
       'Applied hard debiasing to Korean word embeddings, neutralizing indirect gender associations. Showcased at OnDream Society and 2023 HCI Korea Conference.',
@@ -125,7 +127,7 @@ export const projects: Project[] = [
     part: 'UX/UI Designer, 3D Frontend Developer',
     description:
       '14 WebXR contents (websites) included in the MiraeN Science Digital Textbook for Elementary School 5th-6th Grade under the 2022 Revised Curriculum.',
-    meta: '04.2025 - 12.2025 / WebXR, Computer Graphics, EdTech / MiraeN / UX/UI Designer, 3D Frontend Developer',
+    meta: '04.2025 - 12.2025 / Computer Graphics, EdTech / MiraeN',
     researchQuestion: 'How can interactive 3D simulations reduce instructional friction in digital science textbooks?',
     keyFindings:
       'Identified 3 key barriers in existing digital textbooks through teacher and student journey research. Designed 4 reusable XR experiment templates; platform launches March 2026 across multiple classrooms.',
@@ -140,11 +142,11 @@ export const projects: Project[] = [
     name: '2025 Samsung Design Membership',
     cover: '/images/projects/samsung-design-membership-2025/cover.jpg',
     part: 'Frontend Developer',
-    description: 'The online website for 2025 Samsung Design Membership',
-    meta: '06.2025 - 08.2025 / Frontend Development / Samsung Design Membership',
+    description: 'The online website for 2025 Samsung Design Membership.',
+    meta: '06.2025 - 08.2025 / Design Engineering / Samsung Electronics',
     client: 'Samsung Design Membership',
     created_date: '2025',
-    skills: ['Interaction Design', 'Tool Development'],
+    skills: ['Design Engineering'],
     vimeoId: '1151368571',
   },
   {
@@ -153,7 +155,7 @@ export const projects: Project[] = [
     cover: '/images/projects/silver-bell/cover.jpg',
     part: 'Design Researcher, Application Developer',
     description: 'A research-based app that makes it easier for seniors with mobility challenges to start exercising.',
-    meta: '2024 / Design Research, Application Development / Hwawon: Hongyeongil Residency / Team project',
+    meta: '07.2023 - 01.2024 / Design Research, Application Development / Young Artists Support Platform: Hwawon Scholarship',
     researchQuestion:
       'How can we reduce the burden that elderly people with limited mobility feel when starting exercise through a mobile interface?',
     keyFindings:
@@ -169,11 +171,11 @@ export const projects: Project[] = [
     cover: '/images/projects/word-wide-web/cover.jpg',
     part: 'Graphic Designer, AI Engineer, Frontend Developer',
     description: 'A word-weaving platform that creates poems through connected synonyms.',
-    meta: '2024 / Tool Development, Media Art / Graphic Designer, AI Engineer, Frontend Developer / SFPC Summer 2024',
+    meta: '07.2024 / Tool Development, Media Art / SFPC Summer 2024',
     researchQuestion: `Can a community's shared vocabulary become the foundation for a tool that supports poetic expression?`,
     residency: 'SFPC Summer 2024',
     created_date: '2024',
-    skills: ['Tool Development', 'Media Art'],
+    skills: ['Media Art'],
   },
   {
     slug: 'ganpan',
@@ -181,7 +183,7 @@ export const projects: Project[] = [
     cover: '/images/projects/ganpan/cover.jpg',
     part: 'Graphic Designer, Frontend Developer',
     description: 'A Korean typography generation model based on signboard images in South Korea.',
-    meta: '2024 / Typography, Tool, Zine / Designer, Frontend Developer',
+    meta: '09.2024 - 12.2024 / Typography, Tool, Zine / 2024 ATC (Art&Technology Conference)',
     researchQuestion:
       'How can signage become a playful medium for people to engage with and archive the visual landscape of cities?',
     exhibition: '2024 ATC (Art&Technology Conference)',
@@ -196,7 +198,7 @@ export const projects: Project[] = [
     part: 'Graphic Designer, Frontend Developer',
     description:
       'An interactive website that explores meme origins, impact, and replication, and helps users create their own memes.',
-    meta: '2023 / Generative, Tool / Graphic Designer, Frontend Developer / PlanT House, Hongcheon Art Museum',
+    meta: '07.2023 - 01.2024 / Media Art / PlanT House, Hongcheon Art Museum',
     researchQuestion:
       'Can the logic of meme replication and evolution be experienced firsthand through interactive participation?',
     exhibition: 'PlanT House, Hongcheon Art Museum',
@@ -210,7 +212,7 @@ export const projects: Project[] = [
     part: 'Product Manager (Website)',
     description:
       "Website planning, UX writing and deployment for the NAVER Connect Foundation's Software Education Festival 2023.",
-    meta: '05.2023 - 09.2023 / Web Planning, UX Writing / NAVER Connect Foundation / Product Manager',
+    meta: '05.2023 - 09.2023 / Web Planning, UX Writing / NAVER Connect Foundation',
     client: 'NAVER Connect Foundation',
     created_date: '2023',
     skills: ['Interaction Design'],
@@ -221,7 +223,7 @@ export const projects: Project[] = [
     cover: '/images/projects/simulating-1-2-3/cover.jpg',
     part: '3D Artist, Media Facade Developer',
     description: "Simulating gravity through Unreal Engine's Blueprint.",
-    meta: '2023 / Generative, Physics, Media Facade / 3D Artist, Media Facade Developer / ACC Media Cube, Gwangju',
+    meta: '04.2023 / Media Art Performance, Physics / ACC Media Cube, Gwangju',
     exhibition: 'ACC Media Cube, Gwangju',
     created_date: '2023',
     skills: ['Computer Graphics', 'Media Art'],
@@ -237,6 +239,7 @@ export const projects: Project[] = [
     exhibition: '2022 ATC (Art&Technology Conference)',
     funded: ['National Research Foundation (NRF)'],
     created_date: '2022',
+    meta: '01.2022 - 12.2022 / Media Art, Digital Fabrication / 2022 ATC (Art&Technology Conference)',
     skills: ['Digital Fabrication', 'Media Art'],
     vimeoId: '1151380515',
     externalUrl: 'https://vimeo.com/1151380515',
@@ -247,7 +250,7 @@ export const projects: Project[] = [
     cover: '/images/projects/singlet-multiplet/cover.jpg',
     part: 'Creative Technologist',
     description: 'A media art performance exploring identity and quantum mechanics.',
-    meta: '2021 / Media Art, Generative, Physics / Creative Technologist / Team Moiré',
+    meta: '07.2021 - 01.2022 / Media Art, Physics / CICA Museum, Seoul Institute of the Arts',
     researchQuestion:
       'Can science offer answers to the confusion the ego feels when existing in multiple states simultaneously?',
     exhibition:
@@ -263,7 +266,7 @@ export const projects: Project[] = [
     cover: '/images/projects/draw-the-beat/cover.jpg',
     part: 'Creative Technologist',
     description: 'A program that creates music by drawing.',
-    meta: '2021 / Music, Tool / Creative Technologist',
+    meta: '09.2021 / Music, Tool / Course work for Creative Algorithms, Sogang University',
     researchQuestion: 'Is there a way to make music composition more intuitive and visual?',
     created_date: '2021',
     skills: ['Tool Development'],

@@ -27,7 +27,7 @@ const CONTACT = {
   address: 'Based in Pittsburgh and Seoul',
 }
 
-const SOCIALS = [{ label: 'Instagram', href: 'https://www.instagram.com/yewon.calli/' }, { label: 'X' }]
+const SOCIALS = [{ label: 'Instagram', href: 'https://www.instagram.com/yewon.calli/' }]
 
 // Pages that exist in more than one language, mapped to their counterpart.
 const LANGUAGE_ALTERNATES: Record<string, { label: string; href: string }> = {
@@ -39,7 +39,7 @@ const LANGUAGE_ALTERNATES: Record<string, { label: string; href: string }> = {
   '/works/xr-science-museum/ko': { label: 'EN', href: '/works/xr-science-museum' },
 }
 
-export function Header({ title, accentColor = '#FF2D8C', light = false, mobileLight = light }: HeaderProps) {
+export function Header({ title, accentColor = '#0059ff', light = false, mobileLight = light }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [time, setTime] = useState('')
   const pathname = usePathname()
@@ -147,137 +147,104 @@ export function Header({ title, accentColor = '#FF2D8C', light = false, mobileLi
               ),
             )}
           </div>
-          <span className={light ? 'text-black/50' : 'text-white/60'}>EDT {time}</span>
         </div>
       </header>
 
-      {/* below md: collapsible menu */}
-      <div
-        className={`fixed top-[0px] w-full py-[10px] flex justify-center left-1/2 z-50 -translate-x-1/2 md:hidden transform-gpu will-change-transform ${
-          mobileLight ? 'bg-white' : 'bg-transparent'
-        }`}
-      >
-        <button
-          type='button'
-          onClick={() => setIsOpen((prev) => !prev)}
-          aria-expanded={isOpen}
-          aria-label={isOpen ? 'Close menu' : 'Open menu'}
-          className={`flex h-[44px] w-[359px] max-w-[92vw] items-center justify-between gap-3 rounded-md px-[16px] ${
-            mobileLight ? 'bg-white border border-black shadow-sm' : 'bg-[#111111]'
-          }`}
-        >
-          <span className='flex flex-col items-start justify-center leading-[120%]'>
-            <span className={`text-label font-medium ${mobileLight ? 'text-black/60' : 'text-white/60'}`}>
-              Yewon Jang
-            </span>
-            <span
-              className={`max-w-[240px] truncate text-label font-medium ${mobileLight ? 'text-black' : 'text-white'}`}
+      {/* below md: same look as the home page's mobile filter bar (blue strip + white boxes + black toggle) */}
+      {/* 바 높이 46px 고정: 7px + (4px + 24px + 4px) + 7px — 프로젝트 상세 페이지의 sticky 네비가 이 값에 맞춰 붙음 */}
+      <div className='pointer-events-none fixed left-0 top-0 z-50 flex w-screen flex-col items-start md:hidden'>
+        <div className='pointer-events-auto flex h-[46px] w-fit items-stretch'>
+          <div className='flex flex-row gap-2 bg-[#0059ff] p-[7px]'>
+            <Link
+              href='/'
+              onClick={() => setIsOpen(false)}
+              className='whitespace-nowrap bg-white px-2 py-1 leading-6 text-black'
             >
-              {isOpen ? 'Menu' : title}
-            </span>
-          </span>
-          <span className='relative flex h-[14px] w-[14px] shrink-0 items-center justify-center'>
-            <span
-              className={`absolute h-[1.5px] w-[14px] transition-transform duration-300 ${mobileLight ? 'bg-black' : 'bg-white'} ${
-                isOpen ? 'rotate-45' : '-translate-y-[3px]'
-              }`}
-            />
-            <span
-              className={`absolute h-[1.5px] w-[14px] transition-transform duration-300 ${mobileLight ? 'bg-black' : 'bg-white'} ${
-                isOpen ? '-rotate-45' : 'translate-y-[3px]'
-              }`}
-            />
-          </span>
-        </button>
-
-        <div
-          className={`absolute left-1/2 -translate-x-1/2 top-[62px] flex max-h-[70vh] w-[359px] max-w-[92vw] origin-top flex-col justify-between overflow-y-auto rounded-md px-[16px] pb-[16px] pt-[12px] shadow-xl transition-all duration-300 ease-out ${
-            mobileLight ? 'bg-white text-black border border-black' : 'bg-[#0A0A0A] text-white'
-          } ${isOpen ? 'scale-y-100 opacity-100' : 'pointer-events-none scale-y-95 opacity-0'}`}
-          aria-hidden={!isOpen}
-        >
-          <div>
-            <nav>
-              {NAV_ITEMS.map((item) => (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  onClick={(event) => {
-                    if (item.href === '#') event.preventDefault()
-                    setIsOpen(false)
-                  }}
-                  className={`block border-b py-[12px] text-body font-medium ${
-                    mobileLight ? 'border-black/10' : 'border-white/10'
-                  }`}
-                >
-                  {item.identity && (
-                    <span
-                      className='mr-[12px] text-label font-normal transition-colors'
-                      style={{ color: accentColor }}
-                    >
-                      {item.identity}
-                    </span>
-                  )}
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
+              Yewon Jang
+            </Link>
+            <span className='max-w-[160px] truncate bg-white px-2 py-1 leading-6 text-black'>{isOpen ? 'Menu' : title}</span>
           </div>
 
-          <div className='flex flex-col gap-[10px] pt-[10px]'>
-            {languageAlternate && (
-              <div
-                className={`flex flex-col gap-[2px] border-t pt-[10px] text-label ${
-                  mobileLight ? 'border-black/10 text-black/70' : 'border-white/10 text-white/80'
-                }`}
-              >
-                <Link
-                  href={languageAlternate.href}
-                  onClick={() => setIsOpen(false)}
-                  className={`transition-colors ${mobileLight ? 'hover:text-black' : 'hover:text-white'}`}
-                >
-                  {languageAlternate.label}
-                </Link>
-              </div>
-            )}
-            <div
-              className={`flex flex-col gap-[2px] border-t pt-[10px] text-label ${
-                mobileLight ? 'border-black/10 text-black/70' : 'border-white/10 text-white/80'
-              }`}
-            >
-              <span>Inquiries: {CONTACT.inquiries}</span>
-              <span>Address: {CONTACT.address}</span>
-            </div>
+          <button
+            type='button'
+            onClick={() => setIsOpen((prev) => !prev)}
+            aria-expanded={isOpen}
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            className='flex cursor-pointer items-center justify-center bg-black px-3 text-white'
+          >
+            {isOpen ? '▲' : '▼'}
+          </button>
+        </div>
 
-            <div
-              className={`flex flex-col gap-[2px] border-t pt-[10px] text-label ${
-                mobileLight ? 'border-black/10 text-black/70' : 'border-white/10 text-white/80'
-              }`}
-            >
-              {SOCIALS.map((social) =>
-                social.href ? (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className={`transition-colors ${mobileLight ? 'hover:text-black' : 'hover:text-white'}`}
+        {/* expanded: the blue strip grows into a sheet of white boxes, same language as the closed bar */}
+        <div
+          className={`pointer-events-auto grid w-full transition-[grid-template-rows] duration-300 ease-out ${
+            isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+          }`}
+          aria-hidden={!isOpen}
+        >
+          <div className='overflow-hidden'>
+            <div className='flex flex-col gap-[7px] bg-[#0059ff] px-[7px] pb-[7px] pt-[7px]'>
+              <nav className='flex flex-col gap-[7px]'>
+                {NAV_ITEMS.map((item) => {
+                  const isActive = pathname === item.href
+                  return (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      tabIndex={isOpen ? undefined : -1}
+                      onClick={() => setIsOpen(false)}
+                      className={`flex items-center justify-between px-2 py-2 ${
+                        isActive ? 'bg-black text-white' : 'bg-white text-black'
+                      }`}
+                    >
+                      <span>{item.label}</span>
+                      {item.identity && (
+                        <span className='text-label' style={{ color: accentColor }}>
+                          {item.identity}
+                        </span>
+                      )}
+                    </Link>
+                  )
+                })}
+              </nav>
+
+              <div className='flex flex-col gap-[2px] px-[2px] pt-[4px] text-label text-white'>
+                {languageAlternate && (
+                  <Link
+                    href={languageAlternate.href}
+                    tabIndex={isOpen ? undefined : -1}
+                    onClick={() => setIsOpen(false)}
+                    className='w-fit bg-white px-2 py-[2px] text-black'
                   >
-                    {social.label}
-                  </a>
-                ) : (
-                  <span key={social.label}>{social.label}</span>
-                ),
-              )}
-            </div>
-
-            <div
-              className={`flex items-center justify-between border-t pt-[10px] text-label ${
-                mobileLight ? 'border-black/10 text-black/60' : 'border-white/10 text-white/60'
-              }`}
-            >
-              <span>© 2026 Yewon Jang</span>
-              <span>EDT {time}</span>
+                    {languageAlternate.label}
+                  </Link>
+                )}
+                <a href={`mailto:${CONTACT.inquiries}`} tabIndex={isOpen ? undefined : -1} className='underline'>
+                  {CONTACT.inquiries}
+                </a>
+                <span>{CONTACT.address}</span>
+                <div className='flex items-center justify-between'>
+                  <div className='flex items-center gap-3'>
+                    {SOCIALS.map((social) =>
+                      social.href ? (
+                        <a
+                          key={social.label}
+                          href={social.href}
+                          target='_blank'
+                          rel='noopener noreferrer'
+                          tabIndex={isOpen ? undefined : -1}
+                          className='underline'
+                        >
+                          {social.label}
+                        </a>
+                      ) : (
+                        <span key={social.label}>{social.label}</span>
+                      ),
+                    )}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

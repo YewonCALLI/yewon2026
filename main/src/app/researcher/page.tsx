@@ -49,14 +49,6 @@ const PROFILE: { label: string; lines: ProfileLine[]; note?: string }[] = [
     lines: ['Origami Engineering, Digital Fabrication,', 'Computer Graphics, Human–Computer Interaction'],
   },
   {
-    label: 'Awards',
-    lines: ['HCI Korea Conference Creative Awards 2025', 'HCI Korea Conference Creative Awards 2023'],
-  },
-  {
-    label: 'Scholarships',
-    lines: ['Merit-based Scholarship, Carnegie Mellon University', 'Yuyeon Foundation Scholarship', 'SW Scholarship, Naver'],
-  },
-  {
     label: 'External Links',
     lines: [
       { text: 'Google Scholar', href: GOOGLE_SCHOLAR_URL },
@@ -85,7 +77,24 @@ const TEACHING = [
   },
 ]
 
-// * equal contribution
+const HONORS = [
+  'Merit-based Scholarship, Carnegie Mellon University, Aug 2026',
+  'Excellence Award, HCI Korea Creative Award Interactive Art Gallery, HCI Korea, Feb 2025',
+  'Yuyeon Foundation Scholarship, Aug 2024',
+  'Excellence Award(Humanities & Social Sciences), Sogang Integrated Technology & Engineering Contest, Jun 2024',
+  'Excellence Award, HCI Korea Creative Award Capstone Project, HCI Korea, Feb 2023',
+  'Grand Prize of the Young Artist Support Platform: Hwawon Scholarship (European Study & Travel), Total Museum of Contemporary Art, Sep 2023',
+  'Grand Award (Engineering/Science), Sogang Integrated Technology & Engineering Contest, Nov 2022',
+  'Grand Award (SW), Sogang Integrated Technology & Engineering Contest, Nov 2022',
+  'Smilegate AI Membership, Smilegate Group, Aug 2022',
+  'Excellence Award, Development of Metaverse-based Student Participatory Class, Sogang University, Mar 2022',
+  'Naver SW Scholarship, Naver, Sep 2022',
+  'First Award, Spin Art Contest, Institute for Basic Science (IBS) & Center for Quantum Nanoscience (QNS), Dec 2021',
+  'Media Art Association President Award, Korea JoongAng Daily, Nov 2021',
+  "Grand Award, Problem-Solving Team Project Competition 'World Created by Sogang', Sogang University, Jan 2021",
+  'Second Prize in Physics, Taiwan International Science Fair, National Taiwan Science Education Center, Aug 2019',
+]
+
 const PUBLICATIONS = [
   {
     authors: 'Yewon Jang & Yongsoon Choi',
@@ -109,8 +118,8 @@ export default function ResearcherPage() {
   return (
     <>
       <Header title='Researcher' />
-      <main className='min-h-dvh w-full bg-white px-[30px] pb-[100px] pt-[120px] text-ink md:px-[40px] md:pt-[160px]'>
-        <p className='max-w-[720px] text-title font-medium leading-snug text-black'>{INTRO}</p>
+      <main className='min-h-dvh w-full bg-white px-[16px] pb-[100px] pt-[120px] text-ink md:px-[40px] md:pt-[160px]'>
+        <p className='max-w-[720px] text-body font-medium leading-snug text-black'>{INTRO}</p>
 
         <section className='mt-[80px]'>
           <h2 className='text-label font-medium'>Profile</h2>
@@ -198,6 +207,15 @@ export default function ResearcherPage() {
             ))}
           </ol>
           <p className='mt-[12px] text-label text-neutral-500'>* equal contribution</p>
+        </section>
+
+        <section className='mt-[80px]'>
+          <h2 className='text-label font-medium'>Honors & Scholarships</h2>
+          <ul className='mt-[24px] flex max-w-[1080px] flex-col gap-[6px] text-[14px] text-bold leading-snug'>
+            {HONORS.map((honor) => (
+              <li key={honor}>{honor}</li>
+            ))}
+          </ul>
         </section>
 
         <section className='mt-[80px]'>

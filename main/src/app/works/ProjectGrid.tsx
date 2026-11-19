@@ -18,14 +18,16 @@ function ProjectCard({ project }: { project: Project }) {
         {...(project.externalUrl ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
         className='group flex flex-col gap-[12px] p-[10px]'
       >
+        <h3 className='text-heading font-medium leading-tight text-black'>{project.name}</h3>
+
         <div className='relative aspect-video w-full overflow-hidden bg-neutral-100'>
           <ProjectMedia project={project} />
         </div>
 
         <div className='flex flex-col gap-[4px]'>
-          <h3 className='text-heading font-medium leading-tight text-black'>{project.name}</h3>
-          {project.description && <p className='text-label leading-snug text-ink'>{project.description}</p>}
-          {project.meta && <p className='text-label leading-snug text-neutral-500'>{project.meta}</p>}        </div>
+          {project.description && <p className='text-label leading-snug text-black'>{project.description}</p>}
+          {project.meta && <p className='text-[12px] leading-snug text-black'>{project.meta}</p>}{' '}
+        </div>
       </Link>
     </motion.div>
   )

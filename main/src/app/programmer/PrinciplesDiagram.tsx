@@ -16,7 +16,7 @@ const ROWS: Row[] = [
     system: 'Generative model',
     output: 'Korean typography',
   },
-  { slug: 'word-wide-web', name: 'Word Wide Web', input: 'Community words', system: 'Synonym network', output: 'Poem' },
+  { slug: 'word-wide-web', name: 'Word Wide Web', input: 'Community words', system: 'Cosine Similarity', output: 'Poem' },
   { slug: 'draw-the-beat', name: 'Draw the Beat!', input: 'Drawing', system: 'Sound mapping', output: 'Music' },
   {
     slug: 'franklin',
@@ -27,15 +27,18 @@ const ROWS: Row[] = [
   },
 ]
 
-// Same column layout at every width; gaps, arrows and padding shrink on mobile instead of stacking
+// Three flow cells with arrows between them; arrows and padding shrink on mobile
 const GRID =
-  'grid grid-cols-[1fr_14px_1fr_14px_1fr_64px] items-center gap-[4px] md:grid-cols-[1fr_28px_1fr_28px_1fr_160px] md:gap-[12px]'
+  'grid grid-cols-[1fr_12px_1fr_12px_1fr] gap-[4px] md:grid-cols-[1fr_28px_1fr_28px_1fr] md:items-center md:gap-[12px]'
 const CELL =
-  'flex h-full items-center justify-center px-[6px] py-[10px] text-center text-label md:px-[16px] md:py-[14px]'
+  'flex h-full items-center justify-center break-words px-[6px] py-[10px] text-center text-label leading-snug md:px-[16px] md:py-[14px]'
+
+// Column titles: number on top, label below, so all three read at the same size and height
+const HEAD = 'flex flex-col items-center gap-[6px] md:flex-row md:justify-center'
 
 function Arrow() {
   return (
-    <svg viewBox='0 0 40 24' className='h-auto w-full text-black' aria-hidden>
+    <svg viewBox='0 0 40 24' className='h-auto w-full self-center text-black' aria-hidden>
       <path
         d='M2 12H36M28 4 36 12 28 20'
         fill='none'
@@ -50,7 +53,7 @@ function Arrow() {
 
 function Index({ n }: { n: string }) {
   return (
-    <span className='mr-[6px] inline-flex h-[20px] w-[20px] items-center justify-center rounded-full border border-black text-label'>
+    <span className='inline-flex h-[20px] w-[20px] shrink-0 items-center justify-center rounded-full border border-black text-label'>
       {n}
     </span>
   )
@@ -59,31 +62,34 @@ function Index({ n }: { n: string }) {
 export function PrinciplesDiagram() {
   return (
     <figure className='mx-auto mt-[48px] w-full max-w-[1100px]'>
-      <div className={`${GRID} pb-[12px] text-center text-label font-medium text-black`}>
-        <span>Human material</span>
-        <span />
-        <span>
+      <div className={`${GRID} items-start pb-[12px] text-center text-label font-medium leading-snug text-black`}>
+        <span className={HEAD}>
           <Index n='1' />
+          Human material
+        </span>
+        <span />
+        <span className={HEAD}>
+          <Index n='2' />
           Computational system
         </span>
         <span />
-        <span>
-          <Index n='2' />
+        <span className={HEAD}>
+          <Index n='3' />
           Something to hold, make, play
         </span>
-        <span className='text-left text-neutral-500'>Work</span>
       </div>
 
       <ul className='flex flex-col gap-[8px]'>
         {ROWS.map((row) => (
           <li key={row.slug}>
-            <a href={`#${row.slug}`} className={`group ${GRID}`}>
-              <span className={CELL + ' bg-neutral-100 text-ink'}>{row.input}</span>
-              <Arrow />
-              <span className={CELL + ' bg-black font-medium text-white'}>{row.system}</span>
-              <Arrow />
-              <span className={CELL + ' bg-neutral-100 text-ink'}>{row.output}</span>
-              <span className='text-label text-neutral-500 transition-colors group-hover:text-black'>{row.name} ↓</span>
+            <a href={`#${row.slug}`} className='block'>
+              <div className={GRID}>
+                <span className={CELL + ' bg-neutral-100 text-ink'}>{row.input}</span>
+                <Arrow />
+                <span className={CELL + ' bg-black font-medium text-white'}>{row.system}</span>
+                <Arrow />
+                <span className={CELL + ' bg-neutral-100 text-ink'}>{row.output}</span>
+              </div>
             </a>
           </li>
         ))}
